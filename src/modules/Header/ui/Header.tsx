@@ -4,7 +4,7 @@ import { HeaderLogo } from './components/HeaderLogo'
 
 import s from './styles.module.css'
 
-export const HeaderProxy = ({ type }: HeaderProxyProps) => (
+export const Header = ({ type }: HeaderProxyProps) => (
   <header className={s.header}>
     <HeaderLogo />
     {type === 'withButton' && <HeaderButton />}

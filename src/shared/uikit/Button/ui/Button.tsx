@@ -4,7 +4,7 @@ import { BuyButton } from './DifferentButtons/BuyButton'
 import { InfoButton } from './DifferentButtons/InfoButton'
 import { LoginButton } from './DifferentButtons/LoginButton'
 
-export const ButtonProxy = (props: ButtonProxyProps) => {
+export const Button = (props: ButtonProxyProps) => {
   const { type, ...other } = props
 
   if (type === 'info') {

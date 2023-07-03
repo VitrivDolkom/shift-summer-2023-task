@@ -4,12 +4,12 @@
 
 body {
   --background: #FFF6F0;
+  background-color: var(--background);
 }
 
 body.dark {
-  --background: #FFF6F0;
+  --background: black;
 }
-
 
 img {
   max-width: 100%;

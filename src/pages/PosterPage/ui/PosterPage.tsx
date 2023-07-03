@@ -1,5 +1,5 @@
-import { HeaderProxy } from '@/modules/HeaderProxy'
+import { Header } from '@/modules/Header'
 
 export const PosterPage = () => {
-  return <HeaderProxy type="withButton" />
+  return <Header type="withButton" />
 }

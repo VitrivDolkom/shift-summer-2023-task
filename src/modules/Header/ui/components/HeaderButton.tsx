@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 
 import { AuthContext } from '@/modules/Auth'
-import { ButtonProxy } from '@/shared/uikit/ButtonProxy'
+import { Button } from '@/shared/uikit/Button'
 
 export const HeaderButton = () => {
   const { isAuth } = useContext(AuthContext)
 
-  return <ButtonProxy type={isAuth ? 'account' : 'login'} />
+  return <Button type={isAuth ? 'account' : 'login'} />
 }
