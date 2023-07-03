@@ -6,4 +6,4 @@ export interface ButtonProxyProps extends ButtonProps {
   type: ButtonType
 }
 
-type ButtonType = 'login' | 'buy' | 'info' | 'account'
+export type ButtonType = 'login' | 'buy' | 'info' | 'account'
