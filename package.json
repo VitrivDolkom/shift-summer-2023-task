@@ -10,7 +10,8 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write src/**/*.ts src/**/*.tsx",
     "check": "prettier --check src/**/*.ts src/**/*.tsx",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
@@ -31,6 +32,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "husky": "^8.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   }
