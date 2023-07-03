@@ -1,4 +1,8 @@
-export interface ButtonProxyProps {
+export interface ButtonProps {
+  onClick?: () => void
+}
+
+export interface ButtonProxyProps extends ButtonProps {
   type: ButtonType
 }
 

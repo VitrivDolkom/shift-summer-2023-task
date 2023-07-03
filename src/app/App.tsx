@@ -1,9 +1,5 @@
-import { HeaderProxy } from '@/modules/HeaderProxy'
+import { RouterProvider } from 'react-router-dom'
 
-export const App = () => {
-  return (
-    <>
-      <HeaderProxy type="withButton" />
-    </>
-  )
-}
+import { router } from './router'
+
+export const App = () => <RouterProvider router={router} />

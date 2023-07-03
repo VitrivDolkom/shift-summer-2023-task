@@ -2,6 +2,14 @@
   font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
 }
 
+body {
+  --background: #FFF6F0;
+}
+
+body.dark {
+  --background: #FFF6F0;
+}
+
 
 img {
   max-width: 100%;

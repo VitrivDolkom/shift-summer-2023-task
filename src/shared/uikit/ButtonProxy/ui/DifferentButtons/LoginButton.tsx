@@ -1,3 +1,9 @@
+import { ButtonProps } from '../../lib/types'
+
 import s from '../styles.module.css'
 
-export const LoginButton = () => <button className={s.login}>Войти</button>
+export const LoginButton = ({ onClick }: ButtonProps) => (
+  <button onClick={onClick} className={s.login}>
+    Войти
+  </button>
+)
