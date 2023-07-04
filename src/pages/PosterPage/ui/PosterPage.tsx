@@ -1,5 +1,5 @@
 import { Header } from '@/modules/Header'
-import { PosterMovies } from '@/modules/PosterMovies'
+import { PosterFilms } from '@/modules/PosterFilms'
 
 import posterTitle from './img/posterTitle.svg'
 import s from './styles.module.css'
@@ -13,7 +13,7 @@ export const PosterPage = () => {
           <img src={posterTitle} alt="афиша" />
           <h1 className={s.subtitle}> на сегодня</h1>
         </div>
-        <PosterMovies />
+        <PosterFilms />
       </main>
     </div>
   )

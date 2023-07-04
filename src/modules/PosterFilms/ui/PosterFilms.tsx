@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
+import { PosterFilmCard } from '../components/PosterFilmCard/PosterFilmCard'
 import { fetchPosterMovies } from '../model/thunk'
 
-export const PosterMovies = () => {
+export const PosterFilms = () => {
   const dispatch = useAppDispatch()
 
-  const { posterMovies, status, error } = useAppSelector((state) => state.posterMovies)
+  const { films, status, error } = useAppSelector((state) => state.posterMovies)
 
   useEffect(() => {
     if (status === 'idle') {
@@ -22,5 +23,11 @@ export const PosterMovies = () => {
     return <h1>Pending ...</h1>
   }
 
-  return <h1>loaded</h1>
+  return (
+    <div>
+      {films.map((film) => (
+        <PosterFilmCard key={film.id} film={film} />
+      ))}
+    </div>
+  )
 }

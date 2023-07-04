@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import { posterMoviesSlice } from '@/modules/PosterMovies'
+import { posterFilmsSlice } from '@/modules/PosterFilms'
 
 export const rootReducer = combineReducers({
-  posterMovies: posterMoviesSlice.reducer
+  posterMovies: posterFilmsSlice.reducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

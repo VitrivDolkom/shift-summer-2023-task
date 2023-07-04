@@ -4,7 +4,13 @@
 
 body {
   --background: #FFF6F0;
-  --grey: #252525;
+  --yellow: #E2B33A;
+  --dark-grey: #252525;
+  --grey: #585858;
+  --light-grey: #949494;
+  --light-red: #F55A5A;
+  --brown: #B89E9E;
+
   background-color: var(--background);
 }
 

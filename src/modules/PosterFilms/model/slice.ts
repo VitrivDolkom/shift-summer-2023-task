@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { initialState } from './state'
 import { fetchPosterMovies } from './thunk'
 
-export const posterMoviesSlice = createSlice({
+export const posterFilmsSlice = createSlice({
   name: 'posterMovies',
   initialState,
   reducers: {},
@@ -14,7 +14,7 @@ export const posterMoviesSlice = createSlice({
       })
       .addCase(fetchPosterMovies.fulfilled, (state, action) => {
         state.status = 'success'
-        state.posterMovies = action.payload
+        state.films = action.payload.films
       })
       .addCase(fetchPosterMovies.rejected, (state, action) => {
         state.status = 'error'
