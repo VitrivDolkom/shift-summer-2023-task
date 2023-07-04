@@ -9,6 +9,8 @@ body {
   --grey: #585858;
   --light-grey: #949494;
   --light-red: #F55A5A;
+  --black-red: #ca4141;
+  --light-red-hover: #FF9696;
   --brown: #B89E9E;
   --black: #000000;
   --white: #FFFFFF;
@@ -26,4 +28,8 @@ img {
 
 main {
   margin-top: 120px;
+}
+
+button {
+  transition: all .3s linear;
 }

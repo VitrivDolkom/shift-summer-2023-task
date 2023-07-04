@@ -1,3 +1,7 @@
+.btn {
+  transition: all .3s linear;
+}
+
 .info {
   border-radius: 8px;
   border: 2px solid var(--light-red);
@@ -10,6 +14,10 @@
   color: var(--white);
   font-size: 18px;
   font-weight: 500;
+}
+
+.info:hover {
+  background-color: var(--black-red);
 }
 
 .buy {
