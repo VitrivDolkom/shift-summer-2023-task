@@ -1,6 +1,6 @@
 import { HeaderProxyProps } from '../lib/types'
-import { HeaderButton } from './components/HeaderButton'
-import { HeaderLogo } from './components/HeaderLogo'
+import { HeaderButton } from '../components/HeaderButton'
+import { HeaderLogo } from '../components/HeaderLogo'
 
 import s from './styles.module.css'
 
