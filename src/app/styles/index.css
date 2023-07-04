@@ -1,9 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Helvetica, Arial, sans-serif;
+  font-family: Roboto;
 }
 
 body {
   --background: #FFF6F0;
+  --grey: #252525;
   background-color: var(--background);
 }
 
@@ -13,4 +14,8 @@ body.dark {
 
 img {
   max-width: 100%;
+}
+
+main {
+  margin-top: 80px;
 }

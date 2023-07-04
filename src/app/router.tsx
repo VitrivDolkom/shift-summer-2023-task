@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: '/poster',
         element: <PosterPage />
+      },
+      {
+        path: '/poster/:id',
+        element: <div>I am id</div>
       }
     ]
   }
