@@ -1,7 +1,3 @@
-:root {
-  font-family: Roboto;
-}
-
 body {
   --background: #FFF6F0;
   --yellow: #E2B33A;
@@ -15,11 +11,22 @@ body {
   --black: #000000;
   --white: #FFFFFF;
 
+  font-family: Roboto;
   background-color: var(--background);
 }
 
 body.dark {
   --background: black;
+  --yellow: #E2B33A;
+  --dark-grey: #949494;
+  --grey: #585858;
+  --light-grey: #252525;
+  --light-red: #F55A5A;
+  --black-red: #ca4141;
+  --light-red-hover: #FF9696;
+  --brown: #B89E9E;
+  --black: #FFFFFF;
+  --white: #000000;
 }
 
 img {

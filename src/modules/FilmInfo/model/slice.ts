@@ -9,7 +9,7 @@ export const filmInfoSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchFilmInfo.pending, (state) => {
-      state.request.status = 'idle'
+      state.request.status = 'pending'
     })
     builder.addCase(fetchFilmInfo.fulfilled, (state, action) => {
       state.request.status = 'success'

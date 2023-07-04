@@ -1,3 +1,7 @@
+export interface FilmInfoProps {
+  id: string
+}
+
 export interface FilmPerson {
   id: string
   professions: Profession

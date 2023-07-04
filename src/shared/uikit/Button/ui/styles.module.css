@@ -25,7 +25,20 @@
 }
 
 .login {
-  background-color: red;
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--dark-grey);
+
+  color: var(--dark-grey);
+  background-color: var(--background);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.login:hover {
+  background-color: var(--white);
 }
 
 .acc {

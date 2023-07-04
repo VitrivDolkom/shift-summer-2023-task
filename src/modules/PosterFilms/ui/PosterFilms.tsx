@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/store'
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 
 import { PosterFilmCard } from '../components/PosterFilmCard/PosterFilmCard'
 import { fetchPosterMovies } from '../model/thunk'
@@ -27,9 +27,10 @@ export const PosterFilms = () => {
 
   return (
     <div className={s.films}>
-      {films.map((film) => (
-        <PosterFilmCard key={film.id} film={film} />
-      ))}
+      
+        {films.map((film) => (
+          <PosterFilmCard key={film.id} film={film} />
+        ))}
     </div>
   )
 }

@@ -1,6 +1,5 @@
 .subtitle {
   color: var(--dark-grey);
-  text-align: center;
   font-size: 32px;
   font-weight: 500;
 }
@@ -8,6 +7,7 @@
 .title {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .subtitle {
