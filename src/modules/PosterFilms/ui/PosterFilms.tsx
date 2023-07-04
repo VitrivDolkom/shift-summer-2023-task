@@ -9,19 +9,19 @@ import s from './styles.module.css'
 export const PosterFilms = () => {
   const dispatch = useAppDispatch()
 
-  const { films, status, error } = useAppSelector((state) => state.posterMovies)
+  const { films, request } = useAppSelector((state) => state.posterMovies)
 
   useEffect(() => {
-    if (status === 'idle') {
+    if (request.status === 'idle') {
       dispatch(fetchPosterMovies())
     }
   }, [])
 
-  if (error) {
+  if (request.error) {
     return <h1>Error ...</h1>
   }
 
-  if (status === 'pending') {
+  if (request.status === 'pending') {
     return <h1>Pending ...</h1>
   }
 

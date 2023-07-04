@@ -10,15 +10,16 @@ export const posterFilmsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchPosterMovies.pending, (state) => {
-        state.status = 'pending'
+        state.request.status = 'pending'
       })
       .addCase(fetchPosterMovies.fulfilled, (state, action) => {
-        state.status = 'success'
+        if (action.payload.success) state.request.status = 'success'
+
         state.films = action.payload.films
       })
       .addCase(fetchPosterMovies.rejected, (state, action) => {
-        state.status = 'error'
-        state.error = action.error.message
+        state.request.status = 'error'
+        state.request.error = action.error.message
       })
   }
 })

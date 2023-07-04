@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom'
+
+import { Country, Film } from '@/modules/FilmInfo'
 import { Button } from '@/shared/uikit/Button'
 import { FilmRating } from '@/shared/uikit/FilmRating'
-
-import { Country, Film } from '../../model/types'
 
 import s from './styles.module.css'
 
@@ -17,7 +18,12 @@ const countryAndYear = (country: Country | undefined, date: string): string => {
 
 export const PosterFilmCard = ({ film }: Props) => {
   const { id, genres, country, releaseDate, img, name, originalName, userRatings } = film
-  
+  const navigate = useNavigate()
+
+  const onMoreInfoClick = () => {
+    navigate(`/poster/${id}`)
+  }
+
   return (
     <div className={s.card}>
       <div className={s.top}>
@@ -29,7 +35,7 @@ export const PosterFilmCard = ({ film }: Props) => {
         <div className={s.name}>{name}</div>
         <div className={s.originalName}>{originalName}</div>
         <FilmRating rating={userRatings.kinopoisk} />
-        <Button type="info" />
+        <Button type="info" onClick={onMoreInfoClick} />
       </div>
     </div>
   )

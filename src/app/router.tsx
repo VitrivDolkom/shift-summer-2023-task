@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createBrowserRouter, Outlet } from 'react-router-dom'
 
 import { AuthProvider } from '@/modules/Auth'
+import { FilmPage } from '@/pages/FilmPage'
 
 const PosterPage = lazy(() =>
   import('@/pages/PosterPage').then((module) => ({ default: module.PosterPage }))
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/poster/:id',
-        element: <div>I am id</div>
+        element: <FilmPage />
       }
     ]
   }
