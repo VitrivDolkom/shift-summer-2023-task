@@ -1,5 +1,15 @@
 .info {
-  background-color: blue;
+  border-radius: 8px;
+  border: 2px solid var(--light-red);
+  background-color: var(--light-red);
+  display: flex;
+  padding: 8px 31px;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .buy {

@@ -4,3 +4,12 @@
   font-size: 32px;
   font-weight: 500;
 }
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.subtitle {
+  margin-left: 20px;
+}

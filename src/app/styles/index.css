@@ -10,6 +10,8 @@ body {
   --light-grey: #949494;
   --light-red: #F55A5A;
   --brown: #B89E9E;
+  --black: #000000;
+  --white: #FFFFFF;
 
   background-color: var(--background);
 }
@@ -23,5 +25,5 @@ img {
 }
 
 main {
-  margin-top: 80px;
+  margin-top: 120px;
 }

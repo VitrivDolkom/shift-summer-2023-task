@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { PosterFilmCard } from '../components/PosterFilmCard/PosterFilmCard'
 import { fetchPosterMovies } from '../model/thunk'
 
+import s from './styles.module.css'
+
 export const PosterFilms = () => {
   const dispatch = useAppDispatch()
 
@@ -24,7 +26,7 @@ export const PosterFilms = () => {
   }
 
   return (
-    <div>
+    <div className={s.films}>
       {films.map((film) => (
         <PosterFilmCard key={film.id} film={film} />
       ))}
