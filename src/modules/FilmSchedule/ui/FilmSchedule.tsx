@@ -1,19 +1,26 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { FilmScheduleComponent } from '../compnents/FilmScheduleComponent'
+import { FilmScheduleComponent } from '../components/FilmScheduleComponent'
 import { FilmScheduleProps } from '../lib/types'
+import { chooseSchedule, setDefaultSchedule } from '../model/slice'
 import { fetchFilmSchedule } from '../model/thunk'
 
 export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   const dispatch = useAppDispatch()
-  const { schedules, request } = useAppSelector((state) => state.filmSchedule)
+  const { schedules, currentSchedule, request } = useAppSelector((state) => state.filmSchedule)
 
   useEffect(() => {
     if (request.status === 'idle') {
       dispatch(fetchFilmSchedule(id))
     }
   }, [])
+
+  useEffect(() => {
+    if (currentSchedule === undefined) {
+      dispatch(setDefaultSchedule())
+    }
+  }, [schedules])
 
   if (request.status === 'pending') {
     return <div>Pending ...</div>
@@ -23,5 +30,11 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
     return <div>Error </div>
   }
 
-  return <FilmScheduleComponent schedules={schedules} />
+  return (
+    <FilmScheduleComponent
+      schedules={schedules}
+      currentSchedule={currentSchedule}
+      onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
+    />
+  )
 }

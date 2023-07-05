@@ -10,6 +10,9 @@ export const filmScheduleSlice = createSlice({
   reducers: {
     chooseSchedule(state, action: PayloadAction<FilmSchedule>) {
       state.currentSchedule = action.payload
+    },
+    setDefaultSchedule(state) {
+      state.currentSchedule = state.schedules[0]
     }
   },
   extraReducers(builder) {
@@ -26,3 +29,5 @@ export const filmScheduleSlice = createSlice({
     })
   }
 })
+
+export const { setDefaultSchedule, chooseSchedule } = filmScheduleSlice.actions

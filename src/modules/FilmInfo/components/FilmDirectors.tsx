@@ -9,6 +9,8 @@ interface Props {
 export const FilmDirectors = ({ directors }: Props) => (
   <div className={s.director}>
     Режиссер{directors.length > 1 ? 'ы' : ''}:{' '}
-    {directors.map((director, idx) => `${director.fullName}${idx !== directors.length - 1 ? ', ' : ''}`)}
+    {directors.map(
+      (director, index) => `${director.fullName}${index !== directors.length - 1 ? ', ' : ''}`
+    )}
   </div>
 )
