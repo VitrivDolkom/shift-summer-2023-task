@@ -16,7 +16,9 @@ export const router = createBrowserRouter([
     element: (
       <AuthProvider>
         <Provider store={store}>
-          <Outlet />
+          <div className="wrapper">
+            <Outlet />
+          </div>
         </Provider>
       </AuthProvider>
     ),

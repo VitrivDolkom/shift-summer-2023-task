@@ -7,6 +7,6 @@ export interface FilmInfoState {
   request: RequestInfo
 }
 
-export interface FilmInfoRequest extends BaseResponse {
+export interface FilmInfoResponse extends BaseResponse {
   film: Film
 }

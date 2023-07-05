@@ -1,3 +1,7 @@
+export type Profession = 'ACTOR' | 'DIRECTOR'
+export type AgeRating = 'G'
+export type Genre = string
+
 export interface FilmInfoProps {
   id: string
 }
@@ -7,9 +11,6 @@ export interface FilmPerson {
   professions: Profession
   fullName: string
 }
-
-export type Profession = 'ACTOR' | 'DIRECTOR'
-export type AgeRating = 'G'
 
 export interface FilmUserRating {
   kinopoisk: number
@@ -33,7 +34,7 @@ export interface Film {
   directors: FilmPerson[]
   runtime: number
   ageRating: AgeRating
-  genres: string[]
+  genres: Genre[]
   userRatings: FilmUserRating
   img: string
   country?: Country

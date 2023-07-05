@@ -40,3 +40,7 @@ main {
 button {
   transition: all .3s linear;
 }
+
+.wrapper {
+  padding: 0 100px;
+}

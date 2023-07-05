@@ -3,6 +3,9 @@ import { useEffect } from 'react'
 
 import { FilmRating } from '@/shared/uikit/FilmRating'
 
+import { FilmDirectors } from '../components/FilmDirectors'
+import { FIlmGenreCountryYear } from '../components/FIlmGenreCountryYear'
+import { WatchDate } from '../components/WatchDate'
 import { type FilmInfoProps } from '../lib/types'
 import { fetchFilmInfo } from '../model/thunk'
 
@@ -29,14 +32,13 @@ export const FilmInfo = ({ id }: FilmInfoProps) => {
   return (
     <div className={s.wrapper}>
       <div className={s.left}>
-        <img src={film.img} alt="картинка" />
-        <div className={s.watchDate}>в прокате</div>
-        <div className={s.watchDate}></div>
+        <img src={`${import.meta.env.VITE_BACKEND_URL}${film.img}`} alt="картинка" />
+        <WatchDate />
       </div>
       <div className={s.right}>
-        <div className={s.name}></div>
-        <div className={s.director}></div>
-        <div className={s.mainInfo}></div>
+        <div className={s.name}>{film.name}</div>
+        <FilmDirectors directors={film.directors} />
+        <FIlmGenreCountryYear genres={film.genres} country={film?.country} date={film.releaseDate} />
         <FilmRating rating={film.userRatings.kinopoisk} />
         <div className={s.description}>{film.description}</div>
       </div>

@@ -1,20 +1,15 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Country, Film } from '@/modules/FilmInfo'
-import { instance } from '@/shared/api'
+import { Film } from '@/modules/FilmInfo'
 import { Button } from '@/shared/uikit/Button'
 import { FilmRating } from '@/shared/uikit/FilmRating'
 
+import { FilmCountryAndYear } from './FilmCountryAndYear'
+
 import s from './styles.module.css'
+
 interface Props {
   film: Film
-}
-
-const countryAndYear = (country: Country | undefined, date: string): string => {
-  const dateArray = date.split(' ')
-  const year = dateArray[dateArray.length - 1]
-  return `${country !== undefined ? `${country}, ` : ''}${year}`
 }
 
 export const PosterFilmCard = ({ film }: Props) => {
@@ -29,10 +24,10 @@ export const PosterFilmCard = ({ film }: Props) => {
     <div className={s.card}>
       <div className={s.top}>
         <div className={s.genres}>{genres.slice(0, 2).join(', ')} ...</div>
-        <div className={s.topInfo}>{countryAndYear(country, releaseDate)}</div>
+        <FilmCountryAndYear country={country} date={releaseDate} />
       </div>
       <div className={s.img}>
-        <img src={`${import.meta.env.VITE_BACKEND_URL}${img}`} alt="" />
+        <img src={`${import.meta.env.VITE_BACKEND_URL}${img}`} alt="картинка" />
       </div>
       <div className={s.bottom}>
         <div className={s.name}>{name}</div>
