@@ -24,7 +24,7 @@ export const FilmInfoComponent = ({ film }: Props) => {
         <div className={s.name}>{name}</div>
         <FilmDirectors directors={directors} />
         <FIlmGenreCountryYear genres={genres} country={country} date={releaseDate} />
-        <FilmRating rating={userRatings.kinopoisk} />
+        <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
         <div className={s.description}>{description}</div>
       </div>
     </div>

@@ -1,8 +1,12 @@
 export interface ButtonProps {
   onClick?: () => void
+  text: string
+  classNames: string
 }
 
-export interface ButtonProxyProps extends ButtonProps {
+export interface ButtonProxyProps {
+  onClick?: () => void
+  text: string
   type: ButtonType
 }
 

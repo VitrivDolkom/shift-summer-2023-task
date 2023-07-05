@@ -8,11 +8,11 @@ import { FilmCountryAndYear } from './FilmCountryAndYear'
 
 import s from './styles.module.css'
 
-interface Props {
+interface PosterFilmCardProps {
   film: Film
 }
 
-export const PosterFilmCard = ({ film }: Props) => {
+export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
   const { id, genres, country, releaseDate, img, name, originalName, userRatings } = film
   const navigate = useNavigate()
 
@@ -32,8 +32,8 @@ export const PosterFilmCard = ({ film }: Props) => {
       <div className={s.bottom}>
         <div className={s.name}>{name}</div>
         <div className={s.originalName}>{originalName}</div>
-        <FilmRating rating={userRatings.kinopoisk} />
-        <Button type="info" onClick={onMoreInfoClick} />
+        <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
+        <Button type="info" onClick={onMoreInfoClick} text="Подробнее" />
       </div>
     </div>
   )

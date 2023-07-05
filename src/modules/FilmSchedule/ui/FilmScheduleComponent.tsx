@@ -4,9 +4,9 @@ import { FilmSchedule, FilmSeance } from '../lib/types'
 
 import s from './styles.module.css'
 
-interface Props {
+interface FilmScheduleComponentProps {
   schedules: FilmSchedule[]
-  currentSchedule?: FilmSchedule
+  currentSchedule: FilmSchedule
   currentSeance?: FilmSeance
   onScheduleClick: (schedule: FilmSchedule) => void
   onSeanceClick: (seance: FilmSeance) => void
@@ -18,24 +18,18 @@ export const FilmScheduleComponent = ({
   currentSeance,
   onScheduleClick,
   onSeanceClick
-}: Props) => {
-  if (!schedules.length || !currentSchedule) {
-    return null
-  }
-
-  return (
-    <div className={s.wrapper}>
-      <div className={s.title}>Расписание</div>
-      <SchedulesDate
-        schedules={schedules}
-        currentSchedule={currentSchedule}
-        onScheduleClick={onScheduleClick}
-      />
-      <CurrentSchedule
-        schedule={currentSchedule}
-        currentSeance={currentSeance}
-        onSeanceClick={onSeanceClick}
-      />
-    </div>
-  )
-}
+}: FilmScheduleComponentProps) => (
+  <div className={s.wrapper}>
+    <div className={s.title}>Расписание</div>
+    <SchedulesDate
+      schedules={schedules}
+      currentSchedule={currentSchedule}
+      onScheduleClick={onScheduleClick}
+    />
+    <CurrentSchedule
+      schedule={currentSchedule}
+      currentSeance={currentSeance}
+      onSeanceClick={onSeanceClick}
+    />
+  </div>
+)

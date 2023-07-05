@@ -3,14 +3,14 @@ import { getReleaseYear } from '@/shared/lib/date'
 
 import s from './styles.module.css'
 
-interface Props {
+interface FilmCountryAndYearProps {
   country?: Country
   date: string
 }
 
-export const FilmCountryAndYear = ({ country, date }: Props) => (
+export const FilmCountryAndYear = ({ country, date }: FilmCountryAndYearProps) => (
   <div className={s.topInfo}>
-    {country !== undefined ? `${country}, ` : ''}
+    {!!country && `${country.name}, `}
     {getReleaseYear(date)}
   </div>
 )

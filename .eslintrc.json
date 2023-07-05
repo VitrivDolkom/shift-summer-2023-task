@@ -48,6 +48,8 @@
     "arrow-parens": ["error", "always"],
     // error on duplicate import
     "no-duplicate-imports": "error",
-    "import/no-internal-modules": ["off"]
+    "import/no-internal-modules": ["off"],
+    // allow double negation
+    "no-extra-boolean-cast": "off"
   }
 }

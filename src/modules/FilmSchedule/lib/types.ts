@@ -14,8 +14,8 @@ interface FilmSeanceTime {
 
 interface FilmTicket {
   filmId: string
-  row: 1
-  column: 1
+  row: number
+  column: number
   seance: FilmSeanceTime
   phone: string
 }

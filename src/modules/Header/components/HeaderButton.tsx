@@ -6,5 +6,5 @@ import { Button } from '@/shared/uikit/Button'
 export const HeaderButton = () => {
   const { isAuth } = useContext(AuthContext)
 
-  return <Button type={isAuth ? 'account' : 'login'} />
+  return <Button type={isAuth ? 'account' : 'login'} text={isAuth ? 'Кабинет' : 'Войти'} />
 }

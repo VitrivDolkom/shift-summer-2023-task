@@ -35,12 +35,16 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   }
 
   return (
-    <FilmScheduleComponent
-      schedules={schedules}
-      currentSchedule={currentSchedule}
-      currentSeance={currentSeance}
-      onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
-      onSeanceClick={(seance) => dispatch(chooseSeance(seance))}
-    />
+    <>
+      {schedules.length && currentSchedule && (
+        <FilmScheduleComponent
+          schedules={schedules}
+          currentSchedule={currentSchedule}
+          currentSeance={currentSeance}
+          onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
+          onSeanceClick={(seance) => dispatch(chooseSeance(seance))}
+        />
+      )}
+    </>
   )
 }
