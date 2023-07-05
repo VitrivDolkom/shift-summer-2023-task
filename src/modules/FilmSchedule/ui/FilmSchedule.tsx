@@ -24,7 +24,7 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
 
   useEffect(() => {
     dispatch(setDefaultSeance())
-  }, [currentSchedule])
+  }, [currentSchedule, schedules])
 
   if (request.status === 'pending') {
     return <div>Pending ...</div>

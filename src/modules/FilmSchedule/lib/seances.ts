@@ -26,7 +26,7 @@ export const minTime = seancesTime[0].secondsTime
 export const secondsFromTimeString = (time: string): number => {
   const timeArray = time.split(':')
   const hours = +timeArray[0]
-  const minutes = +timeArray[0]
+  const minutes = +timeArray[1]
   const seconds = hours * 3600 + minutes * 60
   return seconds
 }
