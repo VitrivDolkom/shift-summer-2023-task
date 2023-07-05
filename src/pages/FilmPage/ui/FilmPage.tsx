@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 
 import { FilmInfo } from '@/modules/FilmInfo'
+import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 
 export const FilmPage = () => {
@@ -16,6 +17,7 @@ export const FilmPage = () => {
       <Header type="withButton" />
       <main>
         <FilmInfo id={filmId} />
+        <FilmSchedule id={filmId} />
       </main>
     </>
   )
