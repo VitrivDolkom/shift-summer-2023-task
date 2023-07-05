@@ -30,3 +30,10 @@ export const secondsFromTimeString = (time: string): number => {
   const seconds = hours * 3600 + minutes * 60
   return seconds
 }
+
+export const seanceStyle = (time: string) => {
+  const leftStyle =
+    (((secondsFromTimeString(time) - minTime) / maxTimeDifference) * 100).toString() + '%'
+
+  return { left: leftStyle }
+}

@@ -1,4 +1,4 @@
-import { maxTimeDifference, minTime, seancesTime, secondsFromTimeString } from '../lib/seances'
+import { seancesTime, seanceStyle } from '../lib/seances'
 import { FilmSchedule, FilmSeance } from '../lib/types'
 
 import s from '../ui/styles.module.css'
@@ -7,13 +7,6 @@ interface Props {
   schedule: FilmSchedule
   currentSeance?: FilmSeance
   onSeanceClick: (seance: FilmSeance) => void
-}
-
-const seanceStyle = (time: string) => {
-  const leftStyle =
-    (((secondsFromTimeString(time) - minTime) / maxTimeDifference) * 100).toString() + '%'
-
-  return { left: leftStyle }
 }
 
 export const CurrentSchedule = ({ schedule, currentSeance, onSeanceClick }: Props) => (
