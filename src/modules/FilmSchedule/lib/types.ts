@@ -20,7 +20,7 @@ interface FilmTicket {
   phone: string
 }
 
-interface FilmSeance {
+export interface FilmSeance {
   time: string
   hall: FilmSeanceHall
   payedTickets: FilmTicket[]

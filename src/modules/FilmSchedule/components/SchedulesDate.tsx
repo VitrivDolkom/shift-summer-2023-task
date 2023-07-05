@@ -1,6 +1,6 @@
 import { FilmSchedule } from '../lib/types'
 
-import s from './styles.module.css'
+import s from '../ui/styles.module.css'
 
 interface Props {
   schedules: FilmSchedule[]

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FilmSchedule } from '../lib/types'
+import { FilmSchedule, FilmSeance } from '../lib/types'
 import { initialState } from './state'
 import { fetchFilmSchedule } from './thunk'
 
@@ -11,8 +11,14 @@ export const filmScheduleSlice = createSlice({
     chooseSchedule(state, action: PayloadAction<FilmSchedule>) {
       state.currentSchedule = action.payload
     },
+    chooseSeance(state, action: PayloadAction<FilmSeance>) {
+      state.currentSeance = action.payload
+    },
     setDefaultSchedule(state) {
       state.currentSchedule = state.schedules[0]
+    },
+    setDefaultSeance(state) {
+      state.currentSeance = state.currentSchedule?.seances[0]
     }
   },
   extraReducers(builder) {
@@ -30,4 +36,5 @@ export const filmScheduleSlice = createSlice({
   }
 })
 
-export const { setDefaultSchedule, chooseSchedule } = filmScheduleSlice.actions
+export const { setDefaultSchedule, setDefaultSeance, chooseSchedule, chooseSeance } =
+  filmScheduleSlice.actions

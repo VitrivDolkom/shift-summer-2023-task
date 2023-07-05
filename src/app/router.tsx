@@ -1,6 +1,6 @@
 import { store } from '@/store'
 import { Provider } from 'react-redux'
-import { createBrowserRouter, Outlet } from 'react-router-dom'
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
 
 import { AuthProvider } from '@/modules/Auth'
 import { FilmPage } from '@/pages/FilmPage'
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div>root</div>
+        element: <Navigate to="/poster" replace />
       },
       {
         path: '/auth',
