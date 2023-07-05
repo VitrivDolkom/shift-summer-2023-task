@@ -26,15 +26,19 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
         <div className={s.genres}>{genres.slice(0, 2).join(', ')} ...</div>
         <FilmCountryAndYear country={country} date={releaseDate} />
       </div>
-      <div className={s.img}>
-        <img src={`${import.meta.env.VITE_BACKEND_URL}${img}`} alt="картинка" />
+      <div className={s.content}>
+        <div className={s.img}>
+          <img src={`${import.meta.env.VITE_BACKEND_URL}${img}`} alt="картинка" />
+        </div>
+        <div className={s.bottom}>
+          <div className={s.name}>{name}</div>
+          <div className={s.originalName}>{originalName}</div>
+          <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
+        </div>
       </div>
-      <div className={s.bottom}>
-        <div className={s.name}>{name}</div>
-        <div className={s.originalName}>{originalName}</div>
-        <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
+      <footer className={s.footer}>
         <Button type="info" onClick={onMoreInfoClick} text="Подробнее" />
-      </div>
+      </footer>
     </div>
   )
 }
