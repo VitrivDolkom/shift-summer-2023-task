@@ -1,0 +1,8 @@
+import axios from 'axios'
+
+export const instance = axios.create({
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/cinema`,
+  headers: {
+    'Content-type': 'application/json'
+  }
+})

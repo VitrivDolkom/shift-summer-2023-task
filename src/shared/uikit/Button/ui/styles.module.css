@@ -1,0 +1,46 @@
+.btn {
+  transition: all .3s linear;
+}
+
+.info {
+  border-radius: 8px;
+  border: 2px solid var(--light-red);
+  background-color: var(--light-red);
+  display: flex;
+  padding: 8px 31px;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.info:hover {
+  background-color: var(--black-red);
+}
+
+.buy {
+  background-color: green;
+}
+
+.login {
+  width: 120px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--dark-grey);
+
+  color: var(--dark-grey);
+  background-color: var(--background);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.login:hover {
+  background-color: var(--white);
+}
+
+.acc {
+  background-color: black;
+}

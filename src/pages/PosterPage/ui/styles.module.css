@@ -1,0 +1,15 @@
+.subtitle {
+  color: var(--dark-grey);
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subtitle {
+  margin-left: 20px;
+}
