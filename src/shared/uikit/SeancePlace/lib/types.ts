@@ -1,7 +1,13 @@
 export interface SeancePlaceProps {
   place: FilmSeancePlace
-  rowIndex: number
-  placeIndex: number
+  onClick: (ticket: TicketPlaceInfo) => void
+  ticketPlaceInfo: TicketPlaceInfo
+  isSelected: boolean
+}
+
+export interface TicketPlaceInfo {
+  row: number
+  column: number
 }
 
 export interface FilmSeancePlace {

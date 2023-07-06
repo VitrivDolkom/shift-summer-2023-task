@@ -9,7 +9,7 @@ interface FilmSeanceTime {
   time: string
 }
 
-interface FilmTicket {
+export interface FilmTicket {
   filmId: string
   row: number
   column: number

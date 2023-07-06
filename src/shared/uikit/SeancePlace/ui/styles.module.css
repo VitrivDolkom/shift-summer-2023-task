@@ -1,5 +1,8 @@
-.place {
+.wrapper {
   position: relative;
+}
+
+.place {
   width: 32px;
   height: 40px;
 
@@ -34,7 +37,8 @@
 }
 
 .comfort:hover {
-  background-color: var(--yellow);
+  border-color: var(--light-red);
+  /* background-color: var(--yellow); */
 }
 
 .comfort.active {
@@ -66,6 +70,7 @@
   color: var(--grey);
   font-size: 14px;
   margin-top: 7px;
+  white-space: nowrap;
 }
 
 .price {
