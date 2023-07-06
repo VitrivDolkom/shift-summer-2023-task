@@ -11,10 +11,10 @@ export const SeancePlaces = ({ seance }: SeanceSeatsProps) => {
   console.log(seance)
   return (
     <div className={s.places}>
-      {seance.hall.places.map((row, index) => (
-        <div key={index} className={s.row}>
+      {seance.hall.places.map((row, rowIndex) => (
+        <div key={rowIndex} className={s.row}>
           {row.map((place, index) => (
-            <SeancePlace key={index} place={place} />
+            <SeancePlace key={index} place={place} rowIndex={rowIndex + 1} placeIndex={index + 1} />
           ))}
         </div>
       ))}

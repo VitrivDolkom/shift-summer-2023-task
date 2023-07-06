@@ -1,5 +1,7 @@
 export interface SeancePlaceProps {
   place: FilmSeancePlace
+  rowIndex: number
+  placeIndex: number
 }
 
 export interface FilmSeancePlace {

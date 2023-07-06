@@ -11,6 +11,7 @@ body {
   --black: #000000;
   --white: #FFFFFF;
   --background-second: #D8CDD4;
+  --green: #44C341;
 
   font-family: Roboto;
   background-color: var(--background);
