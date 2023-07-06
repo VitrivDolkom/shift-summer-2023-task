@@ -1,8 +1,15 @@
 .btn {
   transition: all .3s linear;
+  width: 120px;
+  height: 40px;
+
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .info {
+  width: 156px;
   border-radius: 8px;
   border: 2px solid var(--light-red);
   background-color: var(--light-red);
@@ -10,10 +17,6 @@
   padding: 8px 31px;
   justify-content: center;
   align-items: center;
-
-  color: var(--white);
-  font-size: 18px;
-  font-weight: 500;
 }
 
 .info:hover {
@@ -21,7 +24,15 @@
 }
 
 .buy {
-  background-color: green;
+  border-radius: 8px;
+  background: var(--light-red);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buy:hover {
+  background: var(--light-red-hover);
 }
 
 .login {

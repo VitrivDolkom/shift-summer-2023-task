@@ -1,6 +1,7 @@
 export interface ButtonProps {
-  onClick?: () => void
   text: string
+  img?: string
+  onClick?: () => void
   classNames: string
 }
 
