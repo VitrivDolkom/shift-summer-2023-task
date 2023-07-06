@@ -7,17 +7,14 @@ interface SeanceSeatsProps {
   seance: FilmSeance
 }
 
-export const SeancePlaces = ({ seance }: SeanceSeatsProps) => {
-  console.log(seance)
-  return (
-    <div className={s.places}>
-      {seance.hall.places.map((row, rowIndex) => (
-        <div key={rowIndex} className={s.row}>
-          {row.map((place, index) => (
-            <SeancePlace key={index} place={place} rowIndex={rowIndex + 1} placeIndex={index + 1} />
-          ))}
-        </div>
-      ))}
-    </div>
-  )
-}
+export const SeancePlaces = ({ seance }: SeanceSeatsProps) => (
+  <div className={s.places}>
+    {seance.hall.places.map((row, rowIndex) => (
+      <div key={rowIndex} className={s.row}>
+        {row.map((place, index) => (
+          <SeancePlace key={index} place={place} rowIndex={rowIndex + 1} placeIndex={index + 1} />
+        ))}
+      </div>
+    ))}
+  </div>
+)

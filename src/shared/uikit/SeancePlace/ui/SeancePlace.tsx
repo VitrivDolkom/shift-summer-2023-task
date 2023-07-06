@@ -1,7 +1,7 @@
 import { getPlaceClassNames } from '../lib/classNames'
 import { SeancePlaceProps } from '../lib/types'
 import { getTypeTitle } from '../lib/typeTitle'
-import { useHover } from '../lib/useShowOnHover'
+import { useHover } from '../lib/useHover'
 
 import s from './styles.module.css'
 
