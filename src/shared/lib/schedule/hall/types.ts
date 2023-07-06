@@ -1,1 +1,1 @@
-export type HallName = 'Red' | 'Blue'
+export type HallName = 'Red' | 'Blue' | 'Green'
