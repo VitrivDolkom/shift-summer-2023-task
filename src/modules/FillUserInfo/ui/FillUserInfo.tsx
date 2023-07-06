@@ -1,16 +1,12 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button } from '@/shared/uikit/Button'
-import { ValidatedInput } from '@/shared/uikit/ValidatedInput'
+import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
+
+import { UserInfo } from '../model/types'
 
 import s from './styles.module.css'
 
-interface UserInfo {
-  firstname: string
-  lastname: string
-  middlename: string
-  phone: string
-}
 export const FillUserInfo = () => {
   const {
     register,
@@ -26,11 +22,29 @@ export const FillUserInfo = () => {
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={s.title}>Введите ваши данные</div>
-      <ValidatedInput error={errors.firstname?.message} register={register('firstname')} />
-      <ValidatedInput error={errors.lastname?.message} register={register('lastname')} />
-      <ValidatedInput error={errors.middlename?.message} register={register('middlename')} />
-      <ValidatedInput error={errors.phone?.message} register={register('phone')} />
-      <Button type="submit" text="Далее" />
+      <ValidatedInput
+        name="Имя"
+        error={errors.firstname?.message}
+        register={register('firstname', validations.firstname)}
+      />
+      <ValidatedInput
+        name="Фамилия"
+        error={errors.lastname?.message}
+        register={register('lastname', validations.lastname)}
+      />
+      <ValidatedInput
+        name="Отчество"
+        error={errors.middlename?.message}
+        register={register('middlename', validations.middlename)}
+      />
+      <ValidatedInput
+        name="Телефон"
+        error={errors.phone?.message}
+        register={register('phone', validations.phone)}
+      />
+      <div className={s.button}>
+        <Button type="submit" text="Далее" />
+      </div>
     </form>
   )
 }

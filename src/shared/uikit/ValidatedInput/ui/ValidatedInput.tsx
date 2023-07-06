@@ -1,20 +1,19 @@
 import { useId } from 'react'
 
+import { ValidatedInputProps } from '../lib/types'
+
 import s from './styles.module.css'
 
-interface ValidatedInputProps<T> {
-  register: T
-  error?: string | undefined
-}
-
-export const ValidatedInput = <T, >({ error, register }: ValidatedInputProps<T>) => {
+export const ValidatedInput = <T,>({ name, error, register }: ValidatedInputProps<T>) => {
   const inputId = useId()
 
   return (
     <div className={s.wrapper}>
-      <label htmlFor={inputId}></label>
+      <label className={[s.label, !!error && s.error].join(' ')} htmlFor={inputId}>
+        {name}
+      </label>
       <input className={s.input} type="text" {...register} id={inputId} />
-      {!!error && <span>{error}</span>}
+      {!!error && <span className={s.errorMessage}>{error}</span>}
     </div>
   )
 }

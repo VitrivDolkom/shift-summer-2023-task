@@ -11,4 +11,22 @@
   border: 1px solid var(--light-grey);
   background: var(--white);
   padding: 12px;
+  margin-top: 10px;
+}
+
+.label {
+  color: var(--brown-second);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.error {
+  color: var(--light-red, #F55A5A);
+}
+
+.errorMessage {
+  margin: 2px 0px 0px 5px;
+  color: var(--light-red, #F55A5A);
+  font-size: 14px;
+  font-weight: 500;
 }
