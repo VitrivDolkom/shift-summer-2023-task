@@ -1,0 +1,41 @@
+.place {
+  width: 32px;
+  height: 40px;
+
+  border-width: 2.2px;
+  border-radius: 5px;
+  border-style: solid;
+  background-color: var(--white);
+
+  transition: all .3s linear;
+}
+
+.econom {
+  border-color: var(--grey);
+}
+
+.econom:hover {
+  border-color: var(--light-red);
+}
+
+.econom.active {
+  background-color: var(--light-red);
+  border-color: var(--light-red);
+}
+
+.blocked {
+  border-color: var(--background-second);
+  background-color: var(--background-second);
+}
+
+.comfort {
+  border-color: var(--yellow);
+}
+
+.comfort:hover {
+  background-color: var(--yellow);
+}
+
+.confort.active {
+  background-color: var(--yellow);
+}

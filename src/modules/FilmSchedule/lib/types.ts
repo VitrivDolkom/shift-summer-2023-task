@@ -1,10 +1,7 @@
+import { FilmSeancePlace } from '@/shared/uikit/SeancePlace'
+
 export interface FilmScheduleProps {
   id: string
-}
-
-interface FilmSeanceHall {
-  name: string
-  places: string[]
 }
 
 interface FilmSeanceTime {
@@ -24,6 +21,11 @@ export interface FilmSeance {
   time: string
   hall: FilmSeanceHall
   payedTickets: FilmTicket[]
+}
+
+interface FilmSeanceHall {
+  name: string
+  places: FilmSeancePlace[][]
 }
 
 export interface FilmSchedule {
