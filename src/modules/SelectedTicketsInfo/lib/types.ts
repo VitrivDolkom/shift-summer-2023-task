@@ -6,4 +6,5 @@ export interface SelectedTicketsInfoComponentProps {
   hallName: string
   date: string
   time: string
+  price: number
 }

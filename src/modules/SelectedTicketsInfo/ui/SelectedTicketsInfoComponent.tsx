@@ -3,7 +3,7 @@ import { SelectedTicketsInfoComponentProps } from '../lib/types'
 import s from './styles.module.css'
 
 export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponentProps) => {
-  const { tickets, date, filmName, hallName, time } = props
+  const { tickets, date, filmName, hallName, time, price } = props
 
   return (
     <div className={s.wrapper}>
@@ -24,6 +24,7 @@ export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponen
           {tickets.map((ticket) => `${ticket.row} ряд - ${ticket.column}; `)}
         </div>
       </div>
+      <div>{price} рублей</div>
     </div>
   )
 }

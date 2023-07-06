@@ -5,7 +5,7 @@ export interface SeancePlaceProps {
   isSelected: boolean
 }
 
-export interface TicketPlaceInfo {
+export interface TicketPlaceInfo extends FilmSeancePlace {
   row: number
   column: number
 }

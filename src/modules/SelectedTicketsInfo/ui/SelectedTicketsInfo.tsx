@@ -6,7 +6,7 @@ import { SelectedTicketsInfoComponents } from './SelectedTicketsInfoComponent'
 
 export const SelectedTicketsInfo = () => {
   const { film } = useAppSelector((state) => state.filmInfo)
-  const { tickets } = useAppSelector((state) => state.filmTickets)
+  const { tickets, price } = useAppSelector((state) => state.filmTickets)
   const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
 
   if (!film || !currentSchedule || !currentSeance) {
@@ -20,6 +20,7 @@ export const SelectedTicketsInfo = () => {
       hallName={getHallName(currentSeance.hall.name)}
       date={currentSchedule.date}
       time={currentSeance.time}
+      price={price}
     />
   )
 }
