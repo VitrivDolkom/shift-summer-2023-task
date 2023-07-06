@@ -5,7 +5,7 @@ import { SelectedTicketsInfoComponentProps } from '../lib/types'
 import s from './styles.module.css'
 
 export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponentProps) => {
-  const { tickets, date, filmName, hallName, time, price } = props
+  const { tickets, date, filmName, hallName, time, price, onBuyButtonClick } = props
 
   return (
     <div className={s.wrapper}>
@@ -31,7 +31,7 @@ export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponen
       <footer className={s.footer}>
         <div className={s.title}>Сумма:</div>
         <div className={[s.info, s.price].join(' ')}>{price}руб</div>
-        <Button type="buy" text="Купить" />
+        <Button type="buy" text="Купить" onClick={onBuyButtonClick} />
       </footer>
     </div>
   )

@@ -2,9 +2,10 @@ import { useAppSelector } from '@/store'
 
 import { getHallName } from '@/shared/lib/schedule'
 
+import { type SelectedTicketsInfoProps } from '../lib/types'
 import { SelectedTicketsInfoComponents } from './SelectedTicketsInfoComponent'
 
-export const SelectedTicketsInfo = () => {
+export const SelectedTicketsInfo = ({ onBuyButtonClick }: SelectedTicketsInfoProps) => {
   const { film } = useAppSelector((state) => state.filmInfo)
   const { tickets, price } = useAppSelector((state) => state.filmTickets)
   const { currentSchedule, currentSeance, request } = useAppSelector((state) => state.filmSchedule)
@@ -21,6 +22,7 @@ export const SelectedTicketsInfo = () => {
       date={currentSchedule.date}
       time={currentSeance.time}
       price={price}
+      onBuyButtonClick={onBuyButtonClick}
     />
   )
 }
