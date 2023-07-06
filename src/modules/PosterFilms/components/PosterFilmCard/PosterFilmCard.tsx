@@ -30,13 +30,13 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
         <div className={s.img}>
           <img src={`${import.meta.env.VITE_BACKEND_URL}${img}`} alt="картинка" />
         </div>
+      </div>
+      <footer className={s.footer}>
         <div className={s.bottom}>
           <div className={s.name}>{name}</div>
           <div className={s.originalName}>{originalName}</div>
           <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
         </div>
-      </div>
-      <footer className={s.footer}>
         <Button type="info" onClick={onMoreInfoClick} text="Подробнее" />
       </footer>
     </div>

@@ -7,9 +7,9 @@ import { SelectedTicketsInfoComponents } from './SelectedTicketsInfoComponent'
 export const SelectedTicketsInfo = () => {
   const { film } = useAppSelector((state) => state.filmInfo)
   const { tickets, price } = useAppSelector((state) => state.filmTickets)
-  const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
+  const { currentSchedule, currentSeance, request } = useAppSelector((state) => state.filmSchedule)
 
-  if (!film || !currentSchedule || !currentSeance) {
+  if (request.status === 'pending' || !film || !currentSchedule || !currentSeance) {
     return null
   }
 
