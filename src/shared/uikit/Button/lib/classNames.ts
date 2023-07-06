@@ -9,7 +9,7 @@ export const getButtonClassNames = (type: ButtonType): string => {
     classNames.push(s.info)
   }
 
-  if (type === 'buy') {
+  if (type === 'buy' || type === 'submit') {
     classNames.push(s.buy)
   }
 

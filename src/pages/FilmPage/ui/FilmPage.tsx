@@ -6,8 +6,7 @@ import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
-import { useModal } from '@/shared/uikit/Modal/lib/useModal'
-import { Modal } from '@/shared/uikit/Modal/ui/Modal'
+import { Modal, useModal } from '@/shared/uikit/Modal'
 
 import s from './styles.module.css'
 
