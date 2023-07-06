@@ -1,3 +1,4 @@
+import { HallType } from '@/shared/lib/schedule'
 import { FilmSeancePlace } from '@/shared/uikit/SeancePlace'
 
 export interface FilmScheduleProps {
@@ -24,7 +25,7 @@ export interface FilmSeance {
 }
 
 interface FilmSeanceHall {
-  name: string
+  name: HallType
   places: FilmSeancePlace[][]
 }
 

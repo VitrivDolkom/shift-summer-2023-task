@@ -17,10 +17,7 @@ export const ChoiceFilmTicketsComponent = ({
   onPlaceClick
 }: ChoiceFilmTicketsComponentProps) => (
   <div className={s.wrapper}>
-    <div className={s.left}>
-      <div className={s.top}>Экран</div>
-      <SeancePlaces seance={seance} tickets={tickets} onPlaceClick={onPlaceClick} />
-    </div>
-    <div className={s.right}></div>
+    <div className={s.top}>Экран</div>
+    <SeancePlaces seance={seance} tickets={tickets} onPlaceClick={onPlaceClick} />
   </div>
 )

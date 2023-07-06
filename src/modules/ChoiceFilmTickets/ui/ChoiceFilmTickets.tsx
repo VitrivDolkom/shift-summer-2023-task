@@ -1,20 +1,25 @@
 import { useAppDispatch, useAppSelector } from '@/store'
+import { useEffect } from 'react'
 
-import { toggleTicket } from '../model/slice'
+import { resetTickets, toggleTicket } from '../model/slice'
 import { ChoiceFilmTicketsComponent } from './ChoiceFilmTicketsComponent'
 
 export const ChoiceFilmTickets = () => {
   const dispatch = useAppDispatch()
-  const seance = useAppSelector((state) => state.filmSchedule.currentSeance)
+  const { currentSeance, request } = useAppSelector((state) => state.filmSchedule)
   const { tickets } = useAppSelector((state) => state.filmTickets)
 
-  if (!seance) {
+  useEffect(() => {
+    dispatch(resetTickets())
+  }, [currentSeance])
+
+  if (request.status === 'pending' || request.error || !currentSeance) {
     return null
   }
 
   return (
     <ChoiceFilmTicketsComponent
-      seance={seance}
+      seance={currentSeance}
       tickets={tickets}
       onPlaceClick={(ticket) => dispatch(toggleTicket(ticket))}
     />

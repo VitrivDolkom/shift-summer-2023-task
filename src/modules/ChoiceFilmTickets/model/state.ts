@@ -1,5 +1,6 @@
 import { FilmTicketsState } from './types'
 
 export const initialState: FilmTicketsState = {
-  tickets: []
+  tickets: [],
+  price: 0
 }

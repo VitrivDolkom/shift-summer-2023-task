@@ -4,6 +4,9 @@ import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
+import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
+
+import s from './styles.module.css'
 
 export const FilmPage = () => {
   const params = useParams()
@@ -19,7 +22,10 @@ export const FilmPage = () => {
       <main>
         <FilmInfo id={filmId} />
         <FilmSchedule id={filmId} />
-        <ChoiceFilmTickets />
+        <div className={s.tickets}>
+          <ChoiceFilmTickets />
+          <SelectedTicketsInfo />
+        </div>
       </main>
     </>
   )

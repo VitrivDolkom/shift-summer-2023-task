@@ -13,10 +13,17 @@ export const filmTicketsSlice = createSlice({
         (ticket) => ticket.column !== action.payload.column || ticket.row !== action.payload.row
       )
 
-      if (filteredTickets.length === state.tickets.length) state.tickets.push(action.payload)
-      else state.tickets = filteredTickets
+      if (filteredTickets.length === state.tickets.length) {
+        state.tickets.push(action.payload)
+      } else {
+        state.tickets = filteredTickets
+      }
+    },
+    resetTickets(state) {
+      state.tickets = []
+      state.price = 0
     }
   }
 })
 
-export const { toggleTicket } = filmTicketsSlice.actions
+export const { toggleTicket, resetTickets } = filmTicketsSlice.actions

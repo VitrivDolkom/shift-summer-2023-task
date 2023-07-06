@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  margin-top: 40px;
+  flex-direction: column;
 }
 
 .top {
