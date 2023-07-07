@@ -1,3 +1,4 @@
+import { useAppDispatch, useAppSelector } from '@/store'
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -9,18 +10,25 @@ import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
-import { TicketsOrder } from '@/modules/TicketsOrder'
+import { setTicketsOrderInfo, TicketsOrder, type TicketsOrderInfo } from '@/modules/TicketsOrder'
 import { Modal, useModal } from '@/shared/uikit/Modal'
 
 import s from './styles.module.css'
 
 export const FilmPage = () => {
+  const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
+  const { tickets } = useAppSelector((state) => state.filmTickets)
+  const { debitCard } = useAppSelector((state) => state.cardInfo)
+  const { person } = useAppSelector((state) => state.userInfo)
+  const { film } = useAppSelector((state) => state.filmInfo)
+  const { isAuth } = useContext(AuthContext)
+  const dispatch = useAppDispatch()
+  const params = useParams()
+
   const userInfoModal = useModal(false)
   const cardInfoModal = useModal(false)
   const orderInfoModal = useModal(false)
-  const params = useParams()
-  const { isAuth } = useContext(AuthContext)
-
+  
   const filmId = params.id
 
   if (!filmId) {
@@ -38,6 +46,16 @@ export const FilmPage = () => {
   }
 
   const onCardInfoSubmit = () => {
+    const ticketsOrderInfo: TicketsOrderInfo = {
+      debitCard: debitCard,
+      filmId: film?.id || '',
+      person: person,
+      tickets: tickets,
+      seance: { date: currentSchedule?.date || '', time: currentSeance?.time || '' }
+    }
+
+    dispatch(setTicketsOrderInfo(ticketsOrderInfo))
+
     cardInfoModal.onModalClose()
     orderInfoModal.onModalOpen()
   }

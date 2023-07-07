@@ -8,10 +8,10 @@ export const TicketsOrder = () => {
   const { ticketsOrder, response } = useAppSelector((state) => state.ticketsOrder)
 
   useEffect(() => {
-    if (ticketsOrder) {
+    if (!!ticketsOrder) {
       dispatch(payTicketsOrder(ticketsOrder))
     }
-  }, [])
+  }, [ticketsOrder])
 
-  return <div>{response.a}</div>
+  return <div>{response?.order?.orderNumber}</div>
 }

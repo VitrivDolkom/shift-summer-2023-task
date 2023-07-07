@@ -8,19 +8,32 @@ export interface OrderTicketsSeanceInfo {
   time: string
 }
 
-export interface TicketsOrder {
+export interface TicketsOrderInfo {
   filmId?: string
   person?: UserInfo
   debitCard?: CardInfo
   seance?: OrderTicketsSeanceInfo
-  tickets?: TicketPlaceCoordinates
+  tickets?: TicketPlaceCoordinates[]
 }
 
 export interface TicketsOrderResponse extends BaseResponse {
-  a: string
+  order: {
+    orderNumber: number,
+    tickets: [
+      {
+        filmId: string,
+        row: number,
+        column: number,
+        seance: OrderTicketsSeanceInfo
+        phone: string
+      }
+    ],
+    phone: string,
+    status: string
+  }
 }
 
 export interface TicketsOrderState {
-  ticketsOrder?: TicketsOrder
+  ticketsOrder?: TicketsOrderInfo
   response: TicketsOrderResponse
 }

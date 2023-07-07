@@ -1,5 +1,5 @@
-import { TicketsOrder } from '../model/types'
+import { TicketsOrderInfo } from '../model/types'
 
 export interface TicketsOrderProps {
-  order: TicketsOrder
+  order: TicketsOrderInfo
 }

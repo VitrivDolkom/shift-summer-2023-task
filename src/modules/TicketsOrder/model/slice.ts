@@ -2,13 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
 import { payTicketsOrder } from './thunk'
-import { TicketsOrder } from './types'
+import { TicketsOrderInfo } from './types'
 
 export const ticketsOrderSlice = createSlice({
   name: 'ticketsOrder',
   initialState,
   reducers: {
-    setTicketsOrderInfo(state, action: PayloadAction<TicketsOrder>) {
+    setTicketsOrderInfo(state, action: PayloadAction<TicketsOrderInfo>) {
       state.ticketsOrder = action.payload
     }
   },
@@ -18,3 +18,5 @@ export const ticketsOrderSlice = createSlice({
     })
   }
 })
+
+export const { setTicketsOrderInfo } = ticketsOrderSlice.actions
