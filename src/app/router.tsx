@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
 
 import { AuthProvider } from '@/modules/Auth'
+import { CardInfoPage } from '@/pages/CardInfoPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
 
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: '/poster/:id',
         element: <FilmPage />
+      },
+      {
+        path: '/card',
+        element: <CardInfoPage />
       }
     ]
   }

@@ -49,8 +49,13 @@ button {
 }
 
 .wrapper {
+  width: 100%;
+  min-height: 100vh;
   z-index: 4;
   padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modals {

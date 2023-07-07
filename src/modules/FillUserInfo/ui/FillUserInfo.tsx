@@ -11,7 +11,6 @@ export const FillUserInfo = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm<UserInfo>()
 

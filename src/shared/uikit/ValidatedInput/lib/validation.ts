@@ -22,7 +22,21 @@ export const validations: InputValidations = {
   phone: {
     required: { value: true, message: 'Заполните поле' },
     maxLength: { value: 11, message: 'Длина 11' },
-    minLength: { value: 11, message: 'Длина 11' },
     pattern: { value: /^8[0-9]{10}$/i, message: 'Некорректный телефон' }
+  },
+  pan: {
+    required: { value: true, message: 'Заполните поле' },
+    maxLength: { value: 9, message: 'Длина 9' },
+    pattern: { value: /^[0-9]{4}\s[0-9]{4}$/i, message: 'Некорректный номер' }
+  },
+  expireDate: {
+    required: { value: true, message: 'Заполните поле' },
+    maxLength: { value: 5, message: 'Длина 5' },
+    pattern: { value: /^[0-9]{2}\/[0-9]{2}$/i, message: 'Некорректный срок' }
+  },
+  cvv: {
+    required: { value: true, message: 'Заполните поле' },
+    maxLength: { value: 4, message: 'Длина 4' },
+    pattern: { value: /^[0-9]{4}$/i, message: 'Некорректный cvv' }
   }
 }
