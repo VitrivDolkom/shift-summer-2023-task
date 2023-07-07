@@ -26,7 +26,7 @@ export const FilmPage = () => {
     return <div>Error page</div>
   }
 
-  const onUserInfoSubmit = (userInfo: UserInfo) => {
+  const goToCardPage = (userInfo: UserInfo) => {
     if (!currentSchedule || !currentSeance) return
 
     const orderInfo: FilmTicketsOrder = {
@@ -37,9 +37,11 @@ export const FilmPage = () => {
     }
 
     onModalClose()
+
+    // ! по поводу передачи данных спросил в дискорде, пока не знаю как сделать
     navigate({
       pathname: '/card',
-      search: `?orderInfo=${orderInfo}`
+      search: `?firstname=${userInfo.firstname}`
     })
   }
 
@@ -53,7 +55,7 @@ export const FilmPage = () => {
           <ChoiceFilmTickets />
           <SelectedTicketsInfo onBuyButtonClick={onModalOpen} />
           <Modal isOpened={isOpened} onClose={onModalClose}>
-            <FillUserInfo onSubmit={onUserInfoSubmit} />
+            <FillUserInfo onSubmit={goToCardPage} />
           </Modal>
         </div>
       </main>

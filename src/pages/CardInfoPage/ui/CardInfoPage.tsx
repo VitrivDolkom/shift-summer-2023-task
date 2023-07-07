@@ -23,8 +23,8 @@ export const CardInfoPage = () => {
   } = useForm<CardInfo>()
 
   useEffect(() => {
-    for (const entry of searchParams.entries()) {
-      setParams((prev) => [...prev, entry])
+    for (const param of searchParams.entries()) {
+      setParams((prev) => [...prev, param])
     }
   }, [searchParams])
 
