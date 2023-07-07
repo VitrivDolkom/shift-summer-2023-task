@@ -1,12 +1,12 @@
 export interface ButtonProps {
   text: string
   img?: string
-  onClick?: () => void
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void
   classNames: string
 }
 
 export interface ButtonProxyProps {
-  onClick?: () => void
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void
   text: string
   type: ButtonType
 }

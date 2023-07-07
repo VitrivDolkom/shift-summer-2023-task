@@ -1,14 +1,17 @@
+import { useAppDispatch } from '@/store'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
 import { FillUserInfoProps } from '../lib/types'
+import { setUserInfo } from '../model/slice'
 import { UserInfo } from '../model/types'
 
 import s from './styles.module.css'
 
 export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
+  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
@@ -16,7 +19,8 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
   } = useForm<UserInfo>()
 
   const onFormSubmit: SubmitHandler<UserInfo> = (userInfo) => {
-    onSubmit(userInfo)
+    dispatch(setUserInfo(userInfo))
+    onSubmit()
   }
 
   return (

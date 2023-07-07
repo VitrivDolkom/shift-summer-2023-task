@@ -1,7 +1,9 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-export const useModal = () => {
-  const [isOpened, setIsOpened] = useState(false)
+export const useModal = (initialOpen: boolean) => {
+  const [isOpened, setIsOpened] = useState(initialOpen)
+
+  useEffect(() => () => document.body.classList.remove('locked'), [])
 
   const onModalOpen = useCallback(() => {
     setIsOpened(true)

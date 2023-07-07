@@ -37,6 +37,6 @@ export const validations: InputValidations = {
   cvv: {
     required: { value: true, message: 'Заполните поле' },
     maxLength: { value: 4, message: 'Длина 4' },
-    pattern: { value: /^[0-9]{4}$/i, message: 'Некорректный cvv' }
+    pattern: { value: /^[0-9]{3}$/i, message: 'Некорректный cvv' }
   }
 }

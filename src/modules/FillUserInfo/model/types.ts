@@ -1,3 +1,7 @@
+export interface UserInfoState {
+  person: UserInfo
+}
+
 export interface UserInfo {
   firstname: string
   lastname: string

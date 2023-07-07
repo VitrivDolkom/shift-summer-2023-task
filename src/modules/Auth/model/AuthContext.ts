@@ -7,7 +7,7 @@ interface IAuthContext {
 }
 
 export const AuthContext = createContext<IAuthContext>({
-  isAuth: false,
+  isAuth: true,
   authme: () => ({}),
   disauthme: () => ({})
 })

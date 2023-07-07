@@ -1,7 +1,9 @@
-import { useAppSelector } from '@/store'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
+import { AuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
+import { FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo, UserInfo } from '@/modules/FillUserInfo'
 import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
@@ -9,16 +11,15 @@ import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
 import { Modal, useModal } from '@/shared/uikit/Modal'
 
-import type { FilmTicketsOrder } from '../model/types'
-
 import s from './styles.module.css'
 
 export const FilmPage = () => {
-  const { isOpened, onModalClose, onModalOpen } = useModal()
+  const userInfoModal = useModal(false)
+  const cardInfoModal = useModal(false)
+  const orderInfoModal = useModal(false)
   const params = useParams()
-  const navigate = useNavigate()
-  const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
-  const { tickets } = useAppSelector((state) => state.filmTickets)
+  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
+  const { isAuth } = useContext(AuthContext)
 
   const filmId = params.id
 
@@ -26,23 +27,18 @@ export const FilmPage = () => {
     return <div>Error page</div>
   }
 
-  const goToCardPage = (userInfo: UserInfo) => {
-    if (!currentSchedule || !currentSeance) return
+  const onBuyButtonClick = () => {
+    if (!isAuth) userInfoModal.onModalOpen()
+    else cardInfoModal.onModalOpen()
+  }
 
-    const orderInfo: FilmTicketsOrder = {
-      filmId: filmId,
-      person: userInfo,
-      seance: { date: currentSchedule.date, time: currentSeance.time },
-      tickets: tickets
-    }
+  const onUserInfoSubmit = () => {
+    userInfoModal.onModalClose()
+    cardInfoModal.onModalOpen()
+  }
 
-    onModalClose()
-
-    // ! по поводу передачи данных спросил в дискорде, пока не знаю как сделать
-    navigate({
-      pathname: '/card',
-      search: `?firstname=${userInfo.firstname}`
-    })
+  const onCardInfoSubmit = () => {
+    cardInfoModal.onModalClose()
   }
 
   return (
@@ -53,9 +49,15 @@ export const FilmPage = () => {
         <FilmSchedule id={filmId} />
         <div className={s.tickets}>
           <ChoiceFilmTickets />
-          <SelectedTicketsInfo onBuyButtonClick={onModalOpen} />
-          <Modal isOpened={isOpened} onClose={onModalClose}>
-            <FillUserInfo onSubmit={goToCardPage} />
+          <SelectedTicketsInfo onBuyButtonClick={onBuyButtonClick} />
+          <Modal isOpened={userInfoModal.isOpened} onClose={userInfoModal.onModalClose}>
+            <FillUserInfo onSubmit={onUserInfoSubmit} />
+          </Modal>
+          <Modal isOpened={cardInfoModal.isOpened} onClose={cardInfoModal.onModalClose}>
+            <FillCardInfo onSubmit={onCardInfoSubmit} />
+          </Modal>
+          <Modal isOpened={orderInfoModal.isOpened} onClose={orderInfoModal.onModalClose}>
+            <div></div>
           </Modal>
         </div>
       </main>
