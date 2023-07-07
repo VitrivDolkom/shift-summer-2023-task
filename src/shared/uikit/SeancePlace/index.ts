@@ -1,2 +1,7 @@
 export { SeancePlace } from './ui/SeancePlace'
-export type { FilmSeancePlace, SeancePlaceType, TicketPlaceInfo } from './lib/types'
+export type {
+  FilmSeancePlace,
+  SeancePlaceType,
+  TicketPlaceInfo,
+  TicketPlaceCoordinates
+} from './lib/types'

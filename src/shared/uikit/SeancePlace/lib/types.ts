@@ -5,6 +5,11 @@ export interface SeancePlaceProps {
   isSelected: boolean
 }
 
+export interface TicketPlaceCoordinates {
+  row: number
+  column: number
+}
+
 export interface TicketPlaceInfo extends FilmSeancePlace {
   row: number
   column: number

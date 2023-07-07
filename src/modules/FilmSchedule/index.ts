@@ -1,2 +1,2 @@
 export { FilmSchedule } from './ui/FilmSchedule'
-export type { FilmSeance, FilmTicket } from './lib/types'
+export type { FilmSeance, FilmTicket, FilmSeanceTime } from './lib/types'

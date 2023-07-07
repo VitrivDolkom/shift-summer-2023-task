@@ -3,23 +3,24 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
+import { FillUserInfoProps } from '../lib/types'
 import { UserInfo } from '../model/types'
 
 import s from './styles.module.css'
 
-export const FillUserInfo = () => {
+export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<UserInfo>()
 
-  const onSubmit: SubmitHandler<UserInfo> = (userInfo) => {
-    console.log(userInfo)
+  const onFormSubmit: SubmitHandler<UserInfo> = (userInfo) => {
+    onSubmit(userInfo)
   }
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={s.form} onSubmit={handleSubmit(onFormSubmit)}>
       <div className={s.title}>Введите ваши данные</div>
       <ValidatedInput
         name="Имя"

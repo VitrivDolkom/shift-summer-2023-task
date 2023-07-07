@@ -5,7 +5,7 @@ export interface FilmScheduleProps {
   id: string
 }
 
-interface FilmSeanceTime {
+export interface FilmSeanceTime {
   date: string
   time: string
 }
