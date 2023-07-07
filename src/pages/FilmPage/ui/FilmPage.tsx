@@ -1,14 +1,15 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { AuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
 import { FillCardInfo } from '@/modules/FillCardInfo'
-import { FillUserInfo, UserInfo } from '@/modules/FillUserInfo'
+import { FillUserInfo } from '@/modules/FillUserInfo'
 import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
+import { TicketsOrder } from '@/modules/TicketsOrder'
 import { Modal, useModal } from '@/shared/uikit/Modal'
 
 import s from './styles.module.css'
@@ -18,7 +19,6 @@ export const FilmPage = () => {
   const cardInfoModal = useModal(false)
   const orderInfoModal = useModal(false)
   const params = useParams()
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(null)
   const { isAuth } = useContext(AuthContext)
 
   const filmId = params.id
@@ -39,6 +39,7 @@ export const FilmPage = () => {
 
   const onCardInfoSubmit = () => {
     cardInfoModal.onModalClose()
+    orderInfoModal.onModalOpen()
   }
 
   return (
@@ -57,7 +58,7 @@ export const FilmPage = () => {
             <FillCardInfo onSubmit={onCardInfoSubmit} />
           </Modal>
           <Modal isOpened={orderInfoModal.isOpened} onClose={orderInfoModal.onModalClose}>
-            <div></div>
+            <TicketsOrder />
           </Modal>
         </div>
       </main>
