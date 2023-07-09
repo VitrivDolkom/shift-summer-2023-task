@@ -1,6 +1,6 @@
 import { CardInfo } from '@/modules/FillCardInfo'
 import { UserInfo } from '@/modules/FillUserInfo'
-import { BaseResponse } from '@/shared/api'
+import { BaseResponse, RequestInfo } from '@/shared/api'
 import { TicketPlaceCoordinates } from '@/shared/uikit/SeancePlace'
 
 export interface OrderTicketsSeanceInfo {
@@ -18,22 +18,23 @@ export interface TicketsOrderInfo {
 
 export interface TicketsOrderResponse extends BaseResponse {
   order: {
-    orderNumber: number,
+    orderNumber: number
     tickets: [
       {
-        filmId: string,
-        row: number,
-        column: number,
+        filmId: string
+        row: number
+        column: number
         seance: OrderTicketsSeanceInfo
         phone: string
       }
-    ],
-    phone: string,
+    ]
+    phone: string
     status: string
   }
 }
 
 export interface TicketsOrderState {
   ticketsOrder?: TicketsOrderInfo
-  response: TicketsOrderResponse
+  response?: TicketsOrderResponse
+  request: RequestInfo
 }

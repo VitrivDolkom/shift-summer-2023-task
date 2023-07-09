@@ -5,7 +5,7 @@ import { payTicketsOrder } from '../model/thunk'
 
 export const TicketsOrder = () => {
   const dispatch = useAppDispatch()
-  const { ticketsOrder, response } = useAppSelector((state) => state.ticketsOrder)
+  const { ticketsOrder, response, request } = useAppSelector((state) => state.ticketsOrder)
 
   useEffect(() => {
     if (!!ticketsOrder) {
@@ -13,5 +13,13 @@ export const TicketsOrder = () => {
     }
   }, [ticketsOrder])
 
-  return <div>{response?.order?.orderNumber}</div>
+  if (request.status === 'error') {
+    return <div>ERror</div>
+  }
+
+  if (request.status === 'pending' || !response) {
+    return <div>Loading...</div>
+  }
+
+  return <div>{response.order.orderNumber}</div>
 }

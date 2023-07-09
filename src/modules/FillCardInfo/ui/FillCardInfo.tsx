@@ -1,18 +1,14 @@
-import { useAppDispatch } from '@/store'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
-import { FillCardInfoProps } from '../lib/types'
-import { setCardInfo } from '../model/slice'
-import { CardInfo } from '../model/types'
+import { CardInfo, FillCardInfoProps } from '../lib/types'
 
 import shiftCard from './img/shiftCard.svg'
 import s from './styles.module.css'
 
 export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
-  const dispatch = useAppDispatch()
   const {
     register,
     handleSubmit,
@@ -20,8 +16,7 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
   } = useForm<CardInfo>()
 
   const onFormSubmit: SubmitHandler<CardInfo> = (cardInfo) => {
-    dispatch(setCardInfo(cardInfo))
-    onSubmit()
+    onSubmit(cardInfo)
   }
 
   return (

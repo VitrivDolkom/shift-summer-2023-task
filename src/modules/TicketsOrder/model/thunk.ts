@@ -5,5 +5,5 @@ import { TicketsOrderInfo } from './types'
 
 export const payTicketsOrder = createAsyncThunk('/payment', async (ticketsOrder: TicketsOrderInfo) => {
   const response = await TicketsOrderService.postTicketsOrder(ticketsOrder)
-  return response
+  return response.data
 })

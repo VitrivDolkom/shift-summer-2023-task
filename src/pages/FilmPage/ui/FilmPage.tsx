@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { AuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
-import { FillCardInfo } from '@/modules/FillCardInfo'
+import { CardInfo, FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo } from '@/modules/FillUserInfo'
 import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
@@ -18,7 +18,6 @@ import s from './styles.module.css'
 export const FilmPage = () => {
   const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
   const { tickets } = useAppSelector((state) => state.filmTickets)
-  const { debitCard } = useAppSelector((state) => state.cardInfo)
   const { person } = useAppSelector((state) => state.userInfo)
   const { film } = useAppSelector((state) => state.filmInfo)
   const { isAuth } = useContext(AuthContext)
@@ -28,7 +27,7 @@ export const FilmPage = () => {
   const userInfoModal = useModal(false)
   const cardInfoModal = useModal(false)
   const orderInfoModal = useModal(false)
-  
+
   const filmId = params.id
 
   if (!filmId) {
@@ -45,9 +44,9 @@ export const FilmPage = () => {
     cardInfoModal.onModalOpen()
   }
 
-  const onCardInfoSubmit = () => {
+  const onCardInfoSubmit = (cardInfo: CardInfo) => {
     const ticketsOrderInfo: TicketsOrderInfo = {
-      debitCard: debitCard,
+      debitCard: cardInfo,
       filmId: film?.id || '',
       person: person,
       tickets: tickets,
