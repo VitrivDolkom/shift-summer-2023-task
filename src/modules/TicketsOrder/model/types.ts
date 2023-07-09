@@ -9,28 +9,32 @@ export interface OrderTicketsSeanceInfo {
 }
 
 export interface TicketsOrderInfo {
-  filmId?: string
-  person?: UserInfo
-  debitCard?: CardInfo
-  seance?: OrderTicketsSeanceInfo
-  tickets?: TicketPlaceCoordinates[]
+  filmId: string
+  person: UserInfo
+  debitCard: CardInfo
+  seance: OrderTicketsSeanceInfo
+  tickets: TicketPlaceCoordinates[]
 }
 
 export interface TicketsOrderResponse extends BaseResponse {
-  order: {
-    orderNumber: number
-    tickets: [
-      {
-        filmId: string
-        row: number
-        column: number
-        seance: OrderTicketsSeanceInfo
-        phone: string
-      }
-    ]
-    phone: string
-    status: string
-  }
+  order: TicketsOrderInfoResponse
+}
+
+export type TicketsOrderError = BaseResponse
+
+export interface TicketsOrderInfoResponse {
+  orderNumber: number
+  tickets: [
+    {
+      filmId: string
+      row: number
+      column: number
+      seance: OrderTicketsSeanceInfo
+      phone: string
+    }
+  ]
+  phone: string
+  status: string
 }
 
 export interface TicketsOrderState {

@@ -1,8 +1,8 @@
-import { AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 
 import { instance } from '@/shared/api'
 
-import { TicketsOrderInfo, TicketsOrderResponse } from '../model/types'
+import { TicketsOrderError, TicketsOrderInfo, TicketsOrderResponse } from '../model/types'
 
 export const TicketsOrderService = {
   postTicketsOrder: async (ticketsOrder: TicketsOrderInfo) =>
