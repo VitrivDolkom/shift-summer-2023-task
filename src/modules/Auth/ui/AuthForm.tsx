@@ -1,12 +1,13 @@
-import { useAppDispatch } from '@/store'
+import { useAppDispatch, useAppSelector } from '@/store'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Header } from '@/modules/Header'
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
-import { createOtpCode } from '../model/thunk'
-import { AuthInfo } from '../model/types'
+import { AuthService } from '../api/AuthService.service'
+import { useTwoStepAction } from '../lib/useTwoStepAction'
+import { createOtpCode, signIn } from '../model/thunk'
+import { SignInDto } from '../model/types'
 
 import s from './styles.module.css'
 
@@ -14,31 +15,70 @@ export const AuthForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
-  } = useForm<AuthInfo>()
+  } = useForm<SignInDto>()
   const dispatch = useAppDispatch()
+  const { codeInfo } = useAppSelector((state) => state.authInfo)
+  const { isFirst, nextStep } = useTwoStepAction()
 
-  const onFormSubmit: SubmitHandler<AuthInfo> = (authInfo) => {
-    dispatch(createOtpCode(authInfo.phone))
+  const onFormSubmit: SubmitHandler<SignInDto> = (signInDto) => {
+    debugger
+
+    if (!isFirst) {
+      handleSubmit(onFormSubmit)
+      return
+    }
+
+    nextOtpCode()
+    AuthService.signIn(signInDto).then((response) => console.log(response.data))
+  }
+
+  const onSubmitButtonClick = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    debugger
+    e?.preventDefault()
+
+    if (!isFirst) {
+      handleSubmit(onFormSubmit)
+      return
+    }
+
+    nextOtpCode()
+  }
+
+  const nextOtpCode = () => {
+    dispatch(createOtpCode({ phone: watch('phone') }))
+    nextStep()
+  }
+
+  const onCodeRequestClick = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e?.preventDefault()
+    nextOtpCode()
   }
 
   return (
-    <div>
-      <Header />
-      <div className={s.content}>
-        <div className={s.title}>Авторизация</div>
-
-        <form className={s.form} onSubmit={handleSubmit(onFormSubmit)}>
+    <form className={s.form} onSubmit={handleSubmit(onFormSubmit)}>
+      <ValidatedInput
+        name="Номер телефона"
+        register={register('phone', validations.phone)}
+        error={errors.phone?.message}
+      />
+      {!isFirst && (
+        <>
           <ValidatedInput
-            name="Номер телефона"
-            register={register('phone', validations.phone)}
-            error={errors.phone?.message}
+            name="Код из SMS"
+            register={register('code', validations.otpCode)}
+            error={errors.code?.message}
           />
-          <div className={s.btn}>
-            <Button type="submit" text="Продолжить" />
+          <div className={s.info}>
+            Запросить код повторно можно через {codeInfo?.retryDelay || ''} секунд
           </div>
-        </form>
+          <Button type="login" text="Запросить код" onClick={onCodeRequestClick} />
+        </>
+      )}
+      <div className={s.btn}>
+        <Button type="submit" text="Продолжить" />
       </div>
-    </div>
+    </form>
   )
 }

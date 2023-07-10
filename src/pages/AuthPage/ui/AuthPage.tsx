@@ -1,13 +1,16 @@
-import { SubmitHandler } from 'react-hook-form'
-
 import { AuthForm } from '@/modules/Auth'
+import { Header } from '@/modules/Header'
 
-import { AuthInfo } from '../../../modules/Auth/model/types'
+import s from './styles.module.css'
 
 export const AuthPage = () => {
-  const onFormSubmit: SubmitHandler<AuthInfo> = (authInfo) => {
-    console.log(authInfo)
-  }
-
-  return <AuthForm />
+  return (
+    <div>
+      <Header />
+      <div className={s.content}>
+        <div className={s.title}>Авторизация</div>
+        <AuthForm />
+      </div>
+    </div>
+  )
 }

@@ -38,5 +38,10 @@ export const validations: InputValidations = {
     required: { value: true, message: 'Заполните поле' },
     maxLength: { value: 4, message: 'Длина 4' },
     pattern: { value: /^[0-9]{3}$/i, message: 'Некорректный cvv' }
+  },
+  otpCode: {
+    required: { value: true, message: 'Заполните поле' },
+    maxLength: { value: 6, message: 'Длина 6' },
+    pattern: { value: /^[0-9]{6}$/i, message: 'Некорректный код' }
   }
 }

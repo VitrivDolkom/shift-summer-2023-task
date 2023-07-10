@@ -27,6 +27,6 @@ export const ticketsOrderSlice = createSlice({
   }
 })
 
-const isError = (action: AnyAction) => action.type.endsWith('rejected')
+export const isError = (action: AnyAction) => action.type.endsWith('rejected')
 
 export const { setTicketsOrderInfo } = ticketsOrderSlice.actions

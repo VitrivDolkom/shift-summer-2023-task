@@ -1,5 +1,12 @@
-import { authInstance } from '@/shared/api'
+import { AxiosResponse } from 'axios'
+
+import { authInstance, usersInstance } from '@/shared/api'
+
+import type { CreateOtpDto, OtpResponse, SignInDto, SignInResponse } from '../model/types'
 
 export const AuthService = {
-  postPhoneNumber: async (phone: string) => await authInstance.post('/otp', { phone })
+  otp: async (otpDto: CreateOtpDto) =>
+    await authInstance.post<CreateOtpDto, AxiosResponse<OtpResponse>>('/otp', otpDto),
+  signIn: async (signInDto: SignInDto) =>
+    await usersInstance.post<SignInDto, AxiosResponse<SignInResponse>>('/signin', signInDto)
 }

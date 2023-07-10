@@ -8,3 +8,9 @@
 .content {
   width: 300px;
 }
+
+.info {
+  color: var(--light-grey);
+  font-size: 16px;
+  margin: 38px 0 20px 0;
+}

@@ -6,6 +6,7 @@ export interface InputValidations {
   pan: Validation
   expireDate: Validation
   cvv: Validation
+  otpCode: Validation
 }
 
 interface Validation {
