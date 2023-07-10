@@ -6,6 +6,7 @@ import { AuthProvider } from '@/modules/Auth'
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
+import { ProfilePage } from '@/pages/ProfilePage'
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: '/poster/:id',
         element: <FilmPage />
+      },
+      {
+        path: '/profile',
+        element: <ProfilePage />
       }
     ]
   }

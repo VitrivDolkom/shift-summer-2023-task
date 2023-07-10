@@ -1,17 +1,19 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { fetchSignIn } from '@/modules/SignIn'
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
-import { AuthService } from '../api/AuthService.service'
 import { useTwoStepAction } from '../lib/useTwoStepAction'
-import { createOtpCode, signIn } from '../model/thunk'
+import { createOtpCode } from '../model/thunk'
 import { SignInDto } from '../model/types'
 
 import s from './styles.module.css'
+import { useNavigate } from 'react-router-dom'
 
 export const AuthForm = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -23,23 +25,9 @@ export const AuthForm = () => {
   const { isFirst, nextStep } = useTwoStepAction()
 
   const onFormSubmit: SubmitHandler<SignInDto> = (signInDto) => {
-    debugger
-
     if (!isFirst) {
-      handleSubmit(onFormSubmit)
-      return
-    }
-
-    nextOtpCode()
-    AuthService.signIn(signInDto).then((response) => console.log(response.data))
-  }
-
-  const onSubmitButtonClick = (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    debugger
-    e?.preventDefault()
-
-    if (!isFirst) {
-      handleSubmit(onFormSubmit)
+      dispatch(fetchSignIn(signInDto))
+      navigate('/profile')
       return
     }
 

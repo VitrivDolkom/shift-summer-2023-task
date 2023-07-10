@@ -1,7 +1,7 @@
 import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
-import { createOtpCode, signIn } from './thunk'
+import { createOtpCode } from './thunk'
 
 export const authInfoSlice = createSlice({
   name: 'authInfo',
@@ -9,7 +9,6 @@ export const authInfoSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(createOtpCode.fulfilled, (state, action) => {
-      console.log(action.payload)
       state.codeInfo = action.payload
     })
     builder.addCase(createOtpCode.pending, (state) => {
