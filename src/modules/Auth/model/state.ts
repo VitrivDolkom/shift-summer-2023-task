@@ -1,7 +1,7 @@
 import { AuthInfoState } from './types'
 
 export const initialState: AuthInfoState = {
-  authInfo: {
+  signInDto: {
     phone: '',
     code: 0
   },

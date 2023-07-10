@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 
-import { Film } from '@/modules/FilmInfo'
 import { Button } from '@/shared/uikit/Button'
 import { FilmRating } from '@/shared/uikit/FilmRating'
 
@@ -9,7 +8,7 @@ import { FilmCountryAndYear } from './FilmCountryAndYear'
 import s from './styles.module.css'
 
 interface PosterFilmCardProps {
-  film: Film
+  film: api.Film
 }
 
 export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {

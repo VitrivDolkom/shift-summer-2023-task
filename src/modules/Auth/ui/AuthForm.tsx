@@ -10,7 +10,6 @@ import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 import { useTwoStepAction } from '../lib/useTwoStepAction'
 import { AuthContext } from '../model/AuthContext'
 import { createOtpCode } from '../model/thunk'
-import { SignInDto } from '../model/types'
 
 import s from './styles.module.css'
 
@@ -21,9 +20,9 @@ export const AuthForm = () => {
     handleSubmit,
     watch,
     formState: { errors }
-  } = useForm<SignInDto>()
+  } = useForm<api.SignInDto>()
   const dispatch = useAppDispatch()
-  const { codeInfo } = useAppSelector((state) => state.authInfo)
+  const { otpResponse: codeInfo } = useAppSelector((state) => state.authInfo)
   const signIn = useAppSelector((state) => state.signIn)
   const { authme } = useContext(AuthContext)
   const { isFirst, nextStep } = useTwoStepAction()
@@ -35,7 +34,7 @@ export const AuthForm = () => {
     }
   }, [signIn.request.status])
 
-  const onFormSubmit: SubmitHandler<SignInDto> = (signInDto) => {
+  const onFormSubmit: SubmitHandler<api.SignInDto> = (signInDto) => {
     if (!isFirst) {
       dispatch(fetchSignIn(signInDto))
       return

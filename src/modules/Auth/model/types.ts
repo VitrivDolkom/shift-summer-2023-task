@@ -1,21 +1,8 @@
-import { BaseResponse, RequestInfo } from '@/shared/api'
-
-export interface CreateOtpDto {
-  phone: string
-}
-
-export interface SignInDto {
-  phone: string
-  code: number
-}
-
-export interface OtpResponse extends BaseResponse {
-  retryDelay: number
-}
+import { RequestInfo } from '@/shared/api'
 
 export interface AuthInfoState {
-  authInfo: SignInDto
-  codeInfo?: OtpResponse
+  signInDto: api.SignInDto
+  otpResponse?: api.OtpResponse
   request: RequestInfo
 }
 

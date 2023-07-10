@@ -1,4 +1,3 @@
-import { type FilmSeance } from '@/modules/FilmSchedule'
 import { TicketPlaceInfo } from '@/shared/uikit/SeancePlace'
 
 import { SeancePlaces } from '../components/SeancePlaces'
@@ -6,7 +5,7 @@ import { SeancePlaces } from '../components/SeancePlaces'
 import s from './styles.module.css'
 
 interface ChoiceFilmTicketsComponentProps {
-  seance: FilmSeance
+  seance: api.ScheduleSeance
   tickets: TicketPlaceInfo[]
   onPlaceClick: (ticket: TicketPlaceInfo) => void
 }

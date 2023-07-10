@@ -2,13 +2,12 @@ import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
 import { payTicketsOrder } from './thunk'
-import { TicketsOrderInfo } from './types'
 
 export const ticketsOrderSlice = createSlice({
   name: 'ticketsOrder',
   initialState,
   reducers: {
-    setTicketsOrderInfo(state, action: PayloadAction<TicketsOrderInfo>) {
+    setTicketsOrderInfo(state, action: PayloadAction<api.CreateCinemaPaymentDto>) {
       state.ticketsOrder = action.payload
     }
   },

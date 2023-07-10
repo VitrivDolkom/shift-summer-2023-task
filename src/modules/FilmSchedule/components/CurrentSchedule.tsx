@@ -1,12 +1,11 @@
 import { seancesTime, seanceStyle } from '../lib/seances'
-import { FilmSchedule, FilmSeance } from '../lib/types'
 
 import s from '../ui/styles.module.css'
 
 interface Props {
-  schedule: FilmSchedule
-  currentSeance?: FilmSeance
-  onSeanceClick: (seance: FilmSeance) => void
+  schedule: api.Schedule
+  currentSeance?: api.ScheduleSeance
+  onSeanceClick: (seance: api.ScheduleSeance) => void
 }
 
 export const CurrentSchedule = ({ schedule, currentSeance, onSeanceClick }: Props) => (

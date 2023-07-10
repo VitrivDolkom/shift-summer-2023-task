@@ -16,10 +16,6 @@ export interface TicketsOrderInfo {
   tickets: TicketPlaceCoordinates[]
 }
 
-export interface TicketsOrderResponse extends BaseResponse {
-  order: TicketsOrderInfoResponse
-}
-
 export type TicketsOrderError = BaseResponse
 
 export interface TicketsOrderInfoResponse {
@@ -39,6 +35,6 @@ export interface TicketsOrderInfoResponse {
 
 export interface TicketsOrderState {
   ticketsOrder?: TicketsOrderInfo
-  response?: TicketsOrderResponse
+  response?: api.PaymentResponse
   request: RequestInfo
 }

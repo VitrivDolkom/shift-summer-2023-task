@@ -9,7 +9,7 @@ export const authInfoSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(createOtpCode.fulfilled, (state, action) => {
-      state.codeInfo = action.payload
+      state.otpResponse = action.payload
     })
     builder.addCase(createOtpCode.pending, (state) => {
       state.request.status = 'pending'

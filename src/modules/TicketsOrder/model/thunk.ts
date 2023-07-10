@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 
 import { TicketsOrderService } from '../api/TicketsOrderService.service'
-import { TicketsOrderError, TicketsOrderInfo, TicketsOrderResponse } from './types'
+import { TicketsOrderError } from './types'
 
 export const payTicketsOrder = createAsyncThunk<
-  TicketsOrderResponse,
-  TicketsOrderInfo,
+  api.PaymentResponse,
+  api.CreateCinemaPaymentDto,
   { rejectValue: string }
->('/payment', async (ticketsOrder: TicketsOrderInfo, { rejectWithValue }) => {
+>('/payment', async (ticketsOrder: api.CreateCinemaPaymentDto, { rejectWithValue }) => {
   try {
     const response = await TicketsOrderService.postTicketsOrder(ticketsOrder)
 

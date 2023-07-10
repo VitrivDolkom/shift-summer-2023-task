@@ -10,7 +10,7 @@ import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
-import { setTicketsOrderInfo, TicketsOrder, type TicketsOrderInfo } from '@/modules/TicketsOrder'
+import { setTicketsOrderInfo, TicketsOrder } from '@/modules/TicketsOrder'
 import { Modal, useModal } from '@/shared/uikit/Modal'
 
 import s from './styles.module.css'
@@ -45,7 +45,7 @@ export const FilmPage = () => {
   }
 
   const onCardInfoSubmit = (cardInfo: CardInfo) => {
-    const ticketsOrderInfo: TicketsOrderInfo = {
+    const ticketsOrderInfo: api.CreateCinemaPaymentDto = {
       debitCard: cardInfo,
       filmId: film?.id || '',
       person: person,

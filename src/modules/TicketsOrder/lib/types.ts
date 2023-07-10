@@ -1,11 +1,9 @@
-import { TicketsOrderInfo, TicketsOrderInfoResponse } from '../model/types'
-
 export interface TicketsOrderProps {
-  order: TicketsOrderInfo
+  order: api.CreateCinemaPaymentDto
 }
 
 export interface SuccessTicketsOrderProps {
-  order: TicketsOrderInfoResponse
+  order: api.CinemaOrder
   filmName: string
   date: string
   time: string
@@ -16,5 +14,5 @@ export interface ErrorTicketsOrderProps {
 }
 
 export interface PendingTicketsOrderProps {
-  order: TicketsOrderInfo
+  order: api.CreateCinemaPaymentDto
 }

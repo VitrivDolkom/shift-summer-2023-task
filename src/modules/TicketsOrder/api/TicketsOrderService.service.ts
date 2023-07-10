@@ -1,10 +1,11 @@
-import { AxiosError, AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 
 import { instance } from '@/shared/api'
 
-import { TicketsOrderError, TicketsOrderInfo, TicketsOrderResponse } from '../model/types'
-
 export const TicketsOrderService = {
-  postTicketsOrder: async (ticketsOrder: TicketsOrderInfo) =>
-    await instance.post<TicketsOrderInfo, AxiosResponse<TicketsOrderResponse>>('/payment', ticketsOrder)
+  postTicketsOrder: async (ticketsOrder: api.CreateCinemaPaymentDto) =>
+    await instance.post<api.CreateCinemaPaymentDto, AxiosResponse<api.PaymentResponse>>(
+      '/payment',
+      ticketsOrder
+    )
 }

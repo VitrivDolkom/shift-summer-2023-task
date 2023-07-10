@@ -1,9 +1,8 @@
-import { FilmPerson } from '../lib/types'
 
 import s from '../ui/styles.module.css'
 
 interface Props {
-  directors: FilmPerson[]
+  directors: api.FilmPerson[]
 }
 
 export const FilmDirectors = ({ directors }: Props) => (

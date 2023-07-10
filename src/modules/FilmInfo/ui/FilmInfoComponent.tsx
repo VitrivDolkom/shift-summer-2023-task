@@ -3,12 +3,11 @@ import { FilmRating } from '@/shared/uikit/FilmRating'
 import { FilmDirectors } from '../components/FilmDirectors'
 import { FIlmGenreCountryYear } from '../components/FIlmGenreCountryYear'
 import { WatchDate } from '../components/WatchDate'
-import { Film } from '../lib/types'
 
 import s from './styles.module.css'
 
 interface Props {
-  film: Film
+  film: api.Film
 }
 
 export const FilmInfoComponent = ({ film }: Props) => {

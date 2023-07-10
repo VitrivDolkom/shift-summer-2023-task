@@ -1,10 +1,9 @@
-import { Country } from '@/modules/FilmInfo'
 import { getReleaseYear } from '@/shared/lib/date'
 
 import s from './styles.module.css'
 
 interface FilmCountryAndYearProps {
-  country?: Country
+  country?: api.Country
   date: string
 }
 

@@ -1,11 +1,6 @@
-import { Film } from '@/modules/FilmInfo'
-import { BaseResponse, RequestInfo } from '@/shared/api'
+import { RequestInfo } from '@/shared/api'
 
 export interface PosterFilmsState {
-  films: Film[]
+  films: api.Film[]
   request: RequestInfo
-}
-
-export interface PosterMoviesResponse extends BaseResponse {
-  films: Film[]
 }

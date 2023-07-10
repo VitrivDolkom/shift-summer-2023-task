@@ -3,14 +3,12 @@ import { Header } from '@/modules/Header'
 
 import s from './styles.module.css'
 
-export const AuthPage = () => {
-  return (
-    <div>
-      <Header />
-      <div className={s.content}>
-        <div className={s.title}>Авторизация</div>
-        <AuthForm />
-      </div>
+export const AuthPage = () => (
+  <div>
+    <Header />
+    <div className={s.content}>
+      <div className={s.title}>Авторизация</div>
+      <AuthForm />
     </div>
-  )
-}
+  </div>
+)

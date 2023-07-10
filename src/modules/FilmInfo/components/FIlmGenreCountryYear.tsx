@@ -1,12 +1,10 @@
 import { getReleaseYear } from '@/shared/lib/date'
 
-import { Country, Genre } from '../lib/types'
-
 import s from '../ui/styles.module.css'
 
 interface Props {
-  genres: Genre[]
-  country?: Country
+  genres: api.Genre[]
+  country?: api.Country
   date: string
 }
 
