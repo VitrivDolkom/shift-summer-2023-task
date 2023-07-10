@@ -6,3 +6,8 @@ export const instance = axios.create({
     'Content-type': 'application/json'
   }
 })
+
+export const authInstance = axios.create({
+  ...instance.defaults,
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}/auth`
+})

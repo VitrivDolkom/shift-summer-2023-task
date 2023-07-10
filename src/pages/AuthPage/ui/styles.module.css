@@ -1,0 +1,13 @@
+.form {}
+
+.title {
+  color: var(--dark-grey);
+  text-align: center;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.content {
+  width: 300px;
+}
