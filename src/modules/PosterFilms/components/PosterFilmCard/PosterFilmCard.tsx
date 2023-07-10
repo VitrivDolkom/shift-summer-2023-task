@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '@/shared/uikit/Button'
 import { FilmRating } from '@/shared/components'
+import { Button } from '@/shared/uikit/Button'
 
 import { FilmCountryAndYear } from './FilmCountryAndYear'
 
@@ -36,7 +36,9 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
           <div className={s.originalName}>{originalName}</div>
           <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
         </div>
-        <Button type="info" onClick={onMoreInfoClick} text="Подробнее" />
+        <Button styleType="solid" onClick={onMoreInfoClick}>
+          <p>Подробнее</p>
+        </Button>
       </footer>
     </div>
   )

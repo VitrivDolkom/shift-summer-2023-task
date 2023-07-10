@@ -44,7 +44,9 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
               error={errors.cvv?.message}
               register={register('cvv', validations.cvv)}
             />
-            <Button type="submit" text="Далее" />
+            <Button styleType="solid">
+              <p>Далее</p>
+            </Button>
           </form>
         </div>
       </div>

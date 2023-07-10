@@ -48,7 +48,9 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
         register={register('phone', validations.phone)}
       />
       <div className={s.button}>
-        <Button type="submit" text="Далее" />
+        <Button styleType="solid">
+          <p>Далее</p>
+        </Button>
       </div>
     </form>
   )

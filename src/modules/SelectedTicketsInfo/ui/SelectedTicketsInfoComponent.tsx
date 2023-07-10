@@ -31,7 +31,9 @@ export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponen
       <footer className={s.footer}>
         <div className={s.title}>Сумма:</div>
         <div className={[s.info, s.price].join(' ')}>{price}руб</div>
-        <Button type="buy" text="Купить" onClick={onBuyButtonClick} />
+        <Button styleType="solid" onClick={onBuyButtonClick}>
+          <p>Купить</p>
+        </Button>
       </footer>
     </div>
   )

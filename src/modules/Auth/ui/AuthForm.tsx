@@ -4,15 +4,15 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { fetchSignIn } from '@/modules/SignIn'
-import { Button } from '@/shared/uikit/Button'
+import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
+import { Button } from '@/shared/uikit/Button'
 
 import { useTwoStepAction } from '../lib/useTwoStepAction'
 import { AuthContext } from '../model/AuthContext'
 import { createOtpCode } from '../model/thunk'
 
 import s from './styles.module.css'
-import { ValidatedInput } from '@/shared/components'
 
 export const AuthForm = () => {
   const navigate = useNavigate()
@@ -71,11 +71,15 @@ export const AuthForm = () => {
           <div className={s.info}>
             Запросить код повторно можно через {codeInfo?.retryDelay || ''} секунд
           </div>
-          <Button type="login" text="Запросить код" onClick={onCodeRequestClick} />
+          <Button styleType="solid" onClick={onCodeRequestClick}>
+            <p>Запросить код</p>
+          </Button>
         </>
       )}
       <div className={s.btn}>
-        <Button type="submit" text="Продолжить" />
+        <Button styleType="solid">
+          <p>Продолжить</p>
+        </Button>
       </div>
     </form>
   )
