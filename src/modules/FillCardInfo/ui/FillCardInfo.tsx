@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
-import { Button } from '@/shared/uikit/Button'
+import { Button } from '@/shared/uikit'
 
 import { FillCardInfoProps } from '../lib/types'
 

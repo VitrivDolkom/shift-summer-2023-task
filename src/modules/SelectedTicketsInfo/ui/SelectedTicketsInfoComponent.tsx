@@ -1,4 +1,4 @@
-import { Button } from '@/shared/uikit/Button'
+import { Button } from '@/shared/uikit'
 
 import { SelectedTicketsInfoComponentProps } from '../lib/types'
 

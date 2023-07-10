@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchSignIn } from '@/modules/SignIn'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
-import { Button } from '@/shared/uikit/Button'
+import { Button } from '@/shared/uikit'
 
 import { useTwoStepAction } from '../lib/useTwoStepAction'
 import { AuthContext } from '../model/AuthContext'
