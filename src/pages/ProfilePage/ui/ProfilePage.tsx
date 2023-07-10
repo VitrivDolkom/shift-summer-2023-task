@@ -1,7 +1,14 @@
 import { useAppSelector } from '@/store'
 
-export const ProfilePage = () => {
-  const { userInfo } = useAppSelector((state) => state.signInSlice)
+import { Header } from '@/modules/Header'
 
-  return <div>{userInfo?.token || 'токена нема'}</div>
+export const ProfilePage = () => {
+  const { userInfo } = useAppSelector((state) => state.signIn)
+
+  return (
+    <div>
+      <Header />
+      <div>{userInfo?.token || 'токена нема'}</div>
+    </div>
+  )
 }

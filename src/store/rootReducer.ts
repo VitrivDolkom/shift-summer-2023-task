@@ -17,7 +17,7 @@ export const rootReducer = combineReducers({
   ticketsOrder: ticketsOrderSlice.reducer,
   userInfo: userInfoSlice.reducer,
   authInfo: authInfoSlice.reducer,
-  signInSlice: signInSlice.reducer
+  signIn: signInSlice.reducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

@@ -1,16 +1,18 @@
 import { useAppDispatch, useAppSelector } from '@/store'
+import { useContext, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { fetchSignIn } from '@/modules/SignIn'
 import { Button } from '@/shared/uikit/Button'
 import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
 import { useTwoStepAction } from '../lib/useTwoStepAction'
+import { AuthContext } from '../model/AuthContext'
 import { createOtpCode } from '../model/thunk'
 import { SignInDto } from '../model/types'
 
 import s from './styles.module.css'
-import { useNavigate } from 'react-router-dom'
 
 export const AuthForm = () => {
   const navigate = useNavigate()
@@ -22,12 +24,20 @@ export const AuthForm = () => {
   } = useForm<SignInDto>()
   const dispatch = useAppDispatch()
   const { codeInfo } = useAppSelector((state) => state.authInfo)
+  const signIn = useAppSelector((state) => state.signIn)
+  const { authme } = useContext(AuthContext)
   const { isFirst, nextStep } = useTwoStepAction()
+
+  useEffect(() => {
+    if (signIn.request.status === 'success') {
+      navigate('/profile')
+      authme()
+    }
+  }, [signIn.request.status])
 
   const onFormSubmit: SubmitHandler<SignInDto> = (signInDto) => {
     if (!isFirst) {
       dispatch(fetchSignIn(signInDto))
-      navigate('/profile')
       return
     }
 

@@ -14,6 +14,7 @@ export const signInSlice = createSlice({
       })
       .addCase(fetchSignIn.fulfilled, (state, action) => {
         state.userInfo = action.payload
+        state.request.status = 'success'
       })
       .addCase(fetchSignIn.rejected, (state, action) => {
         state.request.status = 'error'
