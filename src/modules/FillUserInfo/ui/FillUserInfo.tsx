@@ -1,8 +1,9 @@
 import { useAppDispatch } from '@/store'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { ValidatedInput } from '@/shared/components'
+import { validations } from '@/shared/const'
 import { Button } from '@/shared/uikit/Button'
-import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
 import { FillUserInfoProps } from '../lib/types'
 import { setUserInfo } from '../model/slice'

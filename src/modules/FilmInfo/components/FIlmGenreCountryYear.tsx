@@ -1,4 +1,4 @@
-import { getReleaseYear } from '@/shared/lib/date'
+import { getReleaseYear } from '@/shared/lib'
 
 import s from '../ui/styles.module.css'
 

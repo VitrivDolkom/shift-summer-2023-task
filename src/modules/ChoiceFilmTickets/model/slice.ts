@@ -1,14 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { TicketPlaceInfo } from '@/shared/uikit/SeancePlace'
-
 import { initialState } from './state'
 
 export const filmTicketsSlice = createSlice({
   name: 'filmTickets',
   initialState,
   reducers: {
-    toggleTicket(state, action: PayloadAction<TicketPlaceInfo>) {
+    toggleTicket(state, action: PayloadAction<api.FullTicketInfo>) {
       if (action.payload.type === 'BLOCKED') return
 
       const filteredTickets = state.tickets.filter(

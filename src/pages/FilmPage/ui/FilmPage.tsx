@@ -4,14 +4,15 @@ import { useParams } from 'react-router-dom'
 
 import { AuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
-import { CardInfo, FillCardInfo } from '@/modules/FillCardInfo'
+import { FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo } from '@/modules/FillUserInfo'
 import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
 import { Header } from '@/modules/Header'
 import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
 import { setTicketsOrderInfo, TicketsOrder } from '@/modules/TicketsOrder'
-import { Modal, useModal } from '@/shared/uikit/Modal'
+import { useModal } from '@/shared/lib'
+import { Modal } from '@/shared/uikit'
 
 import s from './styles.module.css'
 
@@ -44,7 +45,7 @@ export const FilmPage = () => {
     cardInfoModal.onModalOpen()
   }
 
-  const onCardInfoSubmit = (cardInfo: CardInfo) => {
+  const onCardInfoSubmit = (cardInfo: api.CreatePaymentDebitCardDto) => {
     const ticketsOrderInfo: api.CreateCinemaPaymentDto = {
       debitCard: cardInfo,
       filmId: film?.id || '',

@@ -1,1 +1,1 @@
-export { ButtonProxy as Button } from './ui/ButtonProxy'
+export { ButtonProxy as Button } from './ButtonProxy'

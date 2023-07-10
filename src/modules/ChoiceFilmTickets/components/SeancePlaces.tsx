@@ -1,11 +1,11 @@
-import { SeancePlace, type TicketPlaceInfo } from '@/shared/uikit/SeancePlace'
+import { SeancePlace } from '@/shared/components'
 
 import s from '../ui/styles.module.css'
 
 interface SeanceSeatsProps {
   seance: api.ScheduleSeance
-  tickets: TicketPlaceInfo[]
-  onPlaceClick: (ticket: TicketPlaceInfo) => void
+  tickets: api.FullTicketInfo[]
+  onPlaceClick: (ticket: api.FullTicketInfo) => void
 }
 
 export const SeancePlaces = ({ seance, tickets, onPlaceClick }: SeanceSeatsProps) => (
@@ -13,7 +13,7 @@ export const SeancePlaces = ({ seance, tickets, onPlaceClick }: SeanceSeatsProps
     {seance.hall.places.map((row, rowIndex) => (
       <div key={rowIndex} className={s.row}>
         {row.map((place, index) => {
-          const ticketPlaceInfo: TicketPlaceInfo = { row: rowIndex + 1, column: index + 1, ...place }
+          const ticketPlaceInfo: api.FullTicketInfo = { row: rowIndex + 1, column: index + 1, ...place }
 
           return (
             <SeancePlace

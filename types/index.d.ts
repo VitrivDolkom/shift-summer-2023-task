@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 namespace api {
   interface BaseResponse {
     success: boolean
@@ -86,6 +88,7 @@ namespace api {
   }
 
   type HallName = 'Red' | 'Blue' | 'Green'
+  type SeancePlaceType = 'COMFORT' | 'ECONOM' | 'BLOCKED'
 
   interface FilmSeancePlace {
     price: number
@@ -144,6 +147,8 @@ namespace api {
     row: number
     column: number
   }
+
+  type FullTicketInfo = CreatePaymentTicketsDto & FilmSeancePlace
 
   interface CreateCinemaPaymentDto {
     filmId: string

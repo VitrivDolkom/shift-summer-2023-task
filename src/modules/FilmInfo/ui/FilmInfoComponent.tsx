@@ -1,4 +1,4 @@
-import { FilmRating } from '@/shared/uikit/FilmRating'
+import { FilmRating } from '@/shared/components'
 
 import { FilmDirectors } from '../components/FilmDirectors'
 import { FIlmGenreCountryYear } from '../components/FIlmGenreCountryYear'

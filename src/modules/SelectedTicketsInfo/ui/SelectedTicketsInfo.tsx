@@ -1,6 +1,6 @@
 import { useAppSelector } from '@/store'
 
-import { getHallName } from '@/shared/lib/schedule'
+import { getHallName } from '@/shared/lib'
 
 import { type SelectedTicketsInfoProps } from '../lib/types'
 import { SelectedTicketsInfoComponents } from './SelectedTicketsInfoComponent'

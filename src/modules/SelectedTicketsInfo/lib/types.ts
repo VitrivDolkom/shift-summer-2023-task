@@ -1,11 +1,8 @@
-import { TicketPlaceInfo } from '@/shared/uikit/SeancePlace'
-
-
 export interface SelectedTicketsInfoProps {
   onBuyButtonClick: () => void
 }
 export interface SelectedTicketsInfoComponentProps {
-  tickets: TicketPlaceInfo[]
+  tickets: api.FullTicketInfo[]
   filmName: string
   hallName: string
   date: string

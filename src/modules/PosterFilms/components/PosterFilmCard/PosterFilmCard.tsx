@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/shared/uikit/Button'
-import { FilmRating } from '@/shared/uikit/FilmRating'
+import { FilmRating } from '@/shared/components'
 
 import { FilmCountryAndYear } from './FilmCountryAndYear'
 

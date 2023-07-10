@@ -1,9 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { ValidatedInput } from '@/shared/components'
+import { validations } from '@/shared/const'
 import { Button } from '@/shared/uikit/Button'
-import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
 
-import { CardInfo, FillCardInfoProps } from '../lib/types'
+import { FillCardInfoProps } from '../lib/types'
 
 import shiftCard from './img/shiftCard.svg'
 import s from './styles.module.css'
@@ -13,9 +14,9 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<CardInfo>()
+  } = useForm<api.CreatePaymentDebitCardDto>()
 
-  const onFormSubmit: SubmitHandler<CardInfo> = (cardInfo) => {
+  const onFormSubmit: SubmitHandler<api.CreatePaymentDebitCardDto> = (cardInfo) => {
     onSubmit(cardInfo)
   }
 

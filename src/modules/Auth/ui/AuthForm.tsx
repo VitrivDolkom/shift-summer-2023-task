@@ -5,13 +5,14 @@ import { useNavigate } from 'react-router-dom'
 
 import { fetchSignIn } from '@/modules/SignIn'
 import { Button } from '@/shared/uikit/Button'
-import { ValidatedInput, validations } from '@/shared/uikit/ValidatedInput'
+import { validations } from '@/shared/const'
 
 import { useTwoStepAction } from '../lib/useTwoStepAction'
 import { AuthContext } from '../model/AuthContext'
 import { createOtpCode } from '../model/thunk'
 
 import s from './styles.module.css'
+import { ValidatedInput } from '@/shared/components'
 
 export const AuthForm = () => {
   const navigate = useNavigate()
