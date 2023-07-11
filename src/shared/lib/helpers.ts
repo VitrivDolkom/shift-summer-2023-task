@@ -1,3 +1,5 @@
+import { TOKEN_KEY } from '../const'
+
 export const getReleaseYear = (releaseDate: string) =>
   releaseDate.split(' ')[releaseDate.split(' ').length - 1]
 
@@ -22,7 +24,7 @@ export const getFromLocalStorage = <T>(key: string, defaultValue: T): T => {
     return defaultValue
   }
 
-  if (typeof item === 'string') return item as T
+  if (key === TOKEN_KEY) return item as T
 
   return JSON.parse(item)
 }
