@@ -5,11 +5,13 @@ import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { Button } from '@/shared/uikit'
 
-import { FillUserInfoProps } from '../lib/types'
 import { setUserInfo } from '../model/slice'
-import { UserInfo } from '../model/types'
 
 import s from './styles.module.css'
+
+interface FillUserInfoProps {
+  onSubmit: () => void
+}
 
 export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
   const dispatch = useAppDispatch()
@@ -17,9 +19,9 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<UserInfo>()
+  } = useForm<api.CreatePaymentPersonDto>()
 
-  const onFormSubmit: SubmitHandler<UserInfo> = (userInfo) => {
+  const onFormSubmit: SubmitHandler<api.CreatePaymentPersonDto> = (userInfo) => {
     dispatch(setUserInfo(userInfo))
     onSubmit()
   }

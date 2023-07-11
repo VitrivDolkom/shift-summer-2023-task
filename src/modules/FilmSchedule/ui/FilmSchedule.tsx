@@ -1,10 +1,13 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { FilmScheduleProps } from '../lib/types'
 import { chooseSchedule, chooseSeance, setDefaultSchedule, setDefaultSeance } from '../model/slice'
 import { fetchFilmSchedule } from '../model/thunk'
 import { FilmScheduleComponent } from './FilmScheduleComponent'
+
+interface FilmScheduleProps {
+  id: string
+}
 
 export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   const dispatch = useAppDispatch()

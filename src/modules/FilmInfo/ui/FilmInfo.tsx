@@ -1,9 +1,12 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { type FilmInfoProps } from '../lib/types'
 import { fetchFilmInfo } from '../model/thunk'
 import { FilmInfoComponent } from './FilmInfoComponent'
+
+interface FilmInfoProps {
+  id: string
+}
 
 export const FilmInfo = ({ id }: FilmInfoProps) => {
   const dispatch = useAppDispatch()

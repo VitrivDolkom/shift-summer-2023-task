@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
-import { UserInfo } from './types'
 
 export const userInfoSlice = createSlice({
   name: 'cardInfo',
   initialState,
   reducers: {
-    setUserInfo(state, action: PayloadAction<UserInfo>) {
+    setUserInfo(state, action: PayloadAction<api.CreatePaymentPersonDto>) {
       state.person = action.payload
     }
   }
