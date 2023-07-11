@@ -1,12 +1,11 @@
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AuthContext } from '@/modules/Auth'
+import { useAuthContext } from '@/modules/Auth'
 import { Button } from '@/shared/uikit'
 
 export const HeaderButton = () => {
   const navigate = useNavigate()
-  const { isAuth } = useContext(AuthContext)
+  const { isAuth } = useAuthContext()
 
   if (isAuth) {
     return (

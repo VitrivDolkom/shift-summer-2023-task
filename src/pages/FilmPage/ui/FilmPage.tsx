@@ -1,8 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/store'
-import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { AuthContext } from '@/modules/Auth'
+import { useAuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
 import { FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo } from '@/modules/FillUserInfo'
@@ -21,7 +20,7 @@ export const FilmPage = () => {
   const { tickets } = useAppSelector((state) => state.filmTickets)
   const { person } = useAppSelector((state) => state.userInfo)
   const { film } = useAppSelector((state) => state.filmInfo)
-  const { isAuth } = useContext(AuthContext)
+  const { isAuth } = useAuthContext()
   const dispatch = useAppDispatch()
   const params = useParams()
 

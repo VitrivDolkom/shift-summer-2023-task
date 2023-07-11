@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/store'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button } from '@/shared/uikit'
 
-import { AuthContext } from '../model/AuthContext'
+import { useAuthSwitcherContext } from '../model/hooks'
 import { createOtpCode } from '../model/thunk'
 
 import s from './styles.module.css'
@@ -25,7 +25,7 @@ export const AuthForm = () => {
   const dispatch = useAppDispatch()
   const { otpResponse: codeInfo } = useAppSelector((state) => state.authInfo)
   const signIn = useAppSelector((state) => state.signIn)
-  const { authme } = useContext(AuthContext)
+  const { authme } = useAuthSwitcherContext()
   const { isFirst, nextStep } = useTwoStepAction()
 
   useEffect(() => {

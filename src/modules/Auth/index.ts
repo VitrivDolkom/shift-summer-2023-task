@@ -1,4 +1,5 @@
-export { AuthContext } from './model/AuthContext'
+export * from './model/hooks'
+export { AuthContext } from './model/contexts'
 export { AuthProvider } from './model/AuthProvider'
 export { AuthForm } from './ui/AuthForm'
 export { authInfoSlice } from './model/slice'
