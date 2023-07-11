@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
 import { fetchProfile } from './thunk'
@@ -7,6 +7,9 @@ export const profileSlice = createSlice({
   name: 'userProfile',
   initialState,
   reducers: {
+    setUserProfile(state, action: PayloadAction<api.SignInResponse>) {
+      state.profile = { user: action.payload.user, token: action.payload.token }
+    },
     login(state) {
       state.isAuth = true
     },
@@ -20,7 +23,8 @@ export const profileSlice = createSlice({
         state.request.status = 'pending'
       })
       .addCase(fetchProfile.fulfilled, (state, action) => {
-        state.profile = { user: action.payload.user, token: action.payload.token }
+        debugger
+        state.profile.user = action.payload.user
         state.request.status = 'success'
       })
       .addCase(fetchProfile.rejected, (state, action) => {
@@ -30,4 +34,4 @@ export const profileSlice = createSlice({
   }
 })
 
-export const { login, logout } = profileSlice.actions
+export const { login, logout, setUserProfile } = profileSlice.actions

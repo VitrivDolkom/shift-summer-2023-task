@@ -1,11 +1,12 @@
 import { store } from '@/store'
 import { Provider } from 'react-redux'
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
+import { createBrowserRouter, Outlet } from 'react-router-dom'
 
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
 import { ProfilePage } from '@/pages/ProfilePage'
+import { RootPage } from '@/pages/RootPage'
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to="/poster" replace />
+        element: <RootPage />
       },
       {
         path: '/auth',

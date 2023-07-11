@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { SignInService } from '../api/ProfileService.service'
+import { ProfileService } from '../api/ProfileService.service'
 
-export const fetchProfile = createAsyncThunk('/users/signin', async (signInDto: api.SignInDto) => {
-  const response = await SignInService.signIn(signInDto)
+export const fetchProfile = createAsyncThunk('/users/session', async (token: string) => {
+  const response = await ProfileService.getSession(token)
 
   return response.data
 })

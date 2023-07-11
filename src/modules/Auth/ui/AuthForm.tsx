@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchProfile, login } from '@/modules/Profile'
+import { login, ProfileService, setUserProfile } from '@/modules/Profile'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
@@ -33,13 +33,17 @@ export const AuthForm = () => {
     }
   }, [signIn.request.status])
 
-  const onFormSubmit: SubmitHandler<api.SignInDto> = (signInDto) => {
-    if (!isFirst) {
-      dispatch(fetchProfile(signInDto))
+  const onFormSubmit: SubmitHandler<api.SignInDto> = async (signInDto) => {
+    if (isFirst) {
+      nextOtpCode()
       return
     }
 
-    nextOtpCode()
+    const singInResponse = await ProfileService.signIn(signInDto)
+
+    if (singInResponse.data.success) {
+      dispatch(setUserProfile(singInResponse.data))
+    }
   }
 
   const nextOtpCode = () => {
