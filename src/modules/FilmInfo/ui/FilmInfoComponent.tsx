@@ -1,4 +1,5 @@
 import { FilmRating } from '@/shared/components'
+import { Typography } from '@/shared/uikit'
 
 import { FilmDirectors } from '../components/FilmDirectors'
 import { FIlmGenreCountryYear } from '../components/FIlmGenreCountryYear'
@@ -20,11 +21,13 @@ export const FilmInfoComponent = ({ film }: Props) => {
         <WatchDate />
       </div>
       <div className={s.right}>
-        <div className={s.name}>{name}</div>
+        <Typography variant="t2" text={name} />
         <FilmDirectors directors={directors} />
         <FIlmGenreCountryYear genres={genres} country={country} date={releaseDate} />
         <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
-        <div className={s.description}>{description}</div>
+        <div className={s.description}>
+          <Typography className="ellipsis" variant="t3" text={description} />
+        </div>
       </div>
     </div>
   )

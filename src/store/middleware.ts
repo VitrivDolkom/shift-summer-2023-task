@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { profileSlice } from '@/modules/Profile'
+import { userProfileSlice } from '@/modules/Profile'
 import { IS_AUTH_KEY, TOKEN_KEY } from '@/shared/const'
 import { setToLocalStorage } from '@/shared/lib'
 
@@ -15,9 +15,9 @@ export const tokenMiddleware = (store) => (next) => (action) => {
 }
 
 export const authMiddleware = (store) => (next) => (action) => {
-  if (profileSlice.actions.login.match(action)) {
+  if (userProfileSlice.actions.login.match(action)) {
     setToLocalStorage(IS_AUTH_KEY, true)
-  } else if (profileSlice.actions.logout.match(action)) {
+  } else if (userProfileSlice.actions.logout.match(action)) {
     setToLocalStorage(IS_AUTH_KEY, false)
   }
 

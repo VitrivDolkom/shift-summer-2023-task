@@ -12,3 +12,8 @@
   justify-content: space-around;
   z-index: 3;
 }
+
+
+.btn {
+  width: 120px;
+}

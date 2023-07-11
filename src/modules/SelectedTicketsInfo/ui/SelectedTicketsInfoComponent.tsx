@@ -1,4 +1,6 @@
-import { Button } from '@/shared/uikit'
+import ticketImg from '@/assets/img/ticket.svg'
+import { TitleWithInfo } from '@/shared/components'
+import { Button, Typography } from '@/shared/uikit'
 
 import { SelectedTicketsInfoComponentProps } from '../lib/types'
 
@@ -11,29 +13,24 @@ export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponen
     <div className={s.wrapper}>
       <div className={s.content}>
         <div className={s.title}>{hallName}</div>
-        <div className={s.block}>
-          <div className={s.preInfo}>Фильм:</div>
-          <div className={s.info}>{filmName}</div>
-        </div>
-        <div className={s.block}>
-          <div className={s.preInfo}>Дата и время:</div>
-          <div className={s.info}>
-            {date} {time}
-          </div>
-        </div>
-        <div className={s.block}>
-          <div className={s.preInfo}>Места:</div>
-          <div className={s.info}>
-            {tickets.map((ticket) => `${ticket.row} ряд - ${ticket.column}; `)}
-          </div>
-        </div>
+        <TitleWithInfo title="Фильм:" info={filmName} />
+        <TitleWithInfo title="Дата и время:" info={`${date} ${time}`} />
+        <TitleWithInfo
+          title="Места:"
+          info={tickets.map((ticket) => `${ticket.row} ряд - ${ticket.column}; `).toString()}
+        />
       </div>
       <footer className={s.footer}>
         <div className={s.title}>Сумма:</div>
-        <div className={[s.info, s.price].join(' ')}>{price}руб</div>
-        <Button styleType="solid" onClick={onBuyButtonClick}>
-          <p>Купить</p>
-        </Button>
+        <div className={s.price}>{price}руб</div>
+        <div className={s.btn}>
+          <Button styleType="solid" onClick={onBuyButtonClick}>
+            <div className={s.insideBtn}>
+              <Typography tag="p" text="Купить" variant="btn1" />
+              <img src={ticketImg} alt="" />
+            </div>
+          </Button>
+        </div>
       </footer>
     </div>
   )

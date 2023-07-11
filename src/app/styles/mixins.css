@@ -18,3 +18,61 @@
     transform: rotate(360deg);
   }
 }
+
+.centered {
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.t1 {
+  color: var(--dark-grey);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.t2 {
+  color: var(--dark-grey);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.t3 {
+  color: var(--dark-grey);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.sub1 {
+  color: var(--dark-grey);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.sub2 {
+  color: var(--light-grey);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.btn1 {
+  color: var(--white);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.btn2 {
+  color: var(--dark-grey);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+}

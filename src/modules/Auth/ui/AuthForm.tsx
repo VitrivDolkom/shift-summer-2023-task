@@ -7,7 +7,7 @@ import { login, ProfileService, setUserProfile } from '@/modules/Profile'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
-import { Button } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
 
 import { createOtpCode } from '../model/thunk'
 
@@ -71,16 +71,19 @@ export const AuthForm = () => {
             error={errors.code?.message}
           />
           <div className={s.info}>
-            Запросить код повторно можно через {codeInfo?.retryDelay || ''} секунд
+            <Typography
+              variant="sub2"
+              text={`Запросить код повторно можно через ${codeInfo?.retryDelay || ''} секунд`}
+            />
           </div>
           <Button styleType="solid" onClick={onCodeRequestClick}>
-            <p>Запросить код</p>
+            <Typography tag="p" variant="btn2" text="Запросить код" />
           </Button>
         </>
       )}
       <div className={s.btn}>
         <Button styleType="solid">
-          <p>Продолжить</p>
+          <Typography tag="p" variant="btn1" text="Продолжить" />
         </Button>
       </div>
     </form>

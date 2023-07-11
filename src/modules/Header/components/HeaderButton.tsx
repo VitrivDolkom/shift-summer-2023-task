@@ -1,7 +1,9 @@
 import { useAppSelector } from '@/store'
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
+
+import s from '../ui/styles.module.css'
 
 export const HeaderButton = () => {
   const navigate = useNavigate()
@@ -9,15 +11,19 @@ export const HeaderButton = () => {
 
   if (isAuth) {
     return (
-      <Button styleType="outlined" onClick={() => navigate('/profile')}>
-        <p>Кабинет</p>
-      </Button>
+      <div className={s.btn}>
+        <Button styleType="outlined" onClick={() => navigate('/profile')}>
+          <Typography tag="p" variant="btn2" text="Кабинет" />
+        </Button>
+      </div>
     )
   }
 
   return (
-    <Button styleType="outlined" onClick={() => navigate('/auth')}>
-      <p>Войти</p>
-    </Button>
+    <div className={s.btn}>
+      <Button styleType="outlined" onClick={() => navigate('/auth')}>
+        <Typography tag="p" variant="btn2" text="Войти" />
+      </Button>
+    </div>
   )
 }

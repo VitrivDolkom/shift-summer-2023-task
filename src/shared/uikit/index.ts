@@ -1,2 +1,3 @@
-export { Modal } from './Modal/Modal'
+export { Typography } from './Typography/Typography'
 export { Button } from './Button/Button'
+export { Modal } from './Modal/Modal'

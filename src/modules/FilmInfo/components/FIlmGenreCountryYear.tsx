@@ -1,4 +1,5 @@
 import { getReleaseYear } from '@/shared/lib'
+import { Typography } from '@/shared/uikit'
 
 import s from '../ui/styles.module.css'
 
@@ -10,7 +11,10 @@ interface Props {
 
 export const FIlmGenreCountryYear = ({ genres, country, date }: Props) => (
   <div className={s.mainInfo}>
-    {genres[0]}
-    {country !== undefined ? `, ${country.name}` : ''}, {getReleaseYear(date)}
+    <Typography
+      variant="sub1"
+      text={`${genres[0]}
+      ${country !== undefined ? `, ${country.name}` : ''}, ${getReleaseYear(date)}`}
+    />
   </div>
 )

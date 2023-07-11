@@ -22,13 +22,6 @@
   align-items: flex-start;
 }
 
-.inBox {
-  color: var(--light-grey);
-  text-align: center;
-  font-size: 16px;
-  line-height: 20px;
-}
-
 .watchDate {
   color: var(--dark-grey);
   text-align: center;
@@ -36,30 +29,14 @@
   line-height: 24px;
 }
 
-.name {
-  color: var(--dark-grey);
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 32px;
-}
-
 .director {
   margin-top: 12px;
 }
 
 .mainInfo {
-  color: var(--dark-grey);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 30px;
   margin-bottom: 6px;
 }
 
 .description {
   margin-top: 16px;
-  color: var(--dark-grey);
-  font-size: 24px;
-  line-height: 30px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

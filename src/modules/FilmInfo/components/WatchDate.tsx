@@ -1,3 +1,5 @@
+import { Typography } from '@/shared/uikit'
+
 import s from '../ui/styles.module.css'
 
 interface Props {
@@ -6,7 +8,7 @@ interface Props {
 
 export const WatchDate = ({ date }: Props) => (
   <>
-    <div className={s.inBox}>в прокате</div>
+    <Typography className="centered" variant="sub2" text="в прокате" />
     <div className={s.watchDate}>{date || 'с 1 июня по 15 июля'}</div>
   </>
 )

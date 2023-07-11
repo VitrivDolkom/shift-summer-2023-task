@@ -1,7 +1,8 @@
+import posterTitle from '@/assets/img/posterTitle.svg'
 import { Header } from '@/modules/Header'
 import { PosterFilms } from '@/modules/PosterFilms'
+import { Typography } from '@/shared/uikit'
 
-import posterTitle from '@/assets/img/posterTitle.svg'
 import s from './styles.module.css'
 
 export const PosterPage = () => (
@@ -10,7 +11,7 @@ export const PosterPage = () => (
     <main>
       <div className={s.title}>
         <img src={posterTitle} alt="афиша" />
-        <h1 className={s.subtitle}> на сегодня</h1>
+        <Typography tag="h1" variant="t2" text=" на сегодня" />
       </div>
       <PosterFilms />
     </main>

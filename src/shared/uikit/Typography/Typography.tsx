@@ -1,12 +1,18 @@
-type TypographyType = 't1' | 't2' | 't3' | 't4' | 't5' | 't6' | 'sub1'
-// type TypographyTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div' | 'p'
-
 interface TypographyProps {
-  children: React.ReactNode
-  typographyType: TypographyType
+  text?: string
   className?: string
+  variant: 't1' | 't2' | 't3' | 't4' | 't5' | 'sub1' | 'sub2' | 'btn1' | 'btn2'
+  tag?: keyof JSX.IntrinsicElements
 }
 
-export const Typography = ({ children, typographyType, className = '' }: TypographyProps) => (
-  <p className={`${typographyType} ${className}`}>{children}</p>
+export const Typography = ({
+  text,
+  variant,
+  className = '',
+  tag: Wrapper = 'div',
+  ...props
+}: TypographyProps) => (
+  <Wrapper className={`${variant} ${className}`} {...props}>
+    {text}
+  </Wrapper>
 )

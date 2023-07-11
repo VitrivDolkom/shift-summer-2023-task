@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
-import { Button } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
 
 import { setUserInfo } from '../model/slice'
 
@@ -58,7 +58,7 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
       />
       <div className={s.button}>
         <Button styleType="solid">
-          <p>Далее</p>
+          <Typography tag="p" variant="btn1" text="Далее" />
         </Button>
       </div>
     </form>

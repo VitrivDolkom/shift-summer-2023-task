@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { FilmRating } from '@/shared/components'
-import { Button } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
 
 import { FilmCountryAndYear } from './FilmCountryAndYear'
 
@@ -33,11 +33,14 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
       <footer className={s.footer}>
         <div className={s.bottom}>
           <div className={s.name}>{name}</div>
-          <div className={s.originalName}>{originalName}</div>
+
+          <div className={s.originalName}>
+            <Typography text={originalName} variant="sub2" />
+          </div>
           <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
         </div>
         <Button styleType="solid" onClick={onMoreInfoClick}>
-          <p>Подробнее</p>
+          <Typography tag="p" text="Подробнее" variant="btn1" />
         </Button>
       </footer>
     </div>

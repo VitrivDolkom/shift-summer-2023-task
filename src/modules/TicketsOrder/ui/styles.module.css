@@ -37,25 +37,6 @@
   margin-top: 3px;
 }
 
-.block {
-  display: flex;
-  flex-direction: column;
-  margin-top: 18px;
-}
-
-.preInfo {
-  color: var(--brown);
-  font-size: 24px;
-  font-weight: 500;
-  letter-spacing: 0.24px;
-}
-
-.info {
-  font-size: 20px;
-  margin-top: 10px;
-  line-height: 160%;
-}
-
 .footer {
   color: var(--light-grey);
   font-size: 20px;
@@ -63,28 +44,4 @@
   letter-spacing: 0.2px;
   margin-top: 40px;
   max-width: 400px;
-}
-
-/* ------------- */
-
-
-.loader {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: inline-block;
-  border-top: 3px solid #1c93e3;
-  border-right: 3px solid transparent;
-  box-sizing: border-box;
-  animation: rotation .8s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }

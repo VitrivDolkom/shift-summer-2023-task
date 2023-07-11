@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import shiftCard from '@/assets/img/shiftCard.svg'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
-import { Button } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
 
 import s from './styles.module.css'
 
@@ -26,7 +26,9 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
     <>
       <div className={s.wrapper}>
         <div className={s.content}>
-          <div className={s.title}>Введите данные карты для оплаты</div>
+          <div className={s.title}>
+            <Typography className="centered" variant="t3" text="Введите данные карты для оплаты" />
+          </div>
           <div className={s.top}>
             <img src={shiftCard} alt="shift card" />
           </div>
@@ -47,7 +49,7 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
               register={register('cvv', validations.cvv)}
             />
             <Button styleType="solid">
-              <p>Далее</p>
+              <Typography tag="p" variant="btn1" text="Далее" />
             </Button>
           </form>
         </div>
