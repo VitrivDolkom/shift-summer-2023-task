@@ -3,13 +3,12 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchSignIn } from '@/modules/SignIn'
+import { fetchProfile, login } from '@/modules/Profile'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button } from '@/shared/uikit'
 
-import { useAuthSwitcherContext } from '../model/contexts'
 import { createOtpCode } from '../model/thunk'
 
 import s from './styles.module.css'
@@ -24,20 +23,19 @@ export const AuthForm = () => {
   } = useForm<api.SignInDto>()
   const dispatch = useAppDispatch()
   const { otpResponse: codeInfo } = useAppSelector((state) => state.authInfo)
-  const signIn = useAppSelector((state) => state.signIn)
-  const { authme } = useAuthSwitcherContext()
+  const signIn = useAppSelector((state) => state.userProfile)
   const { isFirst, nextStep } = useTwoStepAction()
 
   useEffect(() => {
     if (signIn.request.status === 'success') {
-      authme()
+      dispatch(login())
       navigate('/profile')
     }
   }, [signIn.request.status])
 
   const onFormSubmit: SubmitHandler<api.SignInDto> = (signInDto) => {
     if (!isFirst) {
-      dispatch(fetchSignIn(signInDto))
+      dispatch(fetchProfile(signInDto))
       return
     }
 

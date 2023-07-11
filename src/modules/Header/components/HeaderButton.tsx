@@ -1,12 +1,12 @@
+import { useAppSelector } from '@/store'
 import { useNavigate } from 'react-router-dom'
 
-import { useAuthContext } from '@/modules/Auth'
 import { Button } from '@/shared/uikit'
 
 export const HeaderButton = () => {
   const navigate = useNavigate()
-  const { isAuth } = useAuthContext()
-
+  const { isAuth } = useAppSelector((state) => state.userProfile)
+  
   if (isAuth) {
     return (
       <Button styleType="outlined" onClick={() => navigate('/profile')}>

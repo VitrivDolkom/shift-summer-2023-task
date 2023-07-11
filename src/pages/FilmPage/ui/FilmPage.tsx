@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useParams } from 'react-router-dom'
 
-import { useAuthContext } from '@/modules/Auth'
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
 import { FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo } from '@/modules/FillUserInfo'
@@ -20,7 +19,6 @@ export const FilmPage = () => {
   const { tickets } = useAppSelector((state) => state.filmTickets)
   const { person } = useAppSelector((state) => state.userInfo)
   const { film } = useAppSelector((state) => state.filmInfo)
-  const { isAuth } = useAuthContext()
   const dispatch = useAppDispatch()
   const params = useParams()
 
@@ -35,8 +33,7 @@ export const FilmPage = () => {
   }
 
   const onBuyButtonClick = () => {
-    if (!isAuth) userInfoModal.onModalOpen()
-    else cardInfoModal.onModalOpen()
+    userInfoModal.onModalOpen()
   }
 
   const onUserInfoSubmit = () => {

@@ -28,10 +28,12 @@ namespace api {
     city?: string
   }
 
-  interface SignInResponse extends BaseResponse {
+  export interface UserProfile {
     user: User
     token: string
   }
+
+  type SignInResponse = BaseResponse & UserProfile
 
   interface SessionResponse extends BaseResponse {
     user: User

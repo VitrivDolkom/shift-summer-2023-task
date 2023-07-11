@@ -8,3 +8,21 @@ export const getHallName = (name: api.HallName): string => {
 
   return ''
 }
+
+export const setToLocalStorage = <T>(key: string, value: T) => {
+  if (typeof value !== 'string') localStorage.setItem(key, JSON.stringify(value))
+  localStorage.setItem(key, value as string)
+}
+
+export const getFromLocalStorage = <T>(key: string, defaultValue: T): T => {
+  const item = localStorage.getItem(key)
+
+  if (item === null) {
+    setToLocalStorage(key, defaultValue)
+    return defaultValue
+  }
+
+  if (typeof item === 'string') return item as T
+
+  return JSON.parse(item)
+}

@@ -2,7 +2,6 @@ import { store } from '@/store'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom'
 
-import { AuthProvider } from '@/modules/Auth'
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
@@ -11,13 +10,11 @@ import { ProfilePage } from '@/pages/ProfilePage'
 export const router = createBrowserRouter([
   {
     element: (
-      <AuthProvider>
-        <Provider store={store}>
-          <div className="wrapper">
-            <Outlet />
-          </div>
-        </Provider>
-      </AuthProvider>
+      <Provider store={store}>
+        <div className="wrapper">
+          <Outlet />
+        </div>
+      </Provider>
     ),
     children: [
       {

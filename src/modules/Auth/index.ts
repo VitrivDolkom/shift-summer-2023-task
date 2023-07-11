@@ -1,5 +1,2 @@
-export { useAuthContext, useAuthSwitcherContext } from './model/contexts'
-export { AuthContext } from './model/contexts'
-export { AuthProvider } from './model/AuthProvider'
 export { AuthForm } from './ui/AuthForm'
 export { authInfoSlice } from './model/slice'
