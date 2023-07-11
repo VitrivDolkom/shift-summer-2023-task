@@ -6,7 +6,7 @@ import { Button } from '@/shared/uikit'
 export const HeaderButton = () => {
   const navigate = useNavigate()
   const { isAuth } = useAppSelector((state) => state.userProfile)
-  
+
   if (isAuth) {
     return (
       <Button styleType="outlined" onClick={() => navigate('/profile')}>

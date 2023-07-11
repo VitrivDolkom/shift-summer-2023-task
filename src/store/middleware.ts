@@ -2,13 +2,11 @@
 import { profileSlice } from '@/modules/Profile'
 import { IS_AUTH_KEY, TOKEN_KEY } from '@/shared/const'
 import { setToLocalStorage } from '@/shared/lib'
-import { AnyAction } from '@reduxjs/toolkit'
 
-export const tokenMiddleware = (store) => (next) => (action: AnyAction) => {
+export const tokenMiddleware = (store) => (next) => (action) => {
   const result = next(action)
 
   if (action.type?.startsWith('userProfile/')) {
-    debugger
     const { token } = store.getState().userProfile.profile
     localStorage.setItem(TOKEN_KEY, token)
   }
