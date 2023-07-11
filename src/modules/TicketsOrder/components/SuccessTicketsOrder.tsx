@@ -1,6 +1,6 @@
 import { SuccessTicketsOrderProps } from '../lib/types'
 
-import okey from '../ui/img/okey.svg'
+import okey from '@/assets/img/okey.svg'
 import s from '../ui/styles.module.css'
 
 export const SuccessTicketsOrder = ({ order, filmName, date, time }: SuccessTicketsOrderProps) => (
