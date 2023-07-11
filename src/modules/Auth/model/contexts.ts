@@ -1,9 +1,4 @@
-import { createContext } from 'react'
-
-interface IUserContext {
-  user: api.User
-  changeUserInfo: (userInfo: api.User) => void
-}
+import { createContext, useContext } from 'react'
 
 interface IAuthContext {
   isAuth: boolean
@@ -23,7 +18,5 @@ export const AuthContext = createContext<IAuthContext>({
   isAuth: true
 })
 
-export const UserContext = createContext<IUserContext>({
-  user: { phone: '' },
-  changeUserInfo: () => ({})
-})
+export const useAuthContext = () => useContext(AuthContext)
+export const useAuthSwitcherContext = () => useContext(AuthSwitcherContext)

@@ -8,7 +8,7 @@ export const ProfilePage = () => {
   return (
     <div>
       <Header />
-      <div>{userInfo?.token || 'токена нема'}</div>
+      <div>{userInfo?.token || 'pending...'}</div>
     </div>
   )
 }

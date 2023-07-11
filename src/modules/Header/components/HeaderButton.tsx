@@ -9,7 +9,7 @@ export const HeaderButton = () => {
 
   if (isAuth) {
     return (
-      <Button styleType="outlined" onClick={undefined}>
+      <Button styleType="outlined" onClick={() => navigate('/profile')}>
         <p>Кабинет</p>
       </Button>
     )

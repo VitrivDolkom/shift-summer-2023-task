@@ -9,7 +9,7 @@ import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button } from '@/shared/uikit'
 
-import { useAuthSwitcherContext } from '../model/hooks'
+import { useAuthSwitcherContext } from '../model/contexts'
 import { createOtpCode } from '../model/thunk'
 
 import s from './styles.module.css'
@@ -30,8 +30,8 @@ export const AuthForm = () => {
 
   useEffect(() => {
     if (signIn.request.status === 'success') {
-      navigate('/profile')
       authme()
+      navigate('/profile')
     }
   }, [signIn.request.status])
 
