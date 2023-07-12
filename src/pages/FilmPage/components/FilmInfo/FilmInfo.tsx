@@ -7,6 +7,7 @@ import { Typography } from '@/shared/uikit'
 
 import { FilmDirectors } from './FilmDirectors'
 import { FIlmGenreCountryYear } from './FIlmGenreCountryYear'
+import { FilmInfoSkeleton } from './FilmInfoSkeleton'
 import { WatchDate } from './WatchDate'
 
 import s from './styles.module.css'
@@ -26,7 +27,7 @@ export const FilmInfo = ({ id }: FilmInfoProps) => {
   }, [])
 
   if (request.status === 'pending') {
-    return <h1>Pending...</h1>
+    return <FilmInfoSkeleton />
   }
 
   if (request.status === 'error' || film === undefined) {

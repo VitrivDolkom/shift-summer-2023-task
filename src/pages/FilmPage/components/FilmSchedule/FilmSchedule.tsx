@@ -10,6 +10,7 @@ import {
 } from '@/modules/FilmSchedule/'
 
 import { CurrentSchedule } from './CurrentSchedule'
+import { FilmSchedulePending } from './FilmSchedulePending'
 import { SchedulesDate } from './SchedulesDate'
 
 import s from './styles.module.css'
@@ -39,7 +40,7 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   }, [currentSchedule, schedules])
 
   if (request.status === 'pending') {
-    return <div>Pending ...</div>
+    return <FilmSchedulePending />
   }
 
   if (request.status === 'error' || !currentSchedule) {
