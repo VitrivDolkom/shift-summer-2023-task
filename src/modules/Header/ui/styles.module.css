@@ -17,3 +17,9 @@
 .btn {
   width: 120px;
 }
+
+.insideBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

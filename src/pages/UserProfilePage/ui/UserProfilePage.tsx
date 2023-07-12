@@ -24,7 +24,7 @@ export const UserProfilePage = () => {
 
   return (
     <>
-      <Header />
+      <Header type="withButton" />
       <main className={s.wrapper}>
         <Typography className="centered" variant="t1" text="Личный кабинет" />
         <div className={s.content}>
@@ -34,7 +34,7 @@ export const UserProfilePage = () => {
           <div className={s.right}>
             {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
             {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
-            {ordersInfo.request.status === 'success' && (
+            {ordersInfo.request.status === 'error' && (
               <ErrorMessage message={ordersInfo.request.error} />
             )}
           </div>
