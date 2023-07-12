@@ -1,8 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { PosterFilmCard } from '../components/PosterFilmCard/PosterFilmCard'
-import { fetchPosterMovies } from '../model/thunk'
+import { fetchPosterMovies } from '@/modules/PosterFilms'
+
+import { PosterFilmCard } from '../PosterFilmCard/PosterFilmCard'
 
 import s from './styles.module.css'
 

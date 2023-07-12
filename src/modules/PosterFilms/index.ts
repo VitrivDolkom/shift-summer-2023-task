@@ -1,2 +1,2 @@
-export { PosterFilms } from './ui/PosterFilms'
 export { posterFilmsSlice } from './model/slice'
+export { fetchPosterMovies } from './model/thunk'

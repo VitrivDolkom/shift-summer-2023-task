@@ -1,7 +1,8 @@
 import posterTitle from '@/assets/img/posterTitle.svg'
 import { Header } from '@/modules/Header'
-import { PosterFilms } from '@/modules/PosterFilms'
 import { Typography } from '@/shared/uikit'
+
+import { PosterFilms } from '../components/PosterFilms/PosterFilms'
 
 import s from './styles.module.css'
 
