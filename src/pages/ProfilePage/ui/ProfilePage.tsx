@@ -5,9 +5,9 @@ import { Header } from '@/modules/Header'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
 import { ErrorMessage } from '@/shared/components/ErrorMessage/ErrorMessage'
 
-import { UserOrders } from '../components/UserOrders'
-import { UserOrdersSkelton } from '../components/UserOrdersSkelton'
-import { UserProfileInfo } from '../components/UserProfileInfo'
+import { UserOrders } from '../components/UserOrders/UserOrders'
+import { UserOrdersSkelton } from '../components/UserOrdersSkeleton/UserOrdersSkelton'
+import { UserProfileInfo } from '../components/UserProfileInfo/UserProfileInfo'
 
 import s from './styles.module.css'
 

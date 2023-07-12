@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useParams } from 'react-router-dom'
 
 import { ChoiceFilmTickets } from '@/modules/ChoiceFilmTickets'
-import { FillCardInfo } from '@/modules/FillCardInfo'
 import { FillUserInfo } from '@/modules/FillUserInfo'
 import { FilmInfo } from '@/modules/FilmInfo'
 import { FilmSchedule } from '@/modules/FilmSchedule'
@@ -11,6 +10,8 @@ import { SelectedTicketsInfo } from '@/modules/SelectedTicketsInfo'
 import { setTicketsOrderInfo, TicketsOrder } from '@/modules/TicketsOrder'
 import { useModal } from '@/shared/lib'
 import { Modal } from '@/shared/uikit'
+
+import { FillCardInfo } from '../components/FillCardInfo/FillCardInfo'
 
 import s from './styles.module.css'
 

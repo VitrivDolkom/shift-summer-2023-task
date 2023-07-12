@@ -17,7 +17,7 @@ import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
 
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 export const AuthForm = () => {
   const navigate = useNavigate()

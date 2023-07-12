@@ -1,4 +1,4 @@
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 interface UserOrdersProps {
   orders: api.CinemaOrder[]

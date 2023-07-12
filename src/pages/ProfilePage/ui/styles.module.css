@@ -10,7 +10,3 @@
   flex-basis: 50%;
 }
 
-.orders {
-  display: flex;
-  flex-direction: column;
-}
