@@ -1,8 +1,61 @@
 .orders {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .order {
-  
+  margin: 16px 0;
+  border-radius: 16px;
+  background-color: var(--white);
+  box-shadow: 0px 4px 12px 0px rgba(37, 37, 37, 0.25);
+  padding: 16px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center {
+  margin-top: 12px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: 9px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.payStatus {
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--green, #44C341);
+}
+
+.payStatus.canceled {
+  background-color: var(--light-red);
+}
+
+.orderNumber {
+  color: var(--green);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.orderNumber.canceled {
+  color: var(--light-red);
+}
+
+.name {
+  color: var(--grey);
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
 }

@@ -2,9 +2,10 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
-import { fetchProfile } from '@/modules/UserProfile'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
+import { fetchProfile } from '@/modules/UserProfile'
 import { ErrorMessage } from '@/shared/components/ErrorMessage/ErrorMessage'
+import { Typography } from '@/shared/uikit'
 
 import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
 
@@ -24,18 +25,21 @@ export const UserProfilePage = () => {
   return (
     <>
       <Header />
-      <div className={s.wrapper}>
-        <div className={s.left}>
-          <UserProfileInfo user={user} />
+      <main className={s.wrapper}>
+        <Typography className="centered" variant="t1" text="Личный кабинет" />
+        <div className={s.content}>
+          <div className={s.left}>
+            <UserProfileInfo user={user} />
+          </div>
+          <div className={s.right}>
+            {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
+            {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
+            {ordersInfo.request.status === 'success' && (
+              <ErrorMessage message={ordersInfo.request.error} />
+            )}
+          </div>
         </div>
-        <div className={s.right}>
-          {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
-          {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
-          {ordersInfo.request.status === 'success' && (
-            <ErrorMessage message={ordersInfo.request.error} />
-          )}
-        </div>
-      </div>
+      </main>
     </>
   )
 }

@@ -53,6 +53,20 @@
   font-weight: 400;
 }
 
+.t4 {
+  color: var(--dark-grey);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.t5 {
+  color: var(--grey);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .sub1 {
   color: var(--dark-grey);
   font-size: 20px;
