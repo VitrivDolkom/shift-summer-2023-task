@@ -8,6 +8,7 @@ import { filmScheduleSlice } from '@/modules/FilmSchedule'
 import { posterFilmsSlice } from '@/modules/PosterFilms'
 import { userProfileSlice } from '@/modules/Profile'
 import { ticketsOrderSlice } from '@/modules/TicketsOrder'
+import { userOrdersSlice } from '@/modules/UserOrders'
 
 export const rootReducer = combineReducers({
   posterMovies: posterFilmsSlice.reducer,
@@ -17,7 +18,8 @@ export const rootReducer = combineReducers({
   ticketsOrder: ticketsOrderSlice.reducer,
   userInfo: userInfoSlice.reducer,
   authInfo: authInfoSlice.reducer,
-  userProfile: userProfileSlice.reducer
+  userProfile: userProfileSlice.reducer,
+  userOrders: userOrdersSlice.reducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

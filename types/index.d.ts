@@ -174,4 +174,8 @@ namespace api {
   interface CinemaOrdersResponse extends BaseResponse {
     orders: CinemaOrder[]
   }
+
+  interface CreateAuthorizedRequestDto {
+    token: string
+  }
 }

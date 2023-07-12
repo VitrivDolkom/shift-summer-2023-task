@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+}
+
+.left {
+  flex-basis: 50%;
+}
+
+.right {
+  flex-basis: 50%;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+}

@@ -12,7 +12,6 @@ export const initialState: ProfileState = {
   },
   isAuth: getFromLocalStorage(IS_AUTH_KEY, false),
   request: {
-    status: 'idle',
-    error: undefined
+    status: 'idle'
   }
 }
