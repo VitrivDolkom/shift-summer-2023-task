@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import waiting from '@/assets/gif/waiting.gif'
 import { fetchProfile } from '@/modules/UserProfile'
 import { useToken } from '@/shared/lib'
 
@@ -12,7 +13,7 @@ export const RootPage = () => {
   const { token } = useToken()
 
   useEffect(() => {
-    dispatch(fetchProfile(token))
+    dispatch(fetchProfile({ token }))
   }, [])
 
   useEffect(() => {
@@ -21,5 +22,5 @@ export const RootPage = () => {
     }
   }, [request.status])
 
-  return <h1>Loading</h1>
+  return <img src={waiting} alt="Ожидайте ..." />
 }
