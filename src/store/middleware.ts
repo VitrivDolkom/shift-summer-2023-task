@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { userProfileSlice } from '@/modules/Profile'
+import { userProfileSlice } from '@/modules/UserProfile'
 import { IS_AUTH_KEY, TOKEN_KEY } from '@/shared/const'
 import { setToLocalStorage } from '@/shared/lib'
 

@@ -6,7 +6,7 @@ import { userInfoSlice } from '@/modules/FillUserInfo'
 import { filmInfoSlice } from '@/modules/FilmInfo'
 import { filmScheduleSlice } from '@/modules/FilmSchedule'
 import { posterFilmsSlice } from '@/modules/PosterFilms'
-import { userProfileSlice } from '@/modules/Profile'
+import { userProfileSlice } from '@/modules/UserProfile'
 import { ticketsOrderSlice } from '@/modules/TicketsOrder'
 import { userOrdersSlice } from '@/modules/UserOrders'
 

@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
-import { fetchProfile } from '@/modules/Profile'
+import { fetchProfile } from '@/modules/UserProfile'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
 import { ErrorMessage } from '@/shared/components/ErrorMessage/ErrorMessage'
 
@@ -10,7 +10,7 @@ import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
 
 import s from './styles.module.css'
 
-export const ProfilePage = () => {
+export const UserProfilePage = () => {
   const dispatch = useAppDispatch()
   const { token } = useAppSelector((state) => state.userProfile.profile)
   const { user } = useAppSelector((state) => state.userProfile.profile)

@@ -11,7 +11,7 @@ import {
   setSignInError,
   setSignInPending,
   setUserProfile
-} from '@/modules/Profile'
+} from '@/modules/UserProfile'
 import { ErrorMessage, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'

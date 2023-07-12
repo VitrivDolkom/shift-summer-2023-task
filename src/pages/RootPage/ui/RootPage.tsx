@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchProfile } from '@/modules/Profile'
+import { fetchProfile } from '@/modules/UserProfile'
 import { useToken } from '@/shared/lib'
 
 export const RootPage = () => {
