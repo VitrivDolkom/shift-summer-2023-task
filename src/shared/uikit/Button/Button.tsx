@@ -18,6 +18,6 @@ export const Button = ({ children, isLoading = false, styleType, ...props }: But
     className={cx({ btn: true, outlined: styleType === 'outlined', solid: styleType === 'solid' })}
   >
     {!isLoading && children}
-    {isLoading && <div className={s.loader}></div>}
+    {isLoading && <div className="loader white"></div>}
   </button>
 )

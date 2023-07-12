@@ -3,15 +3,14 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
+import { createOtpCode } from '@/modules/Auth'
 import { login, ProfileService, setUserProfile } from '@/modules/Profile'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
 
-import { createOtpCode } from '../model/thunk'
-
-import s from './styles.module.css'
+import s from '../ui/styles.module.css'
 
 export const AuthForm = () => {
   const navigate = useNavigate()
@@ -22,7 +21,7 @@ export const AuthForm = () => {
     formState: { errors }
   } = useForm<api.SignInDto>()
   const dispatch = useAppDispatch()
-  const { otpResponse: codeInfo } = useAppSelector((state) => state.authInfo)
+  const authInfo = useAppSelector((state) => state.authInfo)
   const signIn = useAppSelector((state) => state.userProfile)
   const { isFirst, nextStep } = useTwoStepAction()
 
@@ -73,16 +72,21 @@ export const AuthForm = () => {
           <div className={s.info}>
             <Typography
               variant="sub2"
-              text={`Запросить код повторно можно через ${codeInfo?.retryDelay || ''} секунд`}
+              text={`Запросить код повторно можно через ${
+                authInfo.otpResponse?.retryDelay || ''
+              } секунд`}
             />
           </div>
-          <Button styleType="solid" onClick={onCodeRequestClick}>
+          <Button styleType="outlined" onClick={onCodeRequestClick}>
             <Typography tag="p" variant="btn2" text="Запросить код" />
           </Button>
         </>
       )}
       <div className={s.btn}>
-        <Button styleType="solid">
+        <Button
+          styleType="solid"
+          isLoading={authInfo.request.status === 'pending' || signIn.request.status === 'pending'}
+        >
           <Typography tag="p" variant="btn1" text="Продолжить" />
         </Button>
       </div>

@@ -9,6 +9,10 @@
   animation: rotation .8s linear infinite;
 }
 
+.loader.white {
+  border-top: 3px solid var(--white);
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
