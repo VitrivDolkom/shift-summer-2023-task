@@ -1,2 +1,1 @@
-export { FillUserInfo } from './ui/FillUserInfo'
-export { userInfoSlice } from './model/slice'
+export { userInfoSlice, setUserInfo } from './model/slice'

@@ -1,10 +1,11 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { ErrorTicketsOrder } from '../components/ErrorTicketsOrder'
-import { PendingTicketsOrder } from '../components/PendingTicketsOrder'
-import { SuccessTicketsOrder } from '../components/SuccessTicketsOrder'
-import { payTicketsOrder } from '../model/thunk'
+import { payTicketsOrder } from '@/modules/TicketsOrder'
+
+import { ErrorTicketsOrder } from './ErrorTicketsOrder'
+import { PendingTicketsOrder } from './PendingTicketsOrder'
+import { SuccessTicketsOrder } from './SuccessTicketsOrder'
 
 export const TicketsOrder = () => {
   const dispatch = useAppDispatch()
@@ -24,7 +25,6 @@ export const TicketsOrder = () => {
   if (!ticketsOrder || request.status === 'pending' || !film || !response) {
     return <PendingTicketsOrder />
   }
-
 
   return (
     <SuccessTicketsOrder

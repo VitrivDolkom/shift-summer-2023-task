@@ -1,7 +1,10 @@
-import { ErrorTicketsOrderProps } from '../lib/types'
-
 import error from '@/assets/img/error.svg'
-import s from '../ui/styles.module.css'
+
+import s from './styles.module.css'
+
+interface ErrorTicketsOrderProps {
+  errorMessage: string
+}
 
 export const ErrorTicketsOrder = ({ errorMessage }: ErrorTicketsOrderProps) => (
   <div className={s.wrapper}>

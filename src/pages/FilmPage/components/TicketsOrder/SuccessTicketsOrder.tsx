@@ -1,9 +1,14 @@
 import okey from '@/assets/img/okey.svg'
 import { TitleWithInfo } from '@/shared/components'
 
-import { SuccessTicketsOrderProps } from '../lib/types'
+import s from './styles.module.css'
 
-import s from '../ui/styles.module.css'
+interface SuccessTicketsOrderProps {
+  order: api.CinemaOrder
+  filmName: string
+  date: string
+  time: string
+}
 
 export const SuccessTicketsOrder = ({ order, filmName, date, time }: SuccessTicketsOrderProps) => (
   <div className={s.wrapper}>

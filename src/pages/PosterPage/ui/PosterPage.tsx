@@ -2,7 +2,7 @@ import posterTitle from '@/assets/img/posterTitle.svg'
 import { Header } from '@/modules/Header'
 import { Typography } from '@/shared/uikit'
 
-import { PosterFilms } from '../components/PosterFilms/PosterFilms'
+import { PosterFilms } from '../components'
 
 import s from './styles.module.css'
 

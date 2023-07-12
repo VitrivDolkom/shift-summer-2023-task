@@ -1,6 +1,6 @@
 import { SeancePlace } from '@/shared/components'
 
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 interface SeanceSeatsProps {
   seance: api.ScheduleSeance

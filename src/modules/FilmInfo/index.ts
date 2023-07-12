@@ -1,1 +1,2 @@
-export { FilmInfo } from './ui/FilmInfo'
+export { filmInfoSlice } from './model/slice'
+export { fetchFilmInfo } from './model/thunk'

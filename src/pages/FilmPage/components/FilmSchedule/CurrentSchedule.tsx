@@ -1,8 +1,8 @@
 import { Typography } from '@/shared/uikit'
 
-import { seancesTime, seanceStyle } from '../lib/seances'
+import { seancesTime, seanceStyle } from './seances'
 
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 interface Props {
   schedule: api.Schedule

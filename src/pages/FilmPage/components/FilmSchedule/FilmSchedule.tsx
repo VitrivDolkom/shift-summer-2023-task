@@ -1,9 +1,18 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { chooseSchedule, chooseSeance, setDefaultSchedule, setDefaultSeance } from '../model/slice'
-import { fetchFilmSchedule } from '../model/thunk'
-import { FilmScheduleComponent } from './FilmScheduleComponent'
+import {
+  chooseSchedule,
+  chooseSeance,
+  fetchFilmSchedule,
+  setDefaultSchedule,
+  setDefaultSeance
+} from '@/modules/FilmSchedule/'
+
+import { CurrentSchedule } from './CurrentSchedule'
+import { SchedulesDate } from './SchedulesDate'
+
+import s from './styles.module.css'
 
 interface FilmScheduleProps {
   id: string
@@ -33,21 +42,23 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
     return <div>Pending ...</div>
   }
 
-  if (request.status === 'error') {
+  if (request.status === 'error' || !currentSchedule) {
     return <div>Error </div>
   }
 
   return (
-    <>
-      {schedules.length && currentSchedule && (
-        <FilmScheduleComponent
-          schedules={schedules}
-          currentSchedule={currentSchedule}
-          currentSeance={currentSeance}
-          onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
-          onSeanceClick={(seance) => dispatch(chooseSeance(seance))}
-        />
-      )}
-    </>
+    <div className={s.wrapper}>
+      <div className={s.title}>Расписание</div>
+      <SchedulesDate
+        schedules={schedules}
+        currentSchedule={currentSchedule}
+        onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
+      />
+      <CurrentSchedule
+        schedule={currentSchedule}
+        currentSeance={currentSeance}
+        onSeanceClick={(seance) => dispatch(chooseSeance(seance))}
+      />
+    </div>
   )
 }

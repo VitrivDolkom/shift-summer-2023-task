@@ -2,11 +2,10 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { setUserInfo } from '@/modules/FillUserInfo'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { Button, Typography } from '@/shared/uikit'
-
-import { setUserInfo } from '../model/slice'
 
 import s from './styles.module.css'
 

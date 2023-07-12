@@ -1,0 +1,7 @@
+export { ChoiceFilmTickets } from './ChoiceFilmTickets/ChoiceFilmTickets'
+export { FillCardInfo } from './FillCardInfo/FillCardInfo'
+export { SelectedTicketsInfo } from './SelectedTicketsInfo/SelectedTicketsInfo'
+export { FilmInfo } from './FilmInfo/FilmInfo'
+export { FillUserInfo } from './FillUserInfo/FillUserInfo'
+export { FilmSchedule } from './FilmSchedule/FilmSchedule'
+export { TicketsOrder } from './TicketsOrder/TicketsOrder'

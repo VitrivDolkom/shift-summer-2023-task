@@ -1,2 +1,1 @@
-export { ChoiceFilmTickets } from './ui/ChoiceFilmTickets'
-export { filmTicketsSlice } from './model/slice'
+export { filmTicketsSlice, resetTickets, toggleTicket } from './model/slice'

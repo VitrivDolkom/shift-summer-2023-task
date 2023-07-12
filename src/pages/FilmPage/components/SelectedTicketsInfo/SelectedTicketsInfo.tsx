@@ -1,20 +1,31 @@
+import { useAppSelector } from '@/store'
+
 import ticketImg from '@/assets/img/ticket.svg'
 import { TitleWithInfo } from '@/shared/components'
+import { getHallName } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
-
-import { SelectedTicketsInfoComponentProps } from '../lib/types'
 
 import s from './styles.module.css'
 
-export const SelectedTicketsInfoComponents = (props: SelectedTicketsInfoComponentProps) => {
-  const { tickets, date, filmName, hallName, time, price, onBuyButtonClick } = props
+export interface SelectedTicketsInfoProps {
+  onBuyButtonClick: () => void
+}
+
+export const SelectedTicketsInfo = ({ onBuyButtonClick }: SelectedTicketsInfoProps) => {
+  const { film } = useAppSelector((state) => state.filmInfo)
+  const { tickets, price } = useAppSelector((state) => state.filmTickets)
+  const { currentSchedule, currentSeance, request } = useAppSelector((state) => state.filmSchedule)
+
+  if (request.status === 'pending' || !film || !currentSchedule || !currentSeance) {
+    return null
+  }
 
   return (
     <div className={s.wrapper}>
       <div className={s.content}>
-        <div className={s.title}>{hallName}</div>
-        <TitleWithInfo title="Фильм:" info={filmName} />
-        <TitleWithInfo title="Дата и время:" info={`${date} ${time}`} />
+        <div className={s.title}>{getHallName(currentSeance.hall.name)}</div>
+        <TitleWithInfo title="Фильм:" info={film.name} />
+        <TitleWithInfo title="Дата и время:" info={`${currentSchedule.date} ${currentSeance.time}`} />
         <TitleWithInfo
           title="Места:"
           info={tickets.map((ticket) => `${ticket.row} ряд - ${ticket.column}; `).toString()}

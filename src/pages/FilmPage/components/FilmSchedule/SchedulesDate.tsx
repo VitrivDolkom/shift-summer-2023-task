@@ -1,11 +1,9 @@
-import { FilmSchedule } from '../lib/types'
-
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 interface Props {
-  schedules: FilmSchedule[]
-  currentSchedule: FilmSchedule
-  onScheduleClick: (schedule: FilmSchedule) => void
+  schedules: api.Schedule[]
+  currentSchedule: api.Schedule
+  onScheduleClick: (schedule: api.Schedule) => void
 }
 
 export const SchedulesDate = ({ schedules, currentSchedule, onScheduleClick }: Props) => (

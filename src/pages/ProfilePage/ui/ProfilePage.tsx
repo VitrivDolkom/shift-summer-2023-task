@@ -2,12 +2,11 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
+import { fetchProfile } from '@/modules/Profile'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
 import { ErrorMessage } from '@/shared/components/ErrorMessage/ErrorMessage'
 
-import { UserOrders } from '../components/UserOrders/UserOrders'
-import { UserOrdersSkelton } from '../components/UserOrdersSkeleton/UserOrdersSkelton'
-import { UserProfileInfo } from '../components/UserProfileInfo/UserProfileInfo'
+import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
 
 import s from './styles.module.css'
 
@@ -19,6 +18,7 @@ export const ProfilePage = () => {
 
   useEffect(() => {
     dispatch(fetchUserOrders({ token }))
+    dispatch(fetchProfile({ token }))
   }, [])
 
   return (

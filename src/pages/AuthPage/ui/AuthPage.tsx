@@ -1,6 +1,7 @@
 import { Header } from '@/modules/Header'
 import { Typography } from '@/shared/uikit'
-import { AuthForm } from '../components/AuthForm/AuthForm'
+
+import { AuthForm } from '../components'
 
 import s from './styles.module.css'
 

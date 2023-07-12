@@ -1,3 +1,8 @@
-export { FilmSchedule } from './ui/FilmSchedule'
-export type { FilmTicket, FilmSeanceTime } from './lib/types'
-export { filmScheduleSlice } from './model/slice'
+export {
+  filmScheduleSlice,
+  chooseSchedule,
+  chooseSeance,
+  setDefaultSchedule,
+  setDefaultSeance
+} from './model/slice'
+export { fetchFilmSchedule } from './model/thunk'

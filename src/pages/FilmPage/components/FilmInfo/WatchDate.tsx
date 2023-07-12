@@ -1,6 +1,6 @@
 import { Typography } from '@/shared/uikit'
 
-import s from '../ui/styles.module.css'
+import s from './styles.module.css'
 
 interface Props {
   date?: string
