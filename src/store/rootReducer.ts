@@ -11,7 +11,7 @@ import { userOrdersSlice } from '@/modules/UserOrders'
 import { userProfileSlice } from '@/modules/UserProfile'
 
 export const rootReducer = combineReducers({
-  posterMovies: posterFilmsSlice.reducer,
+  posterFilms: posterFilmsSlice.reducer,
   filmInfo: filmInfoSlice.reducer,
   filmSchedule: filmScheduleSlice.reducer,
   filmTickets: filmTicketsSlice.reducer,

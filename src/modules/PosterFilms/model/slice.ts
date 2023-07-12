@@ -4,7 +4,7 @@ import { initialState } from './state'
 import { fetchPosterMovies } from './thunk'
 
 export const posterFilmsSlice = createSlice({
-  name: 'posterMovies',
+  name: 'posterFilms',
   initialState,
   reducers: {},
   extraReducers(builder) {
@@ -13,8 +13,7 @@ export const posterFilmsSlice = createSlice({
         state.request.status = 'pending'
       })
       .addCase(fetchPosterMovies.fulfilled, (state, action) => {
-        if (action.payload.success) state.request.status = 'success'
-
+        state.request.status = 'success'
         state.films = action.payload.films
       })
       .addCase(fetchPosterMovies.rejected, (state, action) => {

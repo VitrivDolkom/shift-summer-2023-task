@@ -16,8 +16,8 @@ export const UserOrders = ({ orders }: UserOrdersProps) => (
     {orders.map((order) => (
       <div key={order.orderNumber} className={s.order}>
         <div className={s.top}>
-          <Typography variant="sub2" text={order.tickets[0].seance.date} />
-          <Typography variant="sub2" text={order.tickets[0].seance.time} />
+          <Typography variant="sub2" text={'date'} />
+          <Typography variant="sub2" text={'time'} />
         </div>
         <div className={s.center}>
           <Typography className={cx({ name: true, ellipsis: true })} text="Оnrelf ksdfjlsdf" />

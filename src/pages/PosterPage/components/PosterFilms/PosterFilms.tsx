@@ -6,11 +6,12 @@ import { fetchPosterMovies } from '@/modules/PosterFilms'
 import { PosterFilmCard } from '../PosterFilmCard/PosterFilmCard'
 
 import s from './styles.module.css'
+import { PosterFilmsSkeleton } from '../PosterFilmsSkeleton/PosterFilmsSkeleton'
 
 export const PosterFilms = () => {
   const dispatch = useAppDispatch()
 
-  const { films, request } = useAppSelector((state) => state.posterMovies)
+  const { films, request } = useAppSelector((state) => state.posterFilms)
 
   useEffect(() => {
     if (request.status === 'idle') {
@@ -23,7 +24,7 @@ export const PosterFilms = () => {
   }
 
   if (request.status === 'pending') {
-    return <h1>Pending ...</h1>
+    return <PosterFilmsSkeleton />
   }
 
   return (

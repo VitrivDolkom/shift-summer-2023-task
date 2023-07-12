@@ -7,7 +7,7 @@ import { PosterFilms } from '../components'
 import s from './styles.module.css'
 
 export const PosterPage = () => (
-  <div>
+  <>
     <Header type="withButton" />
     <main>
       <div className={s.title}>
@@ -16,5 +16,5 @@ export const PosterPage = () => (
       </div>
       <PosterFilms />
     </main>
-  </div>
+  </>
 )
