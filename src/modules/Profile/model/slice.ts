@@ -8,7 +8,15 @@ export const userProfileSlice = createSlice({
   initialState,
   reducers: {
     setUserProfile(state, action: PayloadAction<api.SignInResponse>) {
+      state.request.status = 'success'
       state.profile = { user: action.payload.user, token: action.payload.token }
+    },
+    setSignInPending(state) {
+      state.request.status = 'pending'
+    },
+    setSignInError(state, action: PayloadAction<string>) {
+      state.request.status = 'error'
+      state.request.error = action.payload
     },
     login(state) {
       state.isAuth = true
@@ -33,4 +41,5 @@ export const userProfileSlice = createSlice({
   }
 })
 
-export const { login, logout, setUserProfile } = userProfileSlice.actions
+export const { login, logout, setUserProfile, setSignInError, setSignInPending } =
+  userProfileSlice.actions

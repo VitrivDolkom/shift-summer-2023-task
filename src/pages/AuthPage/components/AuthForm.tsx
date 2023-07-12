@@ -1,11 +1,18 @@
 import { useAppDispatch, useAppSelector } from '@/store'
+import { AxiosError } from 'axios'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { createOtpCode } from '@/modules/Auth'
-import { login, ProfileService, setUserProfile } from '@/modules/Profile'
-import { ValidatedInput } from '@/shared/components'
+import {
+  login,
+  ProfileService,
+  setSignInError,
+  setSignInPending,
+  setUserProfile
+} from '@/modules/Profile'
+import { ErrorMessage, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
@@ -38,10 +45,17 @@ export const AuthForm = () => {
       return
     }
 
-    const singInResponse = await ProfileService.signIn(signInDto)
+    dispatch(setSignInPending())
 
-    if (singInResponse.data.success) {
+    try {
+      const singInResponse = await ProfileService.signIn(signInDto)
       dispatch(setUserProfile(singInResponse.data))
+    } catch (error) {
+      dispatch(
+        setSignInError(
+          (error as AxiosError<api.SignInResponse>).response?.data.reason || 'Ошибка регистрации'
+        )
+      )
     }
   }
 
@@ -82,6 +96,10 @@ export const AuthForm = () => {
           </Button>
         </>
       )}
+
+      {signIn.request.status === 'error' && <ErrorMessage message={signIn.request.error} />}
+      {authInfo.request.status === 'error' && <ErrorMessage message={authInfo.request.error} />}
+
       <div className={s.btn}>
         <Button
           styleType="solid"
