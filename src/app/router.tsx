@@ -5,8 +5,8 @@ import { createBrowserRouter, Outlet } from 'react-router-dom'
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
-import { ProfilePage } from '@/pages/UserProfilePage'
 import { RootPage } from '@/pages/RootPage'
+import { ProfilePage } from '@/pages/UserProfilePage'
 
 export const router = createBrowserRouter([
   {
