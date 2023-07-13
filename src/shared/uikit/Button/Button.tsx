@@ -8,13 +8,15 @@ type ButtonStyleType = 'outlined' | 'solid'
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean
   styleType: ButtonStyleType
+  loader?: React.ReactNode
 }
 
 const cx = classNames.bind(s)
 
-export const Button = ({ children, isLoading = false, styleType, ...props }: ButtonProps) => (
+export const Button = ({ children, isLoading = false, styleType, loader, ...props }: ButtonProps) => (
   <button
     {...props}
+    disabled={isLoading}
     className={`${props.className} ${cx({
       btn: true,
       outlined: styleType === 'outlined',
@@ -22,6 +24,6 @@ export const Button = ({ children, isLoading = false, styleType, ...props }: But
     })}`}
   >
     {!isLoading && children}
-    {isLoading && <div className="loader white"></div>}
+    {isLoading && loader}
   </button>
 )

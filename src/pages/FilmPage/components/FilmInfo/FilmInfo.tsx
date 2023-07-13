@@ -41,12 +41,12 @@ export const FilmInfo = ({ id }: FilmInfoProps) => {
         <WatchDate />
       </div>
       <div className={s.right}>
-        <Typography variant="t2" text={film.name} />
+        <Typography tag="h2" variant="t2" text={film.name} />
         <FilmDirectors directors={film.directors} />
         <FIlmGenreCountryYear genres={film.genres} country={film.country} date={film.releaseDate} />
         <FilmRating rating={film.userRatings.kinopoisk} company="кинопоиск" />
         <div className={s.description}>
-          <Typography className="ellipsis" variant="t3" text={film.description} />
+          <Typography tag="p" className="ellipsis" variant="t3" text={film.description} />
         </div>
       </div>
     </div>

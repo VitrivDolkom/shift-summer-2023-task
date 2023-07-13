@@ -35,7 +35,7 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
           <div className={s.name}>{name}</div>
 
           <div className={s.originalName}>
-            <Typography text={originalName} variant="sub2" />
+            <Typography tag="p" text={originalName} variant="sub2" />
           </div>
           <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
         </div>

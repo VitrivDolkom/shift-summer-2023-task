@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
+import waiting from '@/assets/gif/waiting.gif'
 import {
   chooseSchedule,
   chooseSeance,
@@ -8,9 +9,9 @@ import {
   setDefaultSchedule,
   setDefaultSeance
 } from '@/modules/FilmSchedule/'
+import { Loader } from '@/shared/components'
 
 import { CurrentSchedule } from './CurrentSchedule'
-import { FilmSchedulePending } from './FilmSchedulePending'
 import { SchedulesDate } from './SchedulesDate'
 
 import s from './styles.module.css'
@@ -40,7 +41,7 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   }, [currentSchedule, schedules])
 
   if (request.status === 'pending') {
-    return <FilmSchedulePending />
+    return <Loader wrapperClassName={s.pending} img={waiting} message="Расписание загружается ..." />
   }
 
   if (request.status === 'error' || !currentSchedule) {

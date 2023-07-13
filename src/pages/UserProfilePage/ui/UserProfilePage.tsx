@@ -26,7 +26,7 @@ export const UserProfilePage = () => {
     <>
       <Header type="withButton" />
       <main className={s.wrapper}>
-        <Typography className="centered" variant="t1" text="Личный кабинет" />
+        <Typography tag="h1" className="centered" variant="t1" text="Личный кабинет" />
         <div className={s.content}>
           <div className={s.left}>
             <UserProfileInfo user={user} />
@@ -35,7 +35,7 @@ export const UserProfilePage = () => {
             {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
             {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
             {ordersInfo.request.status === 'error' && (
-              <Typography variant="err1" text={ordersInfo.request.error} />
+              <Typography tag="p" variant="err1" text={ordersInfo.request.error} />
             )}
           </div>
         </div>

@@ -27,7 +27,12 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
       <div className={s.wrapper}>
         <div className={s.content}>
           <div className={s.title}>
-            <Typography className="centered" variant="t3" text="Введите данные карты для оплаты" />
+            <Typography
+              tag="h3"
+              className="centered"
+              variant="t3"
+              text="Введите данные карты для оплаты"
+            />
           </div>
           <div className={s.top}>
             <img src={shiftCard} alt="shift card" />

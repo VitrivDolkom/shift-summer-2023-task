@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import waiting from '@/assets/gif/waiting.gif'
+import { Loader } from '@/shared/components'
 
 export const RootPage = () => {
   const navigate = useNavigate()
@@ -11,5 +12,5 @@ export const RootPage = () => {
     // TODO может быть какая-то логика авторизиции или ...
   }, [])
 
-  return <img src={waiting} alt="Ожидайте ..." />
+  return <Loader img={waiting} />
 }

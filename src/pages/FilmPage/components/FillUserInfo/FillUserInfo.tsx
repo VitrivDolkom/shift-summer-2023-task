@@ -34,7 +34,7 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit(onFormSubmit)}>
-      <div className={s.title}>Введите ваши данные</div>
+      <Typography tag="h3" className={s.title} variant="t4" text="Введите ваши данные" />
       <ValidatedInput
         name="Имя"
         error={errors.firstname?.message}

@@ -12,7 +12,7 @@ import {
   setSignInPending,
   setUserProfile
 } from '@/modules/UserProfile'
-import { ValidatedInput } from '@/shared/components'
+import { ButtonLoader, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
@@ -101,12 +101,12 @@ export const AuthForm = () => {
 
       {signIn.request.status === 'error' && (
         <div className={s.error}>
-          <Typography variant="err2" text={signIn.request.error} />
+          <Typography tag="p" variant="err2" text={signIn.request.error} />
         </div>
       )}
       {authInfo.request.status === 'error' && (
         <div className={s.error}>
-          <Typography variant="err2" text={authInfo.request.error} />
+          <Typography tag="p" variant="err2" text={authInfo.request.error} />
         </div>
       )}
 
@@ -114,6 +114,7 @@ export const AuthForm = () => {
         <Button
           styleType="solid"
           isLoading={authInfo.request.status === 'pending' || signIn.request.status === 'pending'}
+          loader={<ButtonLoader className="loader white" />}
         >
           <Typography tag="p" variant="btn1" text="Продолжить" />
         </Button>

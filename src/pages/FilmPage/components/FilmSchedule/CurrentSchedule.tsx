@@ -19,7 +19,7 @@ export const CurrentSchedule = ({ schedule, currentSeance, onSeanceClick }: Prop
     {seancesTime.map((time, index) => (
       <div key={index} className={s.time} style={seanceStyle(time.str)}>
         <div className={s.line}></div>
-        <Typography className="centered" variant="sub1" text={time.str} />
+        <Typography tag="p" className="centered" variant="sub1" text={time.str} />
       </div>
     ))}
     {schedule.seances.map((seance, index) => (

@@ -14,7 +14,7 @@ export const SeancePlaces = ({ seance, tickets, onPlaceClick }: SeanceSeatsProps
     {seance.hall.places.map((row, rowIndex) => (
       <div key={rowIndex} className={s.row}>
         <div className={s.rowIndex}>
-          <Typography className={s.index} text={rowIndex.toString()} />
+          <Typography tag="p" className={s.index} text={rowIndex.toString()} />
         </div>
         {row.map((place, index) => {
           const ticketPlaceInfo: api.FullTicketInfo = { row: rowIndex + 1, column: index + 1, ...place }
@@ -35,7 +35,7 @@ export const SeancePlaces = ({ seance, tickets, onPlaceClick }: SeanceSeatsProps
           )
         })}
         <div className={s.rowIndex}>
-          <Typography className={s.index} text={rowIndex.toString()} />
+          <Typography tag="p" className={s.index} text={rowIndex.toString()} />
         </div>
       </div>
     ))}
