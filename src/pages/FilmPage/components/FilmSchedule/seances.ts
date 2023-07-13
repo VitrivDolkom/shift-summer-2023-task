@@ -4,6 +4,7 @@ interface Time {
 }
 
 export const seancesTime: Time[] = [
+  { str: '10:00', secondsTime: 36000 },
   { str: '11:00', secondsTime: 39600 },
   { str: '12:00', secondsTime: 43200 },
   { str: '13:00', secondsTime: 46800 },
@@ -16,7 +17,8 @@ export const seancesTime: Time[] = [
   { str: '20:00', secondsTime: 72000 },
   { str: '21:00', secondsTime: 75600 },
   { str: '22:00', secondsTime: 79200 },
-  { str: '23:00', secondsTime: 82800 }
+  { str: '23:00', secondsTime: 82800 },
+  { str: '00:00', secondsTime: 86400 }
 ]
 
 export const maxTimeDifference =
@@ -31,9 +33,9 @@ export const secondsFromTimeString = (time: string): number => {
   return seconds
 }
 
-export const seanceStyle = (time: string) => {
-  const leftStyle =
-    (((secondsFromTimeString(time) - minTime) / maxTimeDifference) * 100).toString() + '%'
+export const seanceStyle = (time: string, index = 0, num = 0) => {
+  const leftStyle = `${((secondsFromTimeString(time) - minTime) / maxTimeDifference) * 100}%`
+  const topStyle = `${(index / num) * 50}%`
 
-  return { left: leftStyle }
+  return { left: leftStyle, top: topStyle }
 }

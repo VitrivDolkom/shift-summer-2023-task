@@ -24,5 +24,22 @@
 
 .row {
   display: flex;
+  align-items: center;
   gap: 12px;
+}
+
+.rowIndex {
+  width: 24px;
+  height: 24px;
+  background-color: var(--light-red); 
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
 }

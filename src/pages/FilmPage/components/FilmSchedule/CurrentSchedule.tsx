@@ -1,3 +1,5 @@
+import classNames from 'classnames/bind'
+
 import { Typography } from '@/shared/uikit'
 
 import { seancesTime, seanceStyle } from './seances'
@@ -9,6 +11,8 @@ interface Props {
   currentSeance?: api.ScheduleSeance
   onSeanceClick: (seance: api.ScheduleSeance) => void
 }
+
+const cx = classNames.bind(s)
 
 export const CurrentSchedule = ({ schedule, currentSeance, onSeanceClick }: Props) => (
   <div className={s.timeLine}>
@@ -22,8 +26,14 @@ export const CurrentSchedule = ({ schedule, currentSeance, onSeanceClick }: Prop
       <div
         key={index}
         onClick={() => onSeanceClick(seance)}
-        className={[s.seanceTime, seance.time === currentSeance?.time ? s.active : ''].join(' ')}
-        style={seanceStyle(seance.time)}
+        className={cx({
+          seanceTime: true,
+          active: seance.time === currentSeance?.time,
+          red: seance.hall.name === 'Red',
+          green: seance.hall.name === 'Green',
+          blue: seance.hall.name === 'Blue'
+        })}
+        style={seanceStyle(seance.time, index, schedule.seances.length)}
       >
         {seance.time}
       </div>

@@ -74,18 +74,56 @@
   font-weight: 700;
   padding: 10px 13px;
   transition: all .3s linear;
-  border: 2px solid var(--black);
+  border: 2px solid;
   cursor: pointer;
 }
 
 .seanceTime.active {
-  background-color: var(--black);
   color: var(--white);
 }
 
 .seanceTime:hover {
-  background-color: aliceblue;
+  color: var(--white);
 }
+
+.seanceTime.red {
+  border-color: var(--red);
+}
+
+.seanceTime.red:hover {
+  background-color: var(--light-red);
+}
+
+.seanceTime.red.active {
+  background-color: var(--red);
+}
+
+.seanceTime.blue {
+  border-color: var(--blue);
+}
+
+.seanceTime.blue:hover {
+  background-color: var(--light-blue);
+}
+
+.seanceTime.blue.active {
+  background-color: var(--blue);
+}
+
+.seanceTime.green {
+  border-color: var(--green);
+}
+
+.seanceTime.green:hover {
+  background-color: var(--green);
+}
+
+.seanceTime.green.active {
+  background-color: var(--green);
+}
+
+
+
 
 .pending {
   margin: 40px auto;
