@@ -1,7 +1,8 @@
-import { useAppSelector } from '@/store'
+import { useAppDispatch, useAppSelector } from '@/store'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import logout from '@/assets/img/logout.svg'
+import logoutImg from '@/assets/img/logout.svg'
+import { logout } from '@/modules/UserProfile'
 import { Button, Typography } from '@/shared/uikit'
 
 import s from '../ui/styles.module.css'
@@ -9,12 +10,26 @@ import s from '../ui/styles.module.css'
 export const HeaderButton = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const { isAuth } = useAppSelector((state) => state.userProfile)
+
+  const onLogoutClick = () => {
+    dispatch(logout())
+    navigate('/')
+  }
+
+  const onLoginClick = () => {
+    navigate('/auth')
+  }
+
+  const onUserProfileClick = () => {
+    navigate('/profile')
+  }
 
   if (!isAuth) {
     return (
       <div className={s.btn}>
-        <Button styleType="outlined" onClick={() => navigate('/auth')}>
+        <Button styleType="outlined" onClick={onLoginClick}>
           <Typography tag="p" variant="btn2" text="Войти" />
         </Button>
       </div>
@@ -24,9 +39,9 @@ export const HeaderButton = () => {
   if (location.pathname.startsWith('/profile')) {
     return (
       <div className={s.btn}>
-        <Button styleType="outlined" onClick={() => navigate('/profile')}>
+        <Button styleType="outlined" onClick={onLogoutClick}>
           <div className={s.insideBtn}>
-            <img src={logout} alt="" />
+            <img src={logoutImg} alt="" />
             <Typography tag="p" variant="btn2" text="Выйти" />
           </div>
         </Button>
@@ -36,7 +51,7 @@ export const HeaderButton = () => {
 
   return (
     <div className={s.btn}>
-      <Button styleType="outlined" onClick={() => navigate('/profile')}>
+      <Button styleType="outlined" onClick={onUserProfileClick}>
         <Typography tag="p" variant="btn2" text="Кабинет" />
       </Button>
     </div>

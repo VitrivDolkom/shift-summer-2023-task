@@ -3,8 +3,7 @@ import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
-import { fetchProfile } from '@/modules/UserProfile'
-import { ErrorMessage } from '@/shared/components/ErrorMessage/ErrorMessage'
+import { fetchProfile, login } from '@/modules/UserProfile'
 import { Typography } from '@/shared/uikit'
 
 import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
@@ -18,6 +17,7 @@ export const UserProfilePage = () => {
   const ordersInfo = useAppSelector((state) => state.userOrders)
 
   useEffect(() => {
+    dispatch(login())
     dispatch(fetchUserOrders({ token }))
     dispatch(fetchProfile({ token }))
   }, [])
@@ -35,7 +35,7 @@ export const UserProfilePage = () => {
             {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
             {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
             {ordersInfo.request.status === 'error' && (
-              <ErrorMessage message={ordersInfo.request.error} />
+              <Typography variant="err1" text={ordersInfo.request.error} />
             )}
           </div>
         </div>

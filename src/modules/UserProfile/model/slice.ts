@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { initialState } from './state'
 import { fetchProfile } from './thunk'
@@ -22,6 +22,15 @@ export const userProfileSlice = createSlice({
       state.isAuth = true
     },
     logout(state) {
+      state.profile = {
+        user: {
+          phone: ''
+        },
+        token: ''
+      }
+      state.request.status = 'idle'
+      state.request.error = ''
+      state.profile.token = ''
       state.isAuth = false
     }
   },
@@ -34,12 +43,14 @@ export const userProfileSlice = createSlice({
         state.profile.user = action.payload.user
         state.request.status = 'success'
       })
-      .addCase(fetchProfile.rejected, (state, action) => {
+      .addMatcher(isError, (state, action: PayloadAction<string>) => {
         state.request.status = 'error'
-        state.request.error = action.error.message
+        state.request.error = action.payload
       })
   }
 })
+
+const isError = (action: AnyAction) => action.type.endsWith('rejected')
 
 export const { login, logout, setUserProfile, setSignInError, setSignInPending } =
   userProfileSlice.actions

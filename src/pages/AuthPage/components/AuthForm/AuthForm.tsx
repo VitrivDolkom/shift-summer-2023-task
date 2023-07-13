@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 
 import { createOtpCode } from '@/modules/Auth'
 import {
-  login,
+  logout,
   ProfileService,
   setSignInError,
   setSignInPending,
   setUserProfile
 } from '@/modules/UserProfile'
-import { ErrorMessage, ValidatedInput } from '@/shared/components'
+import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTwoStepAction } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
@@ -33,8 +33,11 @@ export const AuthForm = () => {
   const { isFirst, nextStep } = useTwoStepAction()
 
   useEffect(() => {
+    dispatch(logout())
+  }, [])
+
+  useEffect(() => {
     if (signIn.request.status === 'success') {
-      dispatch(login())
       navigate('/profile')
     }
   }, [signIn.request.status])
@@ -44,7 +47,6 @@ export const AuthForm = () => {
       nextOtpCode()
       return
     }
-
     dispatch(setSignInPending())
 
     try {
@@ -97,8 +99,16 @@ export const AuthForm = () => {
         </>
       )}
 
-      {signIn.request.status === 'error' && <ErrorMessage message={signIn.request.error} />}
-      {authInfo.request.status === 'error' && <ErrorMessage message={authInfo.request.error} />}
+      {signIn.request.status === 'error' && (
+        <div className={s.error}>
+          <Typography variant="err2" text={signIn.request.error} />
+        </div>
+      )}
+      {authInfo.request.status === 'error' && (
+        <div className={s.error}>
+          <Typography variant="err2" text={authInfo.request.error} />
+        </div>
+      )}
 
       <div className={s.btn}>
         <Button

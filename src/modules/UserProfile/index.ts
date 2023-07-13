@@ -1,4 +1,10 @@
 export { ProfileService } from './api/ProfileService.service'
 export { fetchProfile } from './model/thunk'
-export { userProfileSlice } from './model/slice'
-export * from './model/slice'
+export {
+  userProfileSlice,
+  login,
+  logout,
+  setSignInError,
+  setSignInPending,
+  setUserProfile
+} from './model/slice'

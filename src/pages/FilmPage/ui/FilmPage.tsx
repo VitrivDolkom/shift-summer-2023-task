@@ -19,12 +19,12 @@ import {
 import s from './styles.module.css'
 
 export const FilmPage = () => {
+  const params = useParams()
+  const dispatch = useAppDispatch()
   const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
   const { tickets } = useAppSelector((state) => state.filmTickets)
   const { person } = useAppSelector((state) => state.userInfo)
   const { film } = useAppSelector((state) => state.filmInfo)
-  const dispatch = useAppDispatch()
-  const params = useParams()
 
   const userInfoModal = useModal(false)
   const cardInfoModal = useModal(false)

@@ -4,13 +4,12 @@ import { useEffect } from 'react'
 import { fetchPosterMovies } from '@/modules/PosterFilms'
 
 import { PosterFilmCard } from '../PosterFilmCard/PosterFilmCard'
+import { PosterFilmsSkeleton } from '../PosterFilmsSkeleton/PosterFilmsSkeleton'
 
 import s from './styles.module.css'
-import { PosterFilmsSkeleton } from '../PosterFilmsSkeleton/PosterFilmsSkeleton'
 
 export const PosterFilms = () => {
   const dispatch = useAppDispatch()
-
   const { films, request } = useAppSelector((state) => state.posterFilms)
 
   useEffect(() => {
