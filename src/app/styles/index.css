@@ -67,3 +67,15 @@ button {
 .content {
   flex: 1 1 auto;
 }
+
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    padding: 0 15px;
+  }
+}

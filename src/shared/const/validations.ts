@@ -3,6 +3,8 @@ export interface InputValidations {
   lastname: Validation
   middlename: Validation
   phone: Validation
+  email: Validation
+  city: Validation
   pan: Validation
   expireDate: Validation
   cvv: Validation
@@ -13,7 +15,7 @@ interface Validation {
   required: { value: boolean; message: string }
   maxLength: { value: number; message: string }
   minLength?: { value: number; message: string }
-  pattern: { value: RegExp; message: string }
+  pattern?: { value: RegExp; message: string }
 }
 
 export const validations: InputValidations = {
@@ -39,6 +41,14 @@ export const validations: InputValidations = {
     required: { value: true, message: 'Заполните поле' },
     maxLength: { value: 11, message: 'Длина 11' },
     pattern: { value: /^8[0-9]{10}$/i, message: 'Некорректный телефон' }
+  },
+  email: {
+    required: { value: false, message: '' },
+    maxLength: { value: 20, message: 'длина 20' }
+  },
+  city: {
+    required: { value: false, message: '' },
+    maxLength: { value: 20, message: 'длина 20' }
   },
   pan: {
     required: { value: true, message: 'Заполните поле' },
