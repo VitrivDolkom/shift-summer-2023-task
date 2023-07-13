@@ -1,6 +1,5 @@
 .close {
   align-self: end;
-  float: right;
   cursor: pointer;
   margin: 10px;
 }

@@ -4,9 +4,6 @@
   padding: 10px;
   border: 1px solid var(--black);
   border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
 }
 
 .top {
@@ -15,7 +12,6 @@
   padding: 5px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   color: var(--white);

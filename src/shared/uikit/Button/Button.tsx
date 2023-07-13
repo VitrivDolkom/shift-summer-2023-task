@@ -15,7 +15,11 @@ const cx = classNames.bind(s)
 export const Button = ({ children, isLoading = false, styleType, ...props }: ButtonProps) => (
   <button
     {...props}
-    className={cx({ btn: true, outlined: styleType === 'outlined', solid: styleType === 'solid' })}
+    className={`${props.className} ${cx({
+      btn: true,
+      outlined: styleType === 'outlined',
+      solid: styleType === 'solid'
+    })}`}
   >
     {!isLoading && children}
     {isLoading && <div className="loader white"></div>}

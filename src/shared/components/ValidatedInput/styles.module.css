@@ -9,7 +9,7 @@
   width: 100%;
   border-radius: 8px;
   border: 1px solid var(--light-grey);
-  background: var(--white);
+  background-color: var(--white);
   padding: 12px;
   margin-top: 10px;
 }

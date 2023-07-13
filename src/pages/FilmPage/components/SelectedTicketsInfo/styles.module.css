@@ -2,7 +2,7 @@
   width: 450px;
   padding: 20px 24px 0px 24px;
   margin-left: 23px;
-  background: var(--background);
+  background-color: var(--background);
   border-radius: 16px;
   border: 4px dashed var(--background-second);
   display: flex;

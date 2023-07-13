@@ -55,11 +55,9 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
         error={errors.phone?.message}
         register={register('phone', validations.phone)}
       />
-      <div className={s.button}>
-        <Button styleType="solid">
-          <Typography tag="p" variant="btn1" text="Далее" />
-        </Button>
-      </div>
+      <Button className={s.button} styleType="solid">
+        <Typography tag="p" variant="btn1" text="Далее" />
+      </Button>
     </form>
   )
 }

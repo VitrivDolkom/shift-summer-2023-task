@@ -1,4 +1,3 @@
-import classNames from 'classnames/bind'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
