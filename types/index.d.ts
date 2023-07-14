@@ -161,6 +161,7 @@ namespace api {
   }
 
   interface CinemaOrder {
+    filmName: string
     orderNumber: number
     tickets: Ticket[]
     phone: string
