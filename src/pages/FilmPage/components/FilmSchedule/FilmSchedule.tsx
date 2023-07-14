@@ -10,6 +10,7 @@ import {
   setDefaultSeance
 } from '@/modules/FilmSchedule/'
 import { Loader } from '@/shared/components'
+import { Typography } from '@/shared/uikit'
 
 import { CurrentSchedule } from './CurrentSchedule'
 import { SchedulesDate } from './SchedulesDate'
@@ -45,7 +46,7 @@ export const FilmSchedule = ({ id }: FilmScheduleProps) => {
   }
 
   if (request.status === 'error' || !currentSchedule) {
-    return <div>Error </div>
+    return <Typography variant="err1" text={request.error} />
   }
 
   return (

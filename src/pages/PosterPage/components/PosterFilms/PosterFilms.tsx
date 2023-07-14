@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { fetchPosterMovies } from '@/modules/PosterFilms'
+import { Typography } from '@/shared/uikit'
 
 import { PosterFilmCard } from '../PosterFilmCard/PosterFilmCard'
 import { PosterFilmsSkeleton } from '../PosterFilmsSkeleton/PosterFilmsSkeleton'
@@ -19,7 +20,7 @@ export const PosterFilms = () => {
   }, [])
 
   if (request.error) {
-    return <h1>Error ...</h1>
+    return <Typography variant="err1" text="Ошибка загрузки афиши" />
   }
 
   if (request.status === 'pending') {

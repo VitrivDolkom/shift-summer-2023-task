@@ -99,6 +99,13 @@
   font-weight: 500;
 }
 
+.err1 {
+  color: var(--light-red);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+}
+
 .err2 {
   color: var(--light-red);
   font-size: 16px;

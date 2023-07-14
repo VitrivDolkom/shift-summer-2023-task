@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Header } from '@/modules/Header'
 import { setTicketsOrderInfo } from '@/modules/TicketsOrder'
 import { useModal } from '@/shared/lib'
-import { Modal } from '@/shared/uikit'
+import { Modal, Typography } from '@/shared/uikit'
 
 import {
   ChoiceFilmTickets,
@@ -33,7 +33,7 @@ export const FilmPage = () => {
   const filmId = params.id
 
   if (!filmId) {
-    return <div>Error page</div>
+    return <Typography variant="err1" text="Ошибка загрузки фильма" />
   }
 
   const onBuyButtonClick = () => {
