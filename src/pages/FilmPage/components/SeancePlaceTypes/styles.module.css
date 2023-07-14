@@ -1,0 +1,7 @@
+.types {
+  margin: 20px auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

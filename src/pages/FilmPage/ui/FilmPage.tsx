@@ -12,6 +12,7 @@ import {
   FillUserInfo,
   FilmInfo,
   FilmSchedule,
+  SeancePlaceTypes,
   SelectedTicketsInfo,
   TicketsOrder
 } from '../components/'
@@ -79,6 +80,7 @@ export const FilmPage = () => {
             <TicketsOrder />
           </Modal>
         </div>
+        <SeancePlaceTypes />
       </main>
     </>
   )
