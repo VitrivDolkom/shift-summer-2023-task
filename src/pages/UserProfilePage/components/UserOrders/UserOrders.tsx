@@ -1,16 +1,17 @@
 import classNames from 'classnames/bind'
 
-import { Typography } from '@/shared/uikit'
+import { Button, Typography } from '@/shared/uikit'
 
 import s from './styles.module.css'
 
 interface UserOrdersProps {
   orders: api.CinemaOrder[]
+  onOrderCancelClick: (orderId: number) => void
 }
 
 const cx = classNames.bind(s)
 
-export const UserOrders = ({ orders }: UserOrdersProps) => (
+export const UserOrders = ({ orders, onOrderCancelClick }: UserOrdersProps) => (
   <div className={s.orders}>
     <Typography tag="h2" className="centered" variant="t5" text="Действующие билеты" />
     {orders.map(
@@ -41,6 +42,13 @@ export const UserOrders = ({ orders }: UserOrdersProps) => (
                 variant="btn1"
                 text={order.status === 'PAYED' ? 'оплачен' : 'отменен'}
               />
+              <Button
+                className={s.btn}
+                styleType="solid"
+                onClick={() => onOrderCancelClick(order.orderNumber)}
+              >
+                <Typography tag="p" variant="btn1" text="отменить" />
+              </Button>
               <Typography
                 tag="p"
                 className={cx({ orderNumber: true, canceled: order.status === 'CANCELED' })}

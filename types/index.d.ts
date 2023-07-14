@@ -179,4 +179,9 @@ namespace api {
   interface CreateAuthorizedRequestDto {
     token: string
   }
+
+  interface CancelUserOrderDto {
+    orderId: string
+    token: string
+  }
 }

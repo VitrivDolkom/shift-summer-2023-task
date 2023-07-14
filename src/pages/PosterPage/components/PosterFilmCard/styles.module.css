@@ -4,6 +4,8 @@
   padding: 10px;
   border: 1px solid var(--black);
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .top {

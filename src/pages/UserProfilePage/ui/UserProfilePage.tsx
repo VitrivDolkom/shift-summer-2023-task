@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
+import { UserOrdersService } from '@/modules/UserOrders'
 import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
 import { fetchProfile, login } from '@/modules/UserProfile'
 import { Typography } from '@/shared/uikit'
@@ -22,6 +23,10 @@ export const UserProfilePage = () => {
     dispatch(fetchProfile({ token }))
   }, [])
 
+  const onOrderCancel = (orderId: number) => {
+    UserOrdersService.cancelUserOrder({ token, orderId: orderId.toString() })
+  }
+
   return (
     <>
       <Header type="withButton" />
@@ -33,7 +38,9 @@ export const UserProfilePage = () => {
           </div>
           <div className={s.right}>
             {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
-            {ordersInfo.request.status === 'success' && <UserOrders orders={ordersInfo.orders} />}
+            {ordersInfo.request.status === 'success' && (
+              <UserOrders orders={ordersInfo.orders} onOrderCancelClick={onOrderCancel} />
+            )}
             {ordersInfo.request.status === 'error' && (
               <Typography tag="p" variant="err1" text={ordersInfo.request.error} />
             )}
