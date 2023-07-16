@@ -1,0 +1,26 @@
+.wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  margin-top: 33px;
+  display: flex;
+}
+
+.left {
+  flex-basis: 50%;
+  border-right: 4px dashed var(--light-grey);
+}
+
+.right {
+  flex-basis: 50%;
+}
+
+.divide {
+  width: 2px;
+  height: 100%;
+  stroke-width: 2px;
+  stroke: var(--light-grey);
+}

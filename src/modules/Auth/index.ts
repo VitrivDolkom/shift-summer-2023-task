@@ -1,2 +1,2 @@
-export { AuthContext } from './model/AuthContext'
-export { AuthProvider } from './model/AuthProvider'
+export { authInfoSlice, setOtpCodeError } from './model/slice'
+export { createOtpCode } from './model/thunk'

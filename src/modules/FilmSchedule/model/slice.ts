@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { FilmSchedule, FilmSeance } from '../lib/types'
 import { initialState } from './state'
 import { fetchFilmSchedule } from './thunk'
 
@@ -8,10 +7,10 @@ export const filmScheduleSlice = createSlice({
   name: 'filmSchedule',
   initialState,
   reducers: {
-    chooseSchedule(state, action: PayloadAction<FilmSchedule>) {
+    chooseSchedule(state, action: PayloadAction<api.Schedule>) {
       state.currentSchedule = action.payload
     },
-    chooseSeance(state, action: PayloadAction<FilmSeance>) {
+    chooseSeance(state, action: PayloadAction<api.ScheduleSeance>) {
       state.currentSeance = action.payload
     },
     setDefaultSchedule(state) {

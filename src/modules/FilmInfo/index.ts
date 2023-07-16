@@ -1,2 +1,2 @@
-export { FilmInfo } from './ui/FilmInfo'
-export type { Film, Country } from './lib/types'
+export { filmInfoSlice } from './model/slice'
+export { fetchFilmInfo } from './model/thunk'

@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 0 30px 40px;
+}
+
+.title {
+  margin-bottom: 35px;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0;
+  border-radius: 24px 24px 0px 0px;
+  background-color: var(--light-red);
+}
+
+.btn {
+  margin-top: 20px;
+}

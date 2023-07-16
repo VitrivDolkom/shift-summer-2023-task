@@ -10,5 +10,16 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  z-index: 10;
+  z-index: 3;
+}
+
+
+.btn {
+  width: 120px;
+}
+
+.insideBtn {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }

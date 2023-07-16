@@ -1,0 +1,87 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  margin-left: 5px;
+}
+
+.place {
+  width: 32px;
+  height: 40px;
+
+  border-width: 2.2px;
+  border-radius: 5px;
+  border-style: solid;
+  background-color: var(--white);
+
+  transition: all .3s linear;
+}
+
+.econom {
+  border-color: var(--grey);
+}
+
+.econom:hover {
+  border-color: var(--light-red);
+}
+
+.econom.active {
+  background-color: var(--light-red);
+  border-color: var(--light-red);
+}
+
+.blocked {
+  border-color: var(--background-second);
+  background-color: var(--background-second);
+}
+
+.comfort {
+  border-color: var(--yellow);
+}
+
+.comfort:hover {
+  border-color: var(--light-red);
+}
+
+.comfort.active {
+  background-color: var(--yellow);
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-25%, -100%);
+  background-color: var(--background);
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+  padding: 8px;
+  min-width: 76px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type {
+  color: var(--light-grey);
+  font-size: 11px;
+}
+
+.rowIndex,
+.placeIndex {
+  color: var(--grey);
+  font-size: 14px;
+  margin-top: 7px;
+  white-space: nowrap;
+}
+
+.price {
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 8px;
+}

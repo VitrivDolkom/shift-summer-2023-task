@@ -1,0 +1,29 @@
+.btn {
+  transition: all .3s linear;
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 10px;
+}
+
+.outlined {
+  border: 1px solid var(--dark-grey);
+  background-color: var(--background);
+}
+
+.outlined:hover {
+  background-color: var(--white);
+}
+
+.solid {
+  border: 2px solid var(--light-red);
+  background-color: var(--light-red);
+}
+
+.solid:hover {
+  background-color: var(--black-red);
+}

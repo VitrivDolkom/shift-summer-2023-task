@@ -1,1 +1,0 @@
-export { getReleaseYear } from './getReleaseYear'

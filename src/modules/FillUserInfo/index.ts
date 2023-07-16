@@ -1,0 +1,1 @@
+export { userInfoSlice, setUserInfo } from './model/slice'

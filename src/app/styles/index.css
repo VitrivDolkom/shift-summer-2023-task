@@ -4,12 +4,18 @@ body {
   --dark-grey: #252525;
   --grey: #585858;
   --light-grey: #949494;
+  --blue: #4656E9;
+  --light-blue: #B2B9FD;
+  --red: #E74848;
   --light-red: #F55A5A;
   --black-red: #ca4141;
   --light-red-hover: #FF9696;
   --brown: #B89E9E;
+  --brown-second: #704E4E;
   --black: #000000;
   --white: #FFFFFF;
+  --background-second: #D8CDD4;
+  --green: #44C341;
 
   font-family: Roboto;
   background-color: var(--background);
@@ -29,11 +35,16 @@ body.dark {
   --white: #000000;
 }
 
+body.locked {
+  overflow-y: hidden;
+}
+
 img {
   max-width: 100%;
 }
 
 main {
+  width: 100%;
   padding-top: 120px;
 }
 
@@ -42,5 +53,32 @@ button {
 }
 
 .wrapper {
+  width: 100%;
+  min-height: 100vh;
+  z-index: 4;
   padding: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.modals {
+  z-index: 5;
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper {
+    padding: 0 15px;
+  }
 }

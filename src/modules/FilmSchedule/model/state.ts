@@ -2,9 +2,7 @@ import { FilmScheduleState } from './types'
 
 export const initialState: FilmScheduleState = {
   schedules: [],
-  currentSchedule: undefined,
   request: {
-    status: 'idle',
-    error: undefined
+    status: 'idle'
   }
 }

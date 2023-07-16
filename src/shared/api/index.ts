@@ -1,2 +1,2 @@
-export { instance } from './instance'
-export type { BaseResponse, RequestInfo } from './types'
+export { instance, authInstance, usersInstance } from './instance'
+export type { RequestInfo } from './types'
