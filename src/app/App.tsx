@@ -1,5 +1,12 @@
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { RouterProvider } from 'react-router-dom'
 
 import { router } from './router'
 
-export const App = () => <RouterProvider router={router} />
+const queryClient = new QueryClient()
+
+export const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+)

@@ -28,7 +28,6 @@ export const ChoiceFilmTickets = () => {
         tickets={tickets}
         onPlaceClick={(ticket) => dispatch(toggleTicket(ticket))}
       />
-      
     </div>
   )
 }

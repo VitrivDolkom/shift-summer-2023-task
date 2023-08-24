@@ -1,2 +1,1 @@
-export { posterFilmsSlice } from './model/slice'
-export { fetchPosterMovies } from './model/thunk'
+export { fetchFilms, useFilmsQuery } from './fetchFilms'
