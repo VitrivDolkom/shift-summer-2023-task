@@ -1,7 +1,5 @@
-import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
-import { resetTickets, toggleTicket } from '@/modules/ChoiceFilmTickets'
 import { useFilmSchedulesQuery } from '@/modules/FilmSchedule'
 
 import { SeancePlaces } from './SeancePlaces'
@@ -11,15 +9,17 @@ import s from './styles.module.css'
 interface ChoiceFilmTicketsProps {
   filmId: string
   seance?: api.ScheduleSeance
+  onTicketToggle: (ticket: api.FullTicketInfo) => void
+  resetTickets: () => void
+  tickets: api.FullTicketInfo[]
 }
 
-export const ChoiceFilmTickets = ({ filmId, seance }: ChoiceFilmTicketsProps) => {
-  const dispatch = useAppDispatch()
+export const ChoiceFilmTickets = (props: ChoiceFilmTicketsProps) => {
+  const { filmId, seance, onTicketToggle, tickets, resetTickets } = props
   const { isLoading, isError } = useFilmSchedulesQuery(filmId)
-  const { tickets } = useAppSelector((state) => state.filmTickets)
 
   useEffect(() => {
-    dispatch(resetTickets())
+    resetTickets()
   }, [seance])
 
   if (isLoading || isError || !seance) {
@@ -29,11 +29,7 @@ export const ChoiceFilmTickets = ({ filmId, seance }: ChoiceFilmTicketsProps) =>
   return (
     <div className={s.wrapper}>
       <div className={s.top}>Экран</div>
-      <SeancePlaces
-        seance={seance}
-        tickets={tickets}
-        onPlaceClick={(ticket) => dispatch(toggleTicket(ticket))}
-      />
+      <SeancePlaces seance={seance} tickets={tickets} onPlaceClick={onTicketToggle} />
     </div>
   )
 }

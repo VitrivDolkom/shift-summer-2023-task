@@ -1,7 +1,6 @@
-import { useAppSelector } from '@/store'
-
 import ticketImg from '@/assets/img/ticket.svg'
 import { useFilmInfoQuery } from '@/modules/FilmInfo'
+import { useFilmSchedulesQuery } from '@/modules/FilmSchedule'
 import { TitleWithInfo } from '@/shared/components'
 import { getHallName } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
@@ -11,23 +10,27 @@ import s from './styles.module.css'
 export interface SelectedTicketsInfoProps {
   onBuyButtonClick: () => void
   filmId: string
+  schedule?: api.Schedule
+  seance?: api.ScheduleSeance
+  tickets: api.FullTicketInfo[]
+  price: number
 }
 
-export const SelectedTicketsInfo = ({ onBuyButtonClick, filmId }: SelectedTicketsInfoProps) => {
+export const SelectedTicketsInfo = (props: SelectedTicketsInfoProps) => {
+  const { onBuyButtonClick, filmId, schedule, seance, tickets, price } = props
   const { data: film } = useFilmInfoQuery(filmId)
-  const { tickets, price } = useAppSelector((state) => state.filmTickets)
-  const { currentSchedule, currentSeance, request } = useAppSelector((state) => state.filmSchedule)
+  const filmScheduleQuery = useFilmSchedulesQuery(filmId)
 
-  if (request.status === 'pending' || !film || !currentSchedule || !currentSeance) {
+  if (filmScheduleQuery.isLoading || !film || !schedule || !seance) {
     return null
   }
 
   return (
     <div className={s.wrapper}>
       <div className={s.content}>
-        <div className={s.title}>{getHallName(currentSeance.hall.name)}</div>
+        <div className={s.title}>{getHallName(seance.hall.name)}</div>
         <TitleWithInfo title="Фильм:" info={film.name} />
-        <TitleWithInfo title="Дата и время:" info={`${currentSchedule.date} ${currentSeance.time}`} />
+        <TitleWithInfo title="Дата и время:" info={`${schedule.date} ${seance.time}`} />
         <TitleWithInfo
           title="Места:"
           info={tickets.map((ticket) => `${ticket.row} ряд - ${ticket.column}; `).toString()}
