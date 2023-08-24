@@ -23,12 +23,10 @@ export const FilmSchedule = (props: FilmScheduleProps) => {
   const filmSchedulesQuery = useFilmSchedulesQuery(id)
 
   useEffect(() => {
-    if (filmSchedulesQuery.isSuccess) onScheduleChange(filmSchedulesQuery.data[0])
-  }, [filmSchedulesQuery.data])
-
-  useEffect(() => {
-    if (!!schedule) onSeanceChange(schedule.seances[0])
-  }, [schedule])
+    if (filmSchedulesQuery.isSuccess) {
+      onScheduleChange(filmSchedulesQuery.data[0])
+    }
+  }, [filmSchedulesQuery.isSuccess])
 
   if (filmSchedulesQuery.isLoading) {
     return <Loader wrapperClassName={s.pending} img={waiting} message="Расписание загружается ..." />

@@ -1,7 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store'
-import { useEffect } from 'react'
-
-import { fetchFilmInfo } from '@/modules/FilmInfo'
+import { useFilmInfoQuery } from '@/modules/FilmInfo'
 import { FilmRating } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 
@@ -17,38 +14,33 @@ interface FilmInfoProps {
 }
 
 export const FilmInfo = ({ id }: FilmInfoProps) => {
-  const dispatch = useAppDispatch()
-  const { film, request } = useAppSelector((state) => state.filmInfo)
+  const { data: film, isSuccess, isLoading, isError } = useFilmInfoQuery(id)
 
-  useEffect(() => {
-    if (request.status === 'idle' || request.status === 'success') {
-      dispatch(fetchFilmInfo(id))
-    }
-  }, [])
-
-  if (request.status === 'pending') {
+  if (isLoading) {
     return <FilmInfoSkeleton />
   }
 
-  if (request.status === 'error' || film === undefined) {
-    return <h1>No such film</h1>
+  if (isError || !film) {
+    return <Typography tag="h1" variant="err2" text="Ошибка загрузки фильма" />
   }
 
-  return (
-    <div className={s.wrapper}>
-      <div className={s.left}>
-        <img src={`${import.meta.env.VITE_BACKEND_URL}${film.img}`} alt="картинка" />
-        <WatchDate />
-      </div>
-      <div className={s.right}>
-        <Typography tag="h2" variant="t2" text={film.name} />
-        <FilmDirectors directors={film.directors} />
-        <FIlmGenreCountryYear genres={film.genres} country={film.country} date={film.releaseDate} />
-        <FilmRating rating={film.userRatings.kinopoisk} company="кинопоиск" />
-        <div className={s.description}>
-          <Typography tag="p" className="ellipsis" variant="t3" text={film.description} />
+  if (isSuccess) {
+    return (
+      <div className={s.wrapper}>
+        <div className={s.left}>
+          <img src={`${import.meta.env.VITE_BACKEND_URL}${film.img}`} alt="картинка" />
+          <WatchDate />
+        </div>
+        <div className={s.right}>
+          <Typography tag="h2" variant="t2" text={film.name} />
+          <FilmDirectors directors={film.directors} />
+          <FIlmGenreCountryYear genres={film.genres} country={film.country} date={film.releaseDate} />
+          <FilmRating rating={film.userRatings.kinopoisk} company="кинопоиск" />
+          <div className={s.description}>
+            <Typography tag="p" className="ellipsis" variant="t3" text={film.description} />
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }

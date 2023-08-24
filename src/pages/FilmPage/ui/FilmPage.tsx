@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { useFilmInfoQuery } from '@/modules/FilmInfo'
 import { Header } from '@/modules/Header'
 import { setTicketsOrderInfo } from '@/modules/TicketsOrder'
 import { useModal } from '@/shared/lib'
@@ -22,6 +23,7 @@ import s from './styles.module.css'
 
 export const FilmPage = () => {
   const params = useParams()
+  const filmId = params.id || ''
 
   const [schedule, setSchedule] = useState<api.Schedule>()
   const [seance, setSeance] = useState<api.ScheduleSeance>()
@@ -29,13 +31,11 @@ export const FilmPage = () => {
   const dispatch = useAppDispatch()
   const { tickets } = useAppSelector((state) => state.filmTickets)
   const { person } = useAppSelector((state) => state.userInfo)
-  const { film } = useAppSelector((state) => state.filmInfo)
+  const { data: filmInfo } = useFilmInfoQuery(filmId)
 
   const userInfoModal = useModal(false)
   const cardInfoModal = useModal(false)
   const orderInfoModal = useModal(false)
-
-  const filmId = params.id
 
   if (!filmId) {
     return <Typography variant="err1" text="Ошибка загрузки фильма" />
@@ -53,7 +53,7 @@ export const FilmPage = () => {
   const onCardInfoSubmit = (cardInfo: api.CreatePaymentDebitCardDto) => {
     const ticketsOrderInfo: api.CreateCinemaPaymentDto = {
       debitCard: cardInfo,
-      filmId: film?.id || '',
+      filmId: filmInfo?.id || '',
       person: person,
       tickets: tickets,
       seance: { date: schedule?.date || '', time: seance?.time || '' }
@@ -74,12 +74,15 @@ export const FilmPage = () => {
           id={filmId}
           schedule={schedule}
           seance={seance}
-          onScheduleChange={(schedule) => setSchedule(schedule)}
+          onScheduleChange={(schedule) => {
+            setSchedule(schedule)
+            setSeance(schedule.seances[0])
+          }}
           onSeanceChange={(seance) => setSeance(seance)}
         />
         <div className={s.tickets}>
-          {/* <ChoiceFilmTickets /> */}
-          {/* <SelectedTicketsInfo onBuyButtonClick={onBuyButtonClick} /> */}
+          <ChoiceFilmTickets filmId={filmId} seance={seance} />
+          {/* <SelectedTicketsInfo onBuyButtonClick={onBuyButtonClick} filmId={filmId} /> */}
           <Modal isOpened={userInfoModal.isOpened} onClose={userInfoModal.onModalClose}>
             <FillUserInfo onSubmit={onUserInfoSubmit} />
           </Modal>
@@ -87,7 +90,7 @@ export const FilmPage = () => {
             <FillCardInfo onSubmit={onCardInfoSubmit} />
           </Modal>
           <Modal isOpened={orderInfoModal.isOpened} onClose={orderInfoModal.onModalClose}>
-            <TicketsOrder />
+            <TicketsOrder filmId={filmId} />
           </Modal>
         </div>
         <SeancePlaceTypes />

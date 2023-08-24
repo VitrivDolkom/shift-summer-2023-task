@@ -1,16 +1,21 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
+import { useFilmInfoQuery } from '@/modules/FilmInfo'
 import { payTicketsOrder } from '@/modules/TicketsOrder'
 
 import { ErrorTicketsOrder } from './ErrorTicketsOrder'
 import { PendingTicketsOrder } from './PendingTicketsOrder'
 import { SuccessTicketsOrder } from './SuccessTicketsOrder'
 
-export const TicketsOrder = () => {
+interface TicketsOrderProps {
+  filmId: string
+}
+
+export const TicketsOrder = ({ filmId }: TicketsOrderProps) => {
   const dispatch = useAppDispatch()
   const { ticketsOrder, response, request } = useAppSelector((state) => state.ticketsOrder)
-  const { film } = useAppSelector((state) => state.filmInfo)
+  const { data: film } = useFilmInfoQuery(filmId)
 
   useEffect(() => {
     if (!!ticketsOrder) {

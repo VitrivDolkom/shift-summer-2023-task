@@ -2,21 +2,27 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { resetTickets, toggleTicket } from '@/modules/ChoiceFilmTickets'
+import { useFilmSchedulesQuery } from '@/modules/FilmSchedule'
 
 import { SeancePlaces } from './SeancePlaces'
 
 import s from './styles.module.css'
 
-export const ChoiceFilmTickets = () => {
+interface ChoiceFilmTicketsProps {
+  filmId: string
+  seance?: api.ScheduleSeance
+}
+
+export const ChoiceFilmTickets = ({ filmId, seance }: ChoiceFilmTicketsProps) => {
   const dispatch = useAppDispatch()
-  const { currentSeance, request } = useAppSelector((state) => state.filmSchedule)
+  const { isLoading, isError } = useFilmSchedulesQuery(filmId)
   const { tickets } = useAppSelector((state) => state.filmTickets)
 
   useEffect(() => {
     dispatch(resetTickets())
-  }, [currentSeance])
+  }, [seance])
 
-  if (request.status === 'pending' || request.error || !currentSeance) {
+  if (isLoading || isError || !seance) {
     return null
   }
 
@@ -24,7 +30,7 @@ export const ChoiceFilmTickets = () => {
     <div className={s.wrapper}>
       <div className={s.top}>Экран</div>
       <SeancePlaces
-        seance={currentSeance}
+        seance={seance}
         tickets={tickets}
         onPlaceClick={(ticket) => dispatch(toggleTicket(ticket))}
       />

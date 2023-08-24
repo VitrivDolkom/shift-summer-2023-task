@@ -1,6 +1,7 @@
 import { useAppSelector } from '@/store'
 
 import ticketImg from '@/assets/img/ticket.svg'
+import { useFilmInfoQuery } from '@/modules/FilmInfo'
 import { TitleWithInfo } from '@/shared/components'
 import { getHallName } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'
@@ -9,10 +10,11 @@ import s from './styles.module.css'
 
 export interface SelectedTicketsInfoProps {
   onBuyButtonClick: () => void
+  filmId: string
 }
 
-export const SelectedTicketsInfo = ({ onBuyButtonClick }: SelectedTicketsInfoProps) => {
-  const { film } = useAppSelector((state) => state.filmInfo)
+export const SelectedTicketsInfo = ({ onBuyButtonClick, filmId }: SelectedTicketsInfoProps) => {
+  const { data: film } = useFilmInfoQuery(filmId)
   const { tickets, price } = useAppSelector((state) => state.filmTickets)
   const { currentSchedule, currentSeance, request } = useAppSelector((state) => state.filmSchedule)
 
