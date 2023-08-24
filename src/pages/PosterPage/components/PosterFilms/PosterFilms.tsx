@@ -7,9 +7,9 @@ import { PosterFilmsSkeleton } from '../PosterFilmsSkeleton/PosterFilmsSkeleton'
 import s from './styles.module.css'
 
 export const PosterFilms = () => {
-  const { data, isLoading, error } = useFilmsQuery()
+  const { data, isLoading, isError } = useFilmsQuery()
 
-  if (error instanceof Error) {
+  if (isError) {
     return <Typography variant="err1" text="Ошибка загрузки афиши" />
   }
 

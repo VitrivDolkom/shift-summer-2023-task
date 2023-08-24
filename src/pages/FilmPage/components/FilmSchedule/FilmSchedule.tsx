@@ -1,14 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import waiting from '@/assets/gif/waiting.gif'
-import {
-  chooseSchedule,
-  chooseSeance,
-  fetchFilmSchedule,
-  setDefaultSchedule,
-  setDefaultSeance
-} from '@/modules/FilmSchedule/'
+import { useFilmSchedulesQuery } from '@/modules/FilmSchedule/'
 import { Loader } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 
@@ -19,49 +12,47 @@ import s from './styles.module.css'
 
 interface FilmScheduleProps {
   id: string
+  schedule?: api.Schedule
+  seance?: api.ScheduleSeance
+  onScheduleChange: (schedule: api.Schedule) => void
+  onSeanceChange: (seance: api.ScheduleSeance) => void
 }
 
-export const FilmSchedule = ({ id }: FilmScheduleProps) => {
-  const dispatch = useAppDispatch()
-  const { schedules, currentSchedule, currentSeance, request } = useAppSelector(
-    (state) => state.filmSchedule
-  )
+export const FilmSchedule = (props: FilmScheduleProps) => {
+  const { id, schedule, seance, onScheduleChange, onSeanceChange } = props
+  const filmSchedulesQuery = useFilmSchedulesQuery(id)
 
   useEffect(() => {
-    if (request.status === 'idle' || request.status === 'success') {
-      dispatch(fetchFilmSchedule(id))
-    }
-  }, [])
+    if (filmSchedulesQuery.isSuccess) onScheduleChange(filmSchedulesQuery.data[0])
+  }, [filmSchedulesQuery.data])
 
   useEffect(() => {
-    dispatch(setDefaultSchedule())
-  }, [schedules])
+    if (!!schedule) onSeanceChange(schedule.seances[0])
+  }, [schedule])
 
-  useEffect(() => {
-    dispatch(setDefaultSeance())
-  }, [currentSchedule, schedules])
-
-  if (request.status === 'pending') {
+  if (filmSchedulesQuery.isLoading) {
     return <Loader wrapperClassName={s.pending} img={waiting} message="Расписание загружается ..." />
   }
 
-  if (request.status === 'error' || !currentSchedule) {
-    return <Typography variant="err1" text={request.error} />
+  if (filmSchedulesQuery.isError || !schedule) {
+    return <Typography variant="err1" text={filmSchedulesQuery.error?.message} />
   }
 
-  return (
-    <div className={s.wrapper}>
-      <div className={s.title}>Расписание</div>
-      <SchedulesDate
-        schedules={schedules}
-        currentSchedule={currentSchedule}
-        onScheduleClick={(schedule) => dispatch(chooseSchedule(schedule))}
-      />
-      <CurrentSchedule
-        schedule={currentSchedule}
-        currentSeance={currentSeance}
-        onSeanceClick={(seance) => dispatch(chooseSeance(seance))}
-      />
-    </div>
-  )
+  if (filmSchedulesQuery.isSuccess) {
+    return (
+      <div className={s.wrapper}>
+        <div className={s.title}>Расписание</div>
+        <SchedulesDate
+          schedules={filmSchedulesQuery.data}
+          currentSchedule={schedule}
+          onScheduleClick={(schedule) => onScheduleChange(schedule)}
+        />
+        <CurrentSchedule
+          schedule={schedule}
+          currentSeance={seance}
+          onSeanceClick={(seance) => onSeanceChange(seance)}
+        />
+      </div>
+    )
+  }
 }

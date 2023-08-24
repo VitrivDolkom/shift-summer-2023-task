@@ -1,4 +1,5 @@
 import { useAppDispatch, useAppSelector } from '@/store'
+import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Header } from '@/modules/Header'
@@ -21,8 +22,11 @@ import s from './styles.module.css'
 
 export const FilmPage = () => {
   const params = useParams()
+
+  const [schedule, setSchedule] = useState<api.Schedule>()
+  const [seance, setSeance] = useState<api.ScheduleSeance>()
+
   const dispatch = useAppDispatch()
-  const { currentSchedule, currentSeance } = useAppSelector((state) => state.filmSchedule)
   const { tickets } = useAppSelector((state) => state.filmTickets)
   const { person } = useAppSelector((state) => state.userInfo)
   const { film } = useAppSelector((state) => state.filmInfo)
@@ -52,7 +56,7 @@ export const FilmPage = () => {
       filmId: film?.id || '',
       person: person,
       tickets: tickets,
-      seance: { date: currentSchedule?.date || '', time: currentSeance?.time || '' }
+      seance: { date: schedule?.date || '', time: seance?.time || '' }
     }
 
     dispatch(setTicketsOrderInfo(ticketsOrderInfo))
@@ -66,10 +70,16 @@ export const FilmPage = () => {
       <Header type="withButton" />
       <main>
         <FilmInfo id={filmId} />
-        <FilmSchedule id={filmId} />
+        <FilmSchedule
+          id={filmId}
+          schedule={schedule}
+          seance={seance}
+          onScheduleChange={(schedule) => setSchedule(schedule)}
+          onSeanceChange={(seance) => setSeance(seance)}
+        />
         <div className={s.tickets}>
-          <ChoiceFilmTickets />
-          <SelectedTicketsInfo onBuyButtonClick={onBuyButtonClick} />
+          {/* <ChoiceFilmTickets /> */}
+          {/* <SelectedTicketsInfo onBuyButtonClick={onBuyButtonClick} /> */}
           <Modal isOpened={userInfoModal.isOpened} onClose={userInfoModal.onModalClose}>
             <FillUserInfo onSubmit={onUserInfoSubmit} />
           </Modal>
