@@ -2,8 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
-import { UserOrdersService } from '@/modules/UserOrders'
-import { fetchUserOrders } from '@/modules/UserOrders/model/thunk'
+import { useCancelOrderMutation, useFetchUserOrdersQuery } from '@/modules/UserOrders'
 import { fetchProfile, login } from '@/modules/UserProfile'
 import { Typography } from '@/shared/uikit'
 
@@ -15,16 +14,16 @@ export const UserProfilePage = () => {
   const dispatch = useAppDispatch()
   const { token } = useAppSelector((state) => state.userProfile.profile)
   const { user } = useAppSelector((state) => state.userProfile.profile)
-  const ordersInfo = useAppSelector((state) => state.userOrders)
+  const ordersQuery = useFetchUserOrdersQuery({ token })
+  const cancelOrderMutation = useCancelOrderMutation()
 
   useEffect(() => {
     dispatch(login())
-    dispatch(fetchUserOrders({ token }))
     dispatch(fetchProfile({ token }))
   }, [])
 
   const onOrderCancel = (orderId: number) => {
-    UserOrdersService.cancelUserOrder({ token, orderId: orderId.toString() })
+    cancelOrderMutation.mutate({ token, orderId: orderId.toString() })
   }
 
   return (
@@ -37,12 +36,12 @@ export const UserProfilePage = () => {
             <UserProfileInfo user={user} />
           </div>
           <div className={s.right}>
-            {ordersInfo.request.status === 'pending' && <UserOrdersSkelton />}
-            {ordersInfo.request.status === 'success' && (
-              <UserOrders orders={ordersInfo.orders} onOrderCancelClick={onOrderCancel} />
+            {ordersQuery.isLoading && <UserOrdersSkelton />}
+            {ordersQuery.isSuccess && (
+              <UserOrders orders={ordersQuery.data} onOrderCancelClick={onOrderCancel} />
             )}
-            {ordersInfo.request.status === 'error' && (
-              <Typography tag="p" variant="err1" text={ordersInfo.request.error} />
+            {ordersQuery.isError && (
+              <Typography tag="p" variant="err1" text={ordersQuery.error.message} />
             )}
           </div>
         </div>
