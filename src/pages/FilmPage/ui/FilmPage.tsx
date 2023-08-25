@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '@/store'
+import { useAppDispatch } from '@/store'
 import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -18,6 +18,7 @@ import {
   SelectedTicketsInfo,
   TicketsOrder
 } from '../components/'
+import { useFilmPageState } from './useFilmPageState'
 
 import s from './styles.module.css'
 
@@ -25,14 +26,19 @@ export const FilmPage = () => {
   const params = useParams()
   const filmId = params.id || ''
 
-  const [schedule, setSchedule] = useState<api.Schedule>()
-  const [seance, setSeance] = useState<api.ScheduleSeance>()
-
-  const [tickets, setTickets] = useState<api.FullTicketInfo[]>([])
-  const price = useMemo(() => tickets.reduce((acc, ticket) => acc + ticket.price, 0), [tickets])
+  const {
+    schedule,
+    setSchedule,
+    seance,
+    setSeance,
+    tickets,
+    setTickets,
+    price,
+    personDto,
+    setPersonDto
+  } = useFilmPageState()
 
   const dispatch = useAppDispatch()
-  const { person } = useAppSelector((state) => state.userInfo)
   const { data: filmInfo } = useFilmInfoQuery(filmId)
 
   const userInfoModal = useModal(false)
@@ -56,7 +62,7 @@ export const FilmPage = () => {
     const ticketsOrderInfo: api.CreateCinemaPaymentDto = {
       debitCard: cardInfo,
       filmId: filmInfo?.id || '',
-      person: person,
+      person: personDto,
       tickets: tickets,
       seance: { date: schedule?.date || '', time: seance?.time || '' }
     }
@@ -81,8 +87,6 @@ export const FilmPage = () => {
     })
   }
 
-  const resetTickets = () => setTickets([])
-
   return (
     <>
       <Header type="withButton" />
@@ -104,7 +108,7 @@ export const FilmPage = () => {
             seance={seance}
             onTicketToggle={toggleTicket}
             tickets={tickets}
-            resetTickets={resetTickets}
+            resetTickets={() => setTickets([])}
           />
           <SelectedTicketsInfo
             onBuyButtonClick={onBuyButtonClick}
@@ -115,7 +119,10 @@ export const FilmPage = () => {
             price={price}
           />
           <Modal isOpened={userInfoModal.isOpened} onClose={userInfoModal.onModalClose}>
-            <FillUserInfo onSubmit={onUserInfoSubmit} />
+            <FillUserInfo
+              onSubmit={onUserInfoSubmit}
+              updatePersonDto={(personDto: api.CreatePaymentPersonDto) => setPersonDto(personDto)}
+            />
           </Modal>
           <Modal isOpened={cardInfoModal.isOpened} onClose={cardInfoModal.onModalClose}>
             <FillCardInfo onSubmit={onCardInfoSubmit} />

@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@/store'
+import { useAppSelector } from '@/store'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { setUserInfo } from '@/modules/FillUserInfo'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { Button, Typography } from '@/shared/uikit'
@@ -11,10 +10,10 @@ import s from './styles.module.css'
 
 interface FillUserInfoProps {
   onSubmit: () => void
+  updatePersonDto: (personDto: api.CreatePaymentPersonDto) => void
 }
 
-export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
-  const dispatch = useAppDispatch()
+export const FillUserInfo = ({ onSubmit, updatePersonDto }: FillUserInfoProps) => {
   const {
     register,
     reset,
@@ -28,7 +27,7 @@ export const FillUserInfo = ({ onSubmit }: FillUserInfoProps) => {
   }, [])
 
   const onFormSubmit: SubmitHandler<api.CreatePaymentPersonDto> = (userInfo) => {
-    dispatch(setUserInfo(userInfo))
+    updatePersonDto(userInfo)
     onSubmit()
   }
 
