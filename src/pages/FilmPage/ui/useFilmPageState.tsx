@@ -14,6 +14,8 @@ export const useFilmPageState = () => {
   const [tickets, setTickets] = useState<api.FullTicketInfo[]>([])
   const price = useMemo(() => tickets.reduce((acc, ticket) => acc + ticket.price, 0), [tickets])
 
+  const [ticketsOrder, setTicketsOrder] = useState<api.CreateCinemaPaymentDto>()
+
   return {
     schedule,
     setSchedule,
@@ -23,6 +25,8 @@ export const useFilmPageState = () => {
     setTickets,
     price,
     personDto,
-    setPersonDto
+    setPersonDto,
+    ticketsOrder,
+    setTicketsOrder
   }
 }

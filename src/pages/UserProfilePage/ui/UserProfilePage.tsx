@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
-import { useCancelOrderMutation, useFetchUserOrdersQuery } from '@/modules/UserOrders'
+import { useCancelOrder, useFetchUserOrdersQuery } from '@/modules/UserOrders'
 import { fetchProfile, login } from '@/modules/UserProfile'
 import { Typography } from '@/shared/uikit'
 
@@ -15,7 +15,7 @@ export const UserProfilePage = () => {
   const { token } = useAppSelector((state) => state.userProfile.profile)
   const { user } = useAppSelector((state) => state.userProfile.profile)
   const ordersQuery = useFetchUserOrdersQuery({ token })
-  const cancelOrderMutation = useCancelOrderMutation()
+  const { cancelOrder } = useCancelOrder()
 
   useEffect(() => {
     dispatch(login())
@@ -23,7 +23,7 @@ export const UserProfilePage = () => {
   }, [])
 
   const onOrderCancel = (orderId: number) => {
-    cancelOrderMutation.mutate({ token, orderId: orderId.toString() })
+    cancelOrder({ token, orderId: orderId.toString() })
   }
 
   return (

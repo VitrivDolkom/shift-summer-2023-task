@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 
 import { useFilmInfoQuery } from '@/modules/FilmInfo'
 import { Header } from '@/modules/Header'
-import { setTicketsOrderInfo } from '@/modules/TicketsOrder'
 import { useModal } from '@/shared/lib'
 import { Modal, Typography } from '@/shared/uikit'
 
@@ -34,10 +33,11 @@ export const FilmPage = () => {
     setTickets,
     price,
     personDto,
-    setPersonDto
+    setPersonDto,
+    ticketsOrder,
+    setTicketsOrder
   } = useFilmPageState()
 
-  const dispatch = useAppDispatch()
   const { data: filmInfo } = useFilmInfoQuery(filmId)
 
   const userInfoModal = useModal(false)
@@ -66,7 +66,7 @@ export const FilmPage = () => {
       seance: { date: schedule?.date || '', time: seance?.time || '' }
     }
 
-    dispatch(setTicketsOrderInfo(ticketsOrderInfo))
+    setTicketsOrder(ticketsOrderInfo)
 
     cardInfoModal.onModalClose()
     orderInfoModal.onModalOpen()
@@ -127,7 +127,7 @@ export const FilmPage = () => {
             <FillCardInfo onSubmit={onCardInfoSubmit} />
           </Modal>
           <Modal isOpened={orderInfoModal.isOpened} onClose={orderInfoModal.onModalClose}>
-            <TicketsOrder filmId={filmId} />
+            <TicketsOrder filmId={filmId} ticketsOrder={ticketsOrder} />
           </Modal>
         </div>
         <SeancePlaceTypes />

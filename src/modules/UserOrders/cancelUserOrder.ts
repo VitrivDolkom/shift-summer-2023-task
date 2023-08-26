@@ -1,7 +1,7 @@
-import { AxiosError, AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import { useMutation } from 'react-query'
 
-import { instance } from '@/shared/api'
+import { errorMapping, instance } from '@/shared/api'
 
 export const cancelUserOrder = async ({ orderId, token }: api.CancelUserOrderDto) => {
   try {
@@ -15,15 +15,16 @@ export const cancelUserOrder = async ({ orderId, token }: api.CancelUserOrderDto
       }
     )
 
-    return response.data
+    return response
   } catch (error: unknown) {
-    throw new Error(
-      (error as AxiosError<api.BaseResponse>).response?.data.reason || 'Ошибка отмены заказа'
-    )
+    throw new Error(errorMapping(error, 'Ошибка отмены заказа'))
   }
 }
 
-export const useCancelOrderMutation = () =>
-  useMutation({
+export const useCancelOrder = () => {
+  const { mutate: cancelOrder, error: cancelOrderError } = useMutation({
     mutationFn: (dto: api.CancelUserOrderDto) => cancelUserOrder(dto)
   })
+
+  return { cancelOrder, cancelOrderError }
+}

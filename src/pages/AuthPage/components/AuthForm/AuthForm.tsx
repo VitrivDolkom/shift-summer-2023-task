@@ -1,17 +1,11 @@
 import { useAppDispatch, useAppSelector } from '@/store'
 import { AxiosError } from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { createOtpCode, setOtpCodeError } from '@/modules/Auth'
-import {
-  logout,
-  ProfileService,
-  setSignInError,
-  setSignInPending,
-  setUserProfile
-} from '@/modules/UserProfile'
+import { useCreateOtpCodeMutation } from '@/modules/Auth'
+import { ProfileService, setSignInError, setSignInPending, setUserProfile } from '@/modules/UserProfile'
 import { ButtonLoader, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTimer, useTwoStepAction } from '@/shared/lib'
@@ -20,6 +14,7 @@ import { Button, Typography } from '@/shared/uikit'
 import s from './styles.module.css'
 
 export const AuthForm = () => {
+  const [otpCodeError, setOtpCodeError] = useState('')
   const navigate = useNavigate()
   const {
     register,
@@ -28,14 +23,10 @@ export const AuthForm = () => {
     formState: { errors }
   } = useForm<api.SignInDto>()
   const dispatch = useAppDispatch()
-  const authInfo = useAppSelector((state) => state.authInfo)
+  const otpCodeMutation = useCreateOtpCodeMutation()
   const signIn = useAppSelector((state) => state.userProfile)
   const { isFirst, nextStep } = useTwoStepAction()
   const timer = useTimer()
-
-  useEffect(() => {
-    dispatch(logout())
-  }, [])
 
   useEffect(() => {
     if (signIn.request.status === 'success') {
@@ -44,10 +35,10 @@ export const AuthForm = () => {
   }, [signIn.request.status])
 
   useEffect(() => {
-    if (!!authInfo.otpResponse?.retryDelay) {
-      timer.start(authInfo.otpResponse.retryDelay)
+    if (!!otpCodeMutation.data?.retryDelay) {
+      timer.start(otpCodeMutation.data?.retryDelay)
     }
-  }, [authInfo.otpResponse?.retryDelay])
+  }, [otpCodeMutation.data?.retryDelay])
 
   const onFormSubmit: SubmitHandler<api.SignInDto> = async (signInDto) => {
     if (isFirst) {
@@ -70,7 +61,7 @@ export const AuthForm = () => {
   }
 
   const nextOtpCode = () => {
-    dispatch(createOtpCode({ phone: watch('phone') }))
+    otpCodeMutation.mutate({ phone: watch('phone') })
     nextStep()
   }
 
@@ -78,7 +69,7 @@ export const AuthForm = () => {
     e?.preventDefault()
 
     if (!timer.timesUp) {
-      dispatch(setOtpCodeError('Подождите, новый код недоступен'))
+      setOtpCodeError('Подождите, новый код недоступен')
       return
     }
 
@@ -108,7 +99,7 @@ export const AuthForm = () => {
           <Button
             styleType="outlined"
             onClick={onCodeRequestClick}
-            isLoading={!isFirst && authInfo.request.status === 'pending'}
+            isLoading={!isFirst && otpCodeMutation.isLoading}
             loader={<ButtonLoader className="loader red" />}
           >
             <Typography tag="p" variant="btn2" text="Запросить код" />
@@ -116,16 +107,16 @@ export const AuthForm = () => {
         </>
       )}
 
-      {(signIn.request.status === 'error' || authInfo.request.status === 'error') && (
+      {(signIn.request.status === 'error' || otpCodeMutation.isError) && (
         <div className={s.error}>
-          <Typography tag="p" variant="err2" text={signIn.request.error || authInfo.request.error} />
+          <Typography tag="p" variant="err2" text={signIn.request.error || otpCodeMutation.error} />
         </div>
       )}
 
       <div className={s.btn}>
         <Button
           styleType="solid"
-          isLoading={authInfo.request.status === 'pending' || signIn.request.status === 'pending'}
+          isLoading={signIn.request.status === 'pending' || otpCodeMutation.isLoading}
           loader={<ButtonLoader className="loader white" />}
         >
           <Typography tag="p" variant="btn1" text="Продолжить" />

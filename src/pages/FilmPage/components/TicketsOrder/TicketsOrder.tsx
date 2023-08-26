@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { useFilmInfoQuery } from '@/modules/FilmInfo'
-import { payTicketsOrder } from '@/modules/TicketsOrder'
+import { useTicketOrderMutation } from '@/modules/TicketsOrder'
 
 import { ErrorTicketsOrder } from './ErrorTicketsOrder'
 import { PendingTicketsOrder } from './PendingTicketsOrder'
@@ -10,30 +9,30 @@ import { SuccessTicketsOrder } from './SuccessTicketsOrder'
 
 interface TicketsOrderProps {
   filmId: string
+  ticketsOrder?: api.CreateCinemaPaymentDto
 }
 
-export const TicketsOrder = ({ filmId }: TicketsOrderProps) => {
-  const dispatch = useAppDispatch()
-  const { ticketsOrder, response, request } = useAppSelector((state) => state.ticketsOrder)
+export const TicketsOrder = ({ filmId, ticketsOrder }: TicketsOrderProps) => {
+  const ticketOrderMutation = useTicketOrderMutation()
   const { data: film } = useFilmInfoQuery(filmId)
 
   useEffect(() => {
     if (!!ticketsOrder) {
-      dispatch(payTicketsOrder(ticketsOrder))
+      ticketOrderMutation.mutate(ticketsOrder)
     }
   }, [ticketsOrder])
 
-  if (request.status === 'error' || request?.error) {
-    return <ErrorTicketsOrder errorMessage={request?.error || ''} />
+  if (ticketOrderMutation.isError) {
+    return <ErrorTicketsOrder errorMessage="Ошибка создания заказа" />
   }
 
-  if (!ticketsOrder || request.status === 'pending' || !film || !response) {
+  if (!ticketsOrder || !film || !ticketOrderMutation.isSuccess) {
     return <PendingTicketsOrder />
   }
 
   return (
     <SuccessTicketsOrder
-      order={response.order}
+      order={ticketOrderMutation.data.data.order}
       filmName={film.name}
       date={ticketsOrder.seance.date}
       time={ticketsOrder.seance.time}
