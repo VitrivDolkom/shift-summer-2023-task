@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { useFilmInfoQuery } from '@/modules/FilmInfo'
-import { useTicketOrderMutation } from '@/modules/TicketsOrder'
+import { useCreateOrder } from '@/modules/TicketsOrder'
 
 import { ErrorTicketsOrder } from './ErrorTicketsOrder'
 import { PendingTicketsOrder } from './PendingTicketsOrder'
@@ -13,26 +13,26 @@ interface TicketsOrderProps {
 }
 
 export const TicketsOrder = ({ filmId, ticketsOrder }: TicketsOrderProps) => {
-  const ticketOrderMutation = useTicketOrderMutation()
+  const { createOrder, error, isSuccess, data: orderResponse } = useCreateOrder()
   const { data: film } = useFilmInfoQuery(filmId)
 
   useEffect(() => {
     if (!!ticketsOrder) {
-      ticketOrderMutation.mutate(ticketsOrder)
+      createOrder(ticketsOrder)
     }
   }, [ticketsOrder])
 
-  if (ticketOrderMutation.isError) {
-    return <ErrorTicketsOrder errorMessage="Ошибка создания заказа" />
+  if (error instanceof Error) {
+    return <ErrorTicketsOrder errorMessage={error.message} />
   }
 
-  if (!ticketsOrder || !film || !ticketOrderMutation.isSuccess) {
+  if (!ticketsOrder || !film || !isSuccess) {
     return <PendingTicketsOrder />
   }
 
   return (
     <SuccessTicketsOrder
-      order={ticketOrderMutation.data.data.order}
+      order={orderResponse}
       filmName={film.name}
       date={ticketsOrder.seance.date}
       time={ticketsOrder.seance.time}

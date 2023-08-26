@@ -1,9 +1,8 @@
-import { useAppDispatch, useAppSelector } from '@/store'
 import { useEffect } from 'react'
 
 import { Header } from '@/modules/Header'
-import { useCancelOrder, useFetchUserOrdersQuery } from '@/modules/UserOrders'
-import { fetchProfile, login } from '@/modules/UserProfile'
+import { useFetchSession, useProfileContext } from '@/modules/Profile'
+import { useCancelOrder, useFetchOrders } from '@/modules/UserOrders'
 import { Typography } from '@/shared/uikit'
 
 import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
@@ -11,19 +10,22 @@ import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
 import s from './styles.module.css'
 
 export const UserProfilePage = () => {
-  const dispatch = useAppDispatch()
-  const { token } = useAppSelector((state) => state.userProfile.profile)
-  const { user } = useAppSelector((state) => state.userProfile.profile)
-  const ordersQuery = useFetchUserOrdersQuery({ token })
+  const { login } = useProfileContext()
+  const { profile, updateUser } = useProfileContext()
+  const fetchSession = useFetchSession({ token: profile.token })
+  const fetchOrders = useFetchOrders({ token: profile.token })
   const { cancelOrder } = useCancelOrder()
 
   useEffect(() => {
-    dispatch(login())
-    dispatch(fetchProfile({ token }))
+    login()
   }, [])
 
+  useEffect(() => {
+    if (fetchSession.isSuccess) updateUser(fetchSession.data)
+  }, [fetchSession.status])
+
   const onOrderCancel = (orderId: number) => {
-    cancelOrder({ token, orderId: orderId.toString() })
+    cancelOrder({ token: profile.token, orderId: orderId.toString() })
   }
 
   return (
@@ -33,15 +35,15 @@ export const UserProfilePage = () => {
         <Typography tag="h1" className="centered" variant="t1" text="Личный кабинет" />
         <div className={s.content}>
           <div className={s.left}>
-            <UserProfileInfo user={user} />
+            <UserProfileInfo user={profile.user} />
           </div>
           <div className={s.right}>
-            {ordersQuery.isLoading && <UserOrdersSkelton />}
-            {ordersQuery.isSuccess && (
-              <UserOrders orders={ordersQuery.data} onOrderCancelClick={onOrderCancel} />
+            {fetchOrders.isLoading && <UserOrdersSkelton />}
+            {fetchOrders.isSuccess && (
+              <UserOrders orders={fetchOrders.data} onOrderCancelClick={onOrderCancel} />
             )}
-            {ordersQuery.isError && (
-              <Typography tag="p" variant="err1" text={ordersQuery.error.message} />
+            {fetchOrders.isError && (
+              <Typography tag="p" variant="err1" text={fetchOrders.error.message} />
             )}
           </div>
         </div>

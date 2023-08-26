@@ -1,12 +1,25 @@
 import { AxiosResponse } from 'axios'
 import { useMutation } from 'react-query'
 
-import { instance } from '@/shared/api'
+import { errorMapping, instance } from '@/shared/api'
 
-const createTicketOrder = async (ticketsOrder: api.CreateCinemaPaymentDto) =>
-  instance.post<api.CreateCinemaPaymentDto, AxiosResponse<api.PaymentResponse>>('/payment', ticketsOrder)
+const postOrder = async (ticketsOrder: api.CreateCinemaPaymentDto) => {
+  try {
+    const response = await instance.post<api.CreateCinemaPaymentDto, AxiosResponse<api.CinemaOrder>>(
+      '/payment',
+      ticketsOrder
+    )
 
-export const useTicketOrderMutation = () =>
-  useMutation({
-    mutationFn: (dto: api.CreateCinemaPaymentDto) => createTicketOrder(dto)
+    return response.data
+  } catch (error: unknown) {
+    throw new Error(errorMapping(error, 'Ошибка создания заказа'))
+  }
+}
+
+export const useCreateOrder = () => {
+  const { mutate: createOrder, ...other } = useMutation({
+    mutationFn: (dto: api.CreateCinemaPaymentDto) => postOrder(dto)
   })
+
+  return { createOrder, ...other }
+}

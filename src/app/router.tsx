@@ -1,7 +1,6 @@
-import { store } from '@/store'
-import { Provider } from 'react-redux'
 import { createBrowserRouter, Outlet } from 'react-router-dom'
 
+import { ProfileProvider } from '@/modules/Profile'
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
@@ -11,11 +10,11 @@ import { ProfilePage } from '@/pages/UserProfilePage'
 export const router = createBrowserRouter([
   {
     element: (
-      <Provider store={store}>
+      <ProfileProvider>
         <div className="wrapper">
           <Outlet />
         </div>
-      </Provider>
+      </ProfileProvider>
     ),
     children: [
       {
