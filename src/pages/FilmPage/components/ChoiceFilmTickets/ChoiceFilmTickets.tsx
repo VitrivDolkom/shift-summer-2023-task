@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { useFilmSchedulesQuery } from '@/modules/FilmSchedule'
+import { useFilmSchedulesQuery } from '@/shared/api'
 
 import { SeancePlaces } from './SeancePlaces'
 

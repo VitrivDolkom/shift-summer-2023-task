@@ -1,8 +1,7 @@
-import { useAppDispatch } from '@/store'
 import { useParams } from 'react-router-dom'
 
-import { useFilmInfoQuery } from '@/modules/FilmInfo'
-import { Header } from '@/modules/Header'
+import { useFilmInfoQuery } from '@/shared/api'
+import { Header } from '@/shared/components'
 import { useModal } from '@/shared/lib'
 import { Modal, Typography } from '@/shared/uikit'
 

@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import logoutImg from '@/assets/img/logout.svg'
-import { useProfileContext } from '@/modules/Profile'
+import { useProfileContext } from '@/shared/api'
 import { Button, Typography } from '@/shared/uikit'
 
 import s from '../ui/styles.module.css'

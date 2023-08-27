@@ -1,6 +1,5 @@
 import ticketImg from '@/assets/img/ticket.svg'
-import { useFilmInfoQuery } from '@/modules/FilmInfo'
-import { useFilmSchedulesQuery } from '@/modules/FilmSchedule'
+import { useFilmInfoQuery, useFilmSchedulesQuery } from '@/shared/api'
 import { TitleWithInfo } from '@/shared/components'
 import { getHallName } from '@/shared/lib'
 import { Button, Typography } from '@/shared/uikit'

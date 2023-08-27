@@ -18,7 +18,7 @@ const createOtpCode = async (dto: api.CreateOtpDto) => {
   }
 }
 
-export const useCreateOtpCodeMutation = () =>
+export const useCreateOtpCode = () =>
   useMutation({
     mutationFn: (dto: api.CreateOtpDto) => createOtpCode(dto)
   })

@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 
-import { Header } from '@/modules/Header'
-import { useFetchSession, useProfileContext } from '@/modules/Profile'
-import { useCancelOrder, useFetchOrders } from '@/modules/UserOrders'
+import { useCancelOrder, useFetchOrders, useFetchSession, useProfileContext } from '@/shared/api'
+import { Header } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 
 import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'

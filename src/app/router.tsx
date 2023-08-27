@@ -1,11 +1,11 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom'
 
-import { ProfileProvider } from '@/modules/Profile'
 import { AuthPage } from '@/pages/AuthPage'
 import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
 import { RootPage } from '@/pages/RootPage'
 import { ProfilePage } from '@/pages/UserProfilePage'
+import { ProfileProvider } from '@/shared/api'
 
 export const router = createBrowserRouter([
   {

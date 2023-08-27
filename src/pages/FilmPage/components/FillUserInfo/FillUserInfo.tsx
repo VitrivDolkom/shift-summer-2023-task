@@ -1,7 +1,7 @@
-import { useAppSelector } from '@/store'
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { useProfileContext } from '@/shared/api'
 import { ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { Button, Typography } from '@/shared/uikit'
@@ -20,7 +20,7 @@ export const FillUserInfo = ({ onSubmit, updatePersonDto }: FillUserInfoProps) =
     handleSubmit,
     formState: { errors }
   } = useForm<api.CreatePaymentPersonDto>()
-  const { profile } = useAppSelector((state) => state.userProfile)
+  const { profile } = useProfileContext()
 
   useEffect(() => {
     reset({ ...profile.user })

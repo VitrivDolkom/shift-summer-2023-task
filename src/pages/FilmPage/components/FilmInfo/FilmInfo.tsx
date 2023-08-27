@@ -1,4 +1,4 @@
-import { useFilmInfoQuery } from '@/modules/FilmInfo'
+import { useFilmInfoQuery } from '@/shared/api'
 import { FilmRating } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 

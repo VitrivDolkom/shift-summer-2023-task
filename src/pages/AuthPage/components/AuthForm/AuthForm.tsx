@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { useCreateOtpCodeMutation } from '@/modules/Auth'
-import { useProfileContext, useSignIn } from '@/modules/Profile'
+import { useCreateOtpCode, useProfileContext, useSignIn } from '@/shared/api'
 import { ButtonLoader, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTimer, useTwoStepAction } from '@/shared/lib'
@@ -20,13 +19,14 @@ export const AuthForm = () => {
     formState: { errors }
   } = useForm<api.SignInDto>()
   const { updateProfile } = useProfileContext()
-  const otpCodeMutation = useCreateOtpCodeMutation()
+  const otpCodeMutation = useCreateOtpCode()
   const signInMutation = useSignIn()
   const { isFirst, nextStep } = useTwoStepAction()
   const timer = useTimer()
 
   useEffect(() => {
     if (signInMutation.isSuccess) {
+      updateProfile(signInMutation.data)
       navigate('/profile')
     }
   }, [signInMutation.status])
@@ -44,7 +44,6 @@ export const AuthForm = () => {
     }
 
     signInMutation.singIn(signInDto)
-    if (signInMutation.isSuccess) updateProfile(signInMutation.data)
   }
 
   const nextOtpCode = () => {

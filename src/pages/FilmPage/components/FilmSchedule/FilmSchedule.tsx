@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import waiting from '@/assets/gif/waiting.gif'
-import { useFilmSchedulesQuery } from '@/modules/FilmSchedule/'
+import { useFilmSchedulesQuery } from '@/shared/api'
 import { Loader } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 

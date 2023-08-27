@@ -1,4 +1,4 @@
-import { Header } from '@/modules/Header'
+import { Header } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 
 import { AuthForm } from '../components'

@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 
-import { useFilmInfoQuery } from '@/modules/FilmInfo'
-import { useCreateOrder } from '@/modules/TicketsOrder'
+import { useCreateOrder, useFilmInfoQuery } from '@/shared/api'
 
 import { ErrorTicketsOrder } from './ErrorTicketsOrder'
 import { PendingTicketsOrder } from './PendingTicketsOrder'

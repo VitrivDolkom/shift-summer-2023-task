@@ -1,4 +1,4 @@
-import { useFilmsQuery } from '@/modules/PosterFilms'
+import { useFilmsQuery } from '@/shared/api'
 import { Typography } from '@/shared/uikit'
 
 import { PosterFilmCard } from '../PosterFilmCard/PosterFilmCard'
