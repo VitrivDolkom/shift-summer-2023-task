@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import logoutImg from '@/assets/img/logout.svg'
-import { useProfileContext } from '@/shared/api'
+import { useProfile } from '@/shared/store'
 import { Button, Typography } from '@/shared/uikit'
 
 import s from '../ui/styles.module.css'
@@ -9,7 +9,7 @@ import s from '../ui/styles.module.css'
 export const HeaderButton = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { logout, isAuth } = useProfileContext()
+  const { logout, isAuth } = useProfile()
 
   const onLogoutClick = () => {
     logout()

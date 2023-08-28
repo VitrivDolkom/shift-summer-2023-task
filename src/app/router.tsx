@@ -5,16 +5,13 @@ import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
 import { RootPage } from '@/pages/RootPage'
 import { ProfilePage } from '@/pages/UserProfilePage'
-import { ProfileProvider } from '@/shared/api'
 
 export const router = createBrowserRouter([
   {
     element: (
-      <ProfileProvider>
-        <div className="wrapper">
-          <Outlet />
-        </div>
-      </ProfileProvider>
+      <div className="wrapper">
+        <Outlet />
+      </div>
     ),
     children: [
       {

@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 
-import { useCancelOrder, useFetchOrders, useFetchSession, useProfileContext } from '@/shared/api'
+import { useCancelOrder, useFetchOrders, useFetchSession } from '@/shared/api'
 import { Header } from '@/shared/components'
+import { useProfile } from '@/shared/store'
 import { Typography } from '@/shared/uikit'
 
 import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
@@ -9,8 +10,7 @@ import { UserOrders, UserOrdersSkelton, UserProfileInfo } from '../components'
 import s from './styles.module.css'
 
 export const UserProfilePage = () => {
-  const { login } = useProfileContext()
-  const { profile, updateUser } = useProfileContext()
+  const { profile, updateUser, login } = useProfile()
   const fetchSession = useFetchSession({ token: profile.token })
   const fetchOrders = useFetchOrders({ token: profile.token })
   const { cancelOrder } = useCancelOrder()

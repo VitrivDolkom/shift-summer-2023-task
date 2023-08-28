@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { useCreateOtpCode, useProfileContext, useSignIn } from '@/shared/api'
+import { useCreateOtpCode, useSignIn } from '@/shared/api'
 import { ButtonLoader, ValidatedInput } from '@/shared/components'
 import { validations } from '@/shared/const'
 import { useTimer, useTwoStepAction } from '@/shared/lib'
+import { useProfile } from '@/shared/store'
 import { Button, Typography } from '@/shared/uikit'
 
 import s from './styles.module.css'
@@ -18,7 +19,7 @@ export const AuthForm = () => {
     watch,
     formState: { errors }
   } = useForm<api.SignInDto>()
-  const { updateProfile } = useProfileContext()
+  const { updateProfile } = useProfile()
   const otpCodeMutation = useCreateOtpCode()
   const signInMutation = useSignIn()
   const { isFirst, nextStep } = useTwoStepAction()

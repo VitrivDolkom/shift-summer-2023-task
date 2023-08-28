@@ -21,14 +21,15 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
-    "jotai": "^2.4.0",
+    "immer": "^10.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
     "react-loading-skeleton": "^3.3.1",
     "react-query": "^3.39.3",
     "react-redux": "^8.1.1",
-    "react-router-dom": "^6.14.1"
+    "react-router-dom": "^6.14.1",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.3.3",
