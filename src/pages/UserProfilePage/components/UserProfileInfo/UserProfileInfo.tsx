@@ -32,32 +32,38 @@ export const UserProfileInfo = ({ user }: UserProfileInfoProps) => {
       <ValidatedInput
         name="Телефон"
         error={errors.phone?.message}
-        register={register('phone', validations.phone)}
+        field={register('phone', validations.phone)}
+        ref={register('phone', validations.phone).ref}
       />
       <ValidatedInput
         name="Имя"
         error={errors.firstname?.message}
-        register={register('firstname', validations.firstname)}
+        field={register('firstname', validations.firstname)}
+        ref={register('firstname', validations.firstname).ref}
       />
       <ValidatedInput
         name="Фамилия"
         error={errors.lastname?.message}
-        register={register('lastname', validations.lastname)}
+        field={register('lastname', validations.lastname)}
+        ref={register('lastname', validations.lastname).ref}
       />
       <ValidatedInput
         name="Отчество"
         error={errors.middlename?.message}
-        register={register('middlename', validations.middlename)}
+        field={register('middlename', validations.middlename)}
+        ref={register('middlename', validations.middlename).ref}
       />
       <ValidatedInput
         name="Email"
         error={errors.email?.message}
-        register={register('email', validations.email)}
+        field={register('email', validations.email)}
+        ref={register('email', validations.email).ref}
       />
       <ValidatedInput
         name="Город"
         error={errors.city?.message}
-        register={register('city', validations.city)}
+        field={register('city', validations.city)}
+        ref={register('city', validations.city).ref}
       />
 
       <div className={s.button}>

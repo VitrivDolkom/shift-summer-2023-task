@@ -62,15 +62,17 @@ export const AuthForm = () => {
     <form className={s.form} onSubmit={handleSubmit(onFormSubmit)}>
       <ValidatedInput
         name="Номер телефона"
-        register={register('phone', validations.phone)}
         error={errors.phone?.message}
+        field={register('phone', validations.phone)}
+        ref={register('phone', validations.phone).ref}
       />
       {!isFirst && (
         <>
           <ValidatedInput
             name="Код из SMS"
-            register={register('code', validations.otpCode)}
             error={errors.code?.message}
+            field={register('code', validations.otpCode)}
+            ref={register('code', validations.otpCode).ref}
           />
           <div className={s.info}>
             <Typography

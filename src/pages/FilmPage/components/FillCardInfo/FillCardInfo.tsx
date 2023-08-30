@@ -41,17 +41,20 @@ export const FillCardInfo = ({ onSubmit }: FillCardInfoProps) => {
             <ValidatedInput
               name="Номер"
               error={errors.pan?.message}
-              register={register('pan', validations.pan)}
+              field={register('pan', validations.pan)}
+              ref={register('pan', validations.pan).ref}
             />
             <ValidatedInput
               name="Срок"
               error={errors.expireDate?.message}
-              register={register('expireDate', validations.expireDate)}
+              field={register('expireDate', validations.expireDate)}
+              ref={register('expireDate', validations.expireDate).ref}
             />
             <ValidatedInput
               name="CVV"
               error={errors.cvv?.message}
-              register={register('cvv', validations.cvv)}
+              field={register('cvv', validations.cvv)}
+              ref={register('cvv', validations.cvv).ref}
             />
             <Button className={s.btn} styleType="solid">
               <Typography tag="p" variant="btn1" text="Далее" />
