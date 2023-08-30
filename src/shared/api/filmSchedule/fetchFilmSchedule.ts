@@ -3,12 +3,14 @@ import { useQuery } from 'react-query'
 
 import { instance } from '@/shared/api'
 
+import { QuerySelect } from '../types'
+
 export const fetchFilmSchedule = async (id: string) => {
   const response = await instance.get<api.ScheduleResponse>(`/film/${id}/schedule`)
   return response.data
 }
 
-export const useFilmScheduleQuery = (id: string, select: (data: api.ScheduleResponse) => any) =>
+export const useFilmScheduleQuery = (id: string, select: QuerySelect<api.ScheduleResponse>) =>
   useQuery({
     queryKey: ['filmSchedule', id],
     queryFn: () => fetchFilmSchedule(id),

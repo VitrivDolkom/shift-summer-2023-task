@@ -23,8 +23,8 @@ export const UserProfileInfo = ({ user }: UserProfileInfoProps) => {
     reset({ ...user })
   }, [])
 
-  const onFormSubmit: SubmitHandler<api.User> = (user) => {
-    // TODO запрос на бэкенд
+  const onFormSubmit: SubmitHandler<api.User> = () => {
+    // TODO request
   }
 
   return (

@@ -15,6 +15,9 @@
       "typescript": {
         "alwaysTryTypes": true
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "plugins": ["react", "@typescript-eslint", "react-refresh"],
