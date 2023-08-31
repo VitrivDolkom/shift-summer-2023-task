@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useCreateOtpCode, useSignIn } from '@/shared/api'
 import { ButtonLoader, ValidatedInput } from '@/shared/components'
-import { validations } from '@/shared/const'
+import { routes, validations } from '@/shared/const'
 import { useTimer, useTwoStepAction } from '@/shared/lib'
 import { useProfile } from '@/shared/store'
 import { Button, Typography } from '@/shared/uikit'
@@ -28,7 +28,7 @@ export const AuthForm = () => {
   useEffect(() => {
     if (signInMutation.isSuccess) {
       updateProfile(signInMutation.data)
-      navigate('/profile')
+      navigate(routes.profile)
     }
   }, [signInMutation.status])
 

@@ -5,6 +5,7 @@ import { FilmPage } from '@/pages/FilmPage'
 import { PosterPage } from '@/pages/PosterPage'
 import { RootPage } from '@/pages/RootPage'
 import { ProfilePage } from '@/pages/UserProfilePage'
+import { routes } from '@/shared/const'
 
 export const router = createBrowserRouter([
   {
@@ -15,23 +16,23 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: '/',
+        path: routes.root,
         element: <RootPage />
       },
       {
-        path: '/auth',
+        path: routes.auth,
         element: <AuthPage />
       },
       {
-        path: '/poster',
+        path: routes.poster,
         element: <PosterPage />
       },
       {
-        path: '/poster/:id',
+        path: `${routes.profile}/:id`,
         element: <FilmPage />
       },
       {
-        path: '/profile',
+        path: routes.profile,
         element: <ProfilePage />
       }
     ]

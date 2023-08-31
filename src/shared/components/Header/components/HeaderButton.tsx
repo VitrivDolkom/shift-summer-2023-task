@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import logoutImg from '@/assets/img/logout.svg'
+import { routes } from '@/shared/const'
 import { useProfile } from '@/shared/store'
 import { Button, Typography } from '@/shared/uikit'
 
@@ -13,15 +14,15 @@ export const HeaderButton = () => {
 
   const onLogoutClick = () => {
     logout()
-    navigate('/')
+    navigate(routes.root)
   }
 
   const onLoginClick = () => {
-    navigate('/auth')
+    navigate(routes.auth)
   }
 
   const onUserProfileClick = () => {
-    navigate('/profile')
+    navigate(routes.profile)
   }
 
   if (!isAuth) {
@@ -34,7 +35,7 @@ export const HeaderButton = () => {
     )
   }
 
-  if (location.pathname.startsWith('/profile')) {
+  if (location.pathname.startsWith(routes.profile)) {
     return (
       <div className={s.btn}>
         <Button styleType="outlined" onClick={onLogoutClick}>
