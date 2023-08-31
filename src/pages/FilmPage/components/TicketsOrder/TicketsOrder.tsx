@@ -12,7 +12,7 @@ interface TicketsOrderProps {
 }
 
 export const TicketsOrder = ({ filmId, ticketsOrder }: TicketsOrderProps) => {
-  const { createOrder, error, isSuccess, data: orderResponse } = useCreateOrder()
+  const { createOrder, error, isSuccess, data: orderResponse, isLoading } = useCreateOrder()
   const { data: film } = useFilmInfoQuery(filmId)
 
   useEffect(() => {
@@ -25,16 +25,18 @@ export const TicketsOrder = ({ filmId, ticketsOrder }: TicketsOrderProps) => {
     return <ErrorTicketsOrder errorMessage={error.message} />
   }
 
-  if (!ticketsOrder || !film || !isSuccess) {
+  if (isLoading || !ticketsOrder || !film) {
     return <PendingTicketsOrder />
   }
 
-  return (
-    <SuccessTicketsOrder
-      order={orderResponse}
-      filmName={film.name}
-      date={ticketsOrder.seance.date}
-      time={ticketsOrder.seance.time}
-    />
-  )
+  if (isSuccess) {
+    return (
+      <SuccessTicketsOrder
+        order={orderResponse.order}
+        filmName={film.name}
+        date={ticketsOrder.seance.date}
+        time={ticketsOrder.seance.time}
+      />
+    )
+  }
 }

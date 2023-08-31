@@ -1,12 +1,12 @@
 import { AxiosError } from 'axios'
 import { useQuery } from 'react-query'
 
-import { instance } from '@/shared/api'
-
-import { QuerySelect } from '../types'
+import { errorMapping } from '../../errorMapping'
+import { getFilmSchedule } from '../../requests'
+import { QuerySelect } from '../../types'
 
 export const fetchFilmSchedule = async (id: string) => {
-  const response = await instance.get<api.ScheduleResponse>(`/film/${id}/schedule`)
+  const response = await getFilmSchedule(id)
   return response.data
 }
 
@@ -15,8 +15,7 @@ export const useFilmScheduleQuery = (id: string, select: QuerySelect<api.Schedul
     queryKey: ['filmSchedule', id],
     queryFn: () => fetchFilmSchedule(id),
     select: select,
-    onError: (error: AxiosError<api.BaseResponse>) =>
-      error.response?.data.reason || 'Ошибка загрузки расписания'
+    onError: (error: AxiosError<api.BaseResponse>) => errorMapping(error, 'Ошибка загрузки расписания')
   })
 
 export const useFilmSchedulesQuery = (id: string) => useFilmScheduleQuery(id, (data) => data.schedules)

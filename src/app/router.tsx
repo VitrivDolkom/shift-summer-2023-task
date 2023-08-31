@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
         element: <PosterPage />
       },
       {
-        path: `${routes.profile}/:id`,
+        path: `${routes.poster}/:id`,
         element: <FilmPage />
       },
       {

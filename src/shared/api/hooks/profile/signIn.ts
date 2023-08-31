@@ -1,14 +1,12 @@
-import { AxiosResponse } from 'axios'
 import { useMutation } from 'react-query'
 
-import { errorMapping, usersInstance } from '@/shared/api'
+import { errorMapping } from '@/shared/api'
 
-const signIn = async (signInDto: api.SignInDto) => {
+import { postSignIn } from '../../requests'
+
+const signIn = async (dto: api.SignInDto) => {
   try {
-    const response = await usersInstance.post<api.SignInDto, AxiosResponse<api.SignInResponse>>(
-      '/signin',
-      signInDto
-    )
+    const response = await postSignIn(dto)
 
     return response.data
   } catch (error: unknown) {

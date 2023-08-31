@@ -1,13 +1,12 @@
 import { AxiosError } from 'axios'
 import { useQuery } from 'react-query'
 
-import { errorMapping, instance } from '@/shared/api'
+import { errorMapping } from '@/shared/api'
 
-export const fetchOrders = async ({ token }: api.CreateAuthorizedRequestDto) => {
-  const response = await instance.get<api.CinemaOrdersResponse>('/orders', {
-    headers: { Authorization: `Bearer ${token}` }
-  })
+import { getOrders } from '../../requests'
 
+export const fetchOrders = async (dto: api.CreateAuthorizedRequestDto) => {
+  const response = await getOrders(dto)
   return response.data
 }
 

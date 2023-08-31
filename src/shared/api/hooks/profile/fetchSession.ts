@@ -1,12 +1,11 @@
 import { useQuery } from 'react-query'
 
-import { errorMapping, usersInstance } from '@/shared/api'
+import { errorMapping } from '@/shared/api'
 
-const fetchSession = async ({ token }: api.CreateAuthorizedRequestDto) => {
-  const response = await usersInstance.get<api.SessionResponse>('/session', {
-    headers: { Authorization: `Bearer ${token}` }
-  })
+import { getSession } from '../../requests'
 
+const fetchSession = async (dto: api.CreateAuthorizedRequestDto) => {
+  const response = await getSession(dto)
   return response.data
 }
 

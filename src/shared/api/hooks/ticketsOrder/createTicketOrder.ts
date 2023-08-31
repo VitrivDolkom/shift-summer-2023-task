@@ -1,14 +1,12 @@
-import { AxiosResponse } from 'axios'
 import { useMutation } from 'react-query'
 
-import { errorMapping, instance } from '@/shared/api'
+import { errorMapping } from '@/shared/api'
 
-const postOrder = async (ticketsOrder: api.CreateCinemaPaymentDto) => {
+import { postTicketOrder } from '../../requests'
+
+const postOrder = async (dto: api.CreateCinemaPaymentDto) => {
   try {
-    const response = await instance.post<api.CreateCinemaPaymentDto, AxiosResponse<api.CinemaOrder>>(
-      '/payment',
-      ticketsOrder
-    )
+    const response = await postTicketOrder(dto)
 
     return response.data
   } catch (error: unknown) {

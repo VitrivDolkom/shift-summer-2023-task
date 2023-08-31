@@ -1,10 +1,9 @@
 import { useQuery } from 'react-query'
 
-import { instance } from '@/shared/api'
+import { getFilms } from '../../requests'
 
 export const fetchFilms = async (): Promise<api.FilmsResponse> => {
-  const response = await instance.get<api.FilmsResponse>('/today')
-
+  const response = await getFilms()
   return response.data
 }
 
