@@ -1,25 +1,17 @@
 import i18next from 'i18next'
+import HttpApi from 'i18next-http-backend'
 import { initReactI18next } from 'react-i18next'
 
-const resources = {
-  ru: {
-    translation: {
-      poster_title: ' на сегодня'
+i18next
+  .use(initReactI18next)
+  .use(HttpApi)
+  .init({
+    lng: 'ru',
+    supportedLngs: ['ru', 'en'],
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false
     }
-  },
-  en: {
-    translation: {
-      poster_title: ' on today'
-    }
-  }
-}
-
-i18next.use(initReactI18next).init({
-  resources,
-  lng: 'ru',
-  interpolation: {
-    escapeValue: false
-  }
-})
+  })
 
 export default i18next
