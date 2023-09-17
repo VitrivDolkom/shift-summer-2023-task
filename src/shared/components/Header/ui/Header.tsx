@@ -1,7 +1,4 @@
-import { useTranslation } from 'react-i18next'
-
-import { Button, Typography } from '@/shared/uikit'
-
+import { LanguageSwitcher } from '../../LanguageSwitcher/LanguageSwitcher'
 import { HeaderButton } from '../components/HeaderButton'
 import { HeaderLogo } from '../components/HeaderLogo'
 
@@ -11,25 +8,11 @@ export interface HeaderProps {
   type?: 'withButton'
 }
 
-export const Header = ({ type }: HeaderProps) => {
-  const { i18n } = useTranslation()
+export const Header = ({ type }: HeaderProps) => (
+  <header className={s.header}>
+    <HeaderLogo />
+    {type === 'withButton' && <HeaderButton />}
 
-  return (
-    <header className={s.header}>
-      <HeaderLogo />
-      {type === 'withButton' && <HeaderButton />}
-
-      <Button
-        type="submit"
-        styleType="solid"
-        className={s.lngBtn}
-        onClick={() => {
-          if (i18n.language === 'ru') i18n.changeLanguage('en')
-          else i18n.changeLanguage('ru')
-        }}
-      >
-        <Typography variant="btn1" text="Поменять язык" />
-      </Button>
-    </header>
-  )
-}
+    <LanguageSwitcher />
+  </header>
+)
