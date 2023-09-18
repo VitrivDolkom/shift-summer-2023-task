@@ -1,4 +1,24 @@
 {
-  "poster_title": " on today",
-  "change_lng": "Change language"
+  "global": {
+    "change_lng": "Change language",
+    "kinopoisk": "Kinopoisk",
+    "profile": "Profile",
+    "login": "Login",
+    "logout": "Logout",
+    "ending": "s"
+  },
+  "poster": {
+    "title": " on today",
+    "more_info": "More info"
+  },
+  "film": {
+    "fetch_error": "Error while fetching the film",
+    "name": "{{film.originalName}}",
+    "original_name": "",
+    "director_one": "Director: ",
+    "director_other": "Directors: ",
+    "playing": "playing",
+    "playing_date": "from July 1 to July 15",
+    "schedule": "schedule"
+  }
 }

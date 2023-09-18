@@ -1,4 +1,12 @@
 {
-  "poster_title": " на сегодня",
-  "change_lng": "Сменить язык"
+  "global": {
+    "change_lng": "Сменить язык",
+    "kinopoisk": "Кинопоиск"
+  },
+  "poster": {
+    "title": " на сегодня",
+    "more_info": "Подробнее",
+    "film_name": "{{film.name}}",
+    "original_film_name": "{{film.originalName}}"
+  }
 }

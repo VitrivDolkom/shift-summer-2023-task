@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { FilmRating } from '@/shared/components'
@@ -12,8 +13,9 @@ interface PosterFilmCardProps {
 }
 
 export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
-  const { id, genres, country, releaseDate, img, name, originalName, userRatings } = film
   const navigate = useNavigate()
+  const { t } = useTranslation()
+  const { id, genres, country, releaseDate, img, userRatings } = film
 
   const onMoreInfoClick = () => {
     navigate(`/poster/${id}`)
@@ -32,15 +34,15 @@ export const PosterFilmCard = ({ film }: PosterFilmCardProps) => {
       </div>
       <footer className={s.footer}>
         <div className={s.bottom}>
-          <div className={s.name}>{name}</div>
+          <div className={s.name}>{t('film.name', { film })}</div>
 
           <div className={s.originalName}>
-            <Typography tag="p" text={originalName} variant="sub2" />
+            <Typography tag="p" text={t('film.original_name', { film })} variant="sub2" />
           </div>
-          <FilmRating rating={userRatings.kinopoisk} company="кинопоиск" />
+          <FilmRating rating={userRatings.kinopoisk} company={t('global.kinopoisk')} />
         </div>
         <Button styleType="solid" onClick={onMoreInfoClick}>
-          <Typography tag="p" text="Подробнее" variant="btn1" />
+          <Typography tag="p" text={t('poster.more_info')} variant="btn1" />
         </Button>
       </footer>
     </div>

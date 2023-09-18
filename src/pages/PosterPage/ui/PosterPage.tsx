@@ -16,7 +16,7 @@ export const PosterPage = () => (
         <main>
           <div className={s.title}>
             <img src={posterTitle} alt="афиша" />
-            <Typography tag="h1" variant="t2" text={t('poster_title')} />
+            <Typography tag="h1" variant="t2" text={t('poster.title')} />
           </div>
           <PosterFilms />
         </main>

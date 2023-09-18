@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import logoutImg from '@/assets/img/logout.svg'
@@ -11,6 +12,7 @@ export const HeaderButton = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const { logout, isAuth } = useProfile()
+  const { t } = useTranslation()
 
   const onLogoutClick = () => {
     logout()
@@ -29,7 +31,7 @@ export const HeaderButton = () => {
     return (
       <div className={s.btn}>
         <Button styleType="outlined" onClick={onLoginClick}>
-          <Typography tag="p" variant="btn2" text="Войти" />
+          <Typography tag="p" variant="btn2" text={t('global.login')} />
         </Button>
       </div>
     )
@@ -41,7 +43,7 @@ export const HeaderButton = () => {
         <Button styleType="outlined" onClick={onLogoutClick}>
           <div className={s.insideBtn}>
             <img src={logoutImg} alt="" />
-            <Typography tag="p" variant="btn2" text="Выйти" />
+            <Typography tag="p" variant="btn2" text={t('global.logout')} />
           </div>
         </Button>
       </div>
@@ -51,7 +53,7 @@ export const HeaderButton = () => {
   return (
     <div className={s.btn}>
       <Button styleType="outlined" onClick={onUserProfileClick}>
-        <Typography tag="p" variant="btn2" text="Кабинет" />
+        <Typography tag="p" variant="btn2" text={t('global.profile')} />
       </Button>
     </div>
   )

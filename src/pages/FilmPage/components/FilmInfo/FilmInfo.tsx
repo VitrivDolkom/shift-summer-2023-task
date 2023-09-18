@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 import { useFilmInfoQuery } from '@/shared/api'
 import { FilmRating } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
@@ -14,6 +16,7 @@ interface FilmInfoProps {
 }
 
 export const FilmInfo = ({ id }: FilmInfoProps) => {
+  const { t } = useTranslation()
   const { data: film, isSuccess, isLoading, isError } = useFilmInfoQuery(id)
 
   if (isLoading) {
@@ -21,7 +24,7 @@ export const FilmInfo = ({ id }: FilmInfoProps) => {
   }
 
   if (isError || !film) {
-    return <Typography tag="h1" variant="err2" text="Ошибка загрузки фильма" />
+    return <Typography tag="h1" variant="err2" text={t('film.fetch_error')} />
   }
 
   if (isSuccess) {
@@ -32,10 +35,10 @@ export const FilmInfo = ({ id }: FilmInfoProps) => {
           <WatchDate />
         </div>
         <div className={s.right}>
-          <Typography tag="h2" variant="t2" text={film.name} />
+          <Typography tag="h2" variant="t2" text={t('film.name', { film })} />
           <FilmDirectors directors={film.directors} />
           <FIlmGenreCountryYear genres={film.genres} country={film.country} date={film.releaseDate} />
-          <FilmRating rating={film.userRatings.kinopoisk} company="кинопоиск" />
+          <FilmRating rating={film.userRatings.kinopoisk} company={t('global.kinopoisk')} />
           <div className={s.description}>
             <Typography tag="p" className="ellipsis" variant="t3" text={film.description} />
           </div>

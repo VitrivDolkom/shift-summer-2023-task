@@ -1,3 +1,4 @@
+import { Translation } from 'react-i18next'
 
 import s from './styles.module.css'
 
@@ -6,10 +7,14 @@ interface Props {
 }
 
 export const FilmDirectors = ({ directors }: Props) => (
-  <div className={s.director}>
-    Режиссер{directors.length > 1 ? 'ы' : ''}:{' '}
-    {directors.map(
-      (director, index) => `${director.fullName}${index !== directors.length - 1 ? ', ' : ''}`
+  <Translation>
+    {(t) => (
+      <div className={s.director}>
+        {t('film.director', { count: directors.length })}
+        {directors.map(
+          (director, index) => `${director.fullName}${index !== directors.length - 1 ? ', ' : ''}`
+        )}
+      </div>
     )}
-  </div>
+  </Translation>
 )
