@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 import waiting from '@/assets/gif/waiting.gif'
 import { useFilmSchedulesQuery } from '@/shared/api'
-import { Loader } from '@/shared/components'
+import { Loader, LocalizedTypography } from '@/shared/components'
 import { Typography } from '@/shared/uikit'
 
 import { CurrentSchedule } from './CurrentSchedule'
@@ -39,7 +39,7 @@ export const FilmSchedule = (props: FilmScheduleProps) => {
   if (filmSchedulesQuery.isSuccess) {
     return (
       <div className={s.wrapper}>
-        <div className={s.title}>Расписание</div>
+        <LocalizedTypography tag="h1" tKey="film.schedule" className={s.title} />
         <SchedulesDate
           schedules={filmSchedulesQuery.data}
           currentSchedule={schedule}
